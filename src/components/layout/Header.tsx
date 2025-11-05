@@ -11,6 +11,7 @@ export default function Header(){
             <li><a href="/schedule" className="hover:text-blue-600">Schedule</a></li>
             <li><a href="/team" className="hover:text-blue-600">Team</a></li>
             <li><a href="/iitk" className="hover:text-blue-600">IITK</a></li>
+            <li><a href="/partners" className="hover:text-blue-600">Partners</a></li>
             <li><a href="/contact" className="hover:text-blue-600">Contact</a></li>
           </ul>
         </nav>
