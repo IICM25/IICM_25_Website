@@ -1,0 +1,103 @@
+{
+  "dance": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Groove Fiesta" },
+        "desc": { "type": "string", "content": "" }
+      },
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "" },
+        "desc": {
+          "type": "string",
+          "content": "Groove Fiesta is a high-energy dance competition where participants showcase creativity, rhythm, and teamwork through dazzling performances."
+        }
+      },
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Solo Showdown" },
+        "desc": { "type": "string", "content": "An individual dance battle testing your rhythm, energy, and creativity." }
+      },
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Group Groove" },
+        "desc": { "type": "string", "content": "Teams of 4–10 compete to deliver synchronized, energetic performances that wow the crowd." }
+      },
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": { "type": "string", "content": "For queries: Aditi Sharma (+91 98765 43210), Raj Mehta (+91 87654 32109)" }
+      }
+    ]
+  },
+
+  "anicon": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Anicon – The Anime & Cosplay Fest" },
+        "desc": { "type": "string", "content": "" }
+      },
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "" },
+        "desc": {
+          "type": "string",
+          "content": "Step into the world of anime, manga, and cosplay! Anicon celebrates your favorite characters through contests, art, and fandom fun."
+        }
+      },
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Cosplay Contest" },
+        "desc": { "type": "string", "content": "Bring your favorite character to life with stunning costumes and performances." }
+      },
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Fan Art Exhibition" },
+        "desc": { "type": "string", "content": "Showcase your artistic passion for anime and manga through drawings, sketches, and digital art." }
+      },
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": { "type": "string", "content": "For queries: Riya Sen (+91 99887 66554), Aarav Patel (+91 88776 55443)" }
+      }
+    ]
+  },
+
+  "mnm": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Mind & Matter" },
+        "desc": { "type": "string", "content": "" }
+      },
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "" },
+        "desc": {
+          "type": "string",
+          "content": "Mind & Matter is a technical symposium focused on innovation, logic, and problem-solving through various scientific challenges."
+        }
+      },
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": { "type": "string", "content": "For queries: Karan Singh (+91 91234 56789), Meera Joshi (+91 98712 34567)" }
+      }
+    ]
+  }
+}
