@@ -405,7 +405,7 @@ export default function Home() {
       </section>
       <section className="relative w-full overflow-visible bg-black">
 
-        <Footer />
+        {/* <Footer /> */}
       </section>
     </main>
   );
