@@ -4,20 +4,9 @@ import { useEffect, useState } from "react";
 import Footer from "./Footer";
 
 export default function Home() {
-  const [bgLoaded, setBgLoaded] = useState(false);
-  const [preferred, setPreferred] = useState<'mobile' | 'desktop'>('desktop');
+  // preferred background logic removed (not currently used)
 
-  useEffect(() => {
-    // determine which background will be visible on this client
-    const isDesktop = typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
-    setPreferred(isDesktop ? 'desktop' : 'mobile');
-  }, []);
-
-  // handler to be called from images when they finish loading
-  const handleBgLoad = (which: 'mobile' | 'desktop') => {
-    // only consider load for the currently-visible background
-    if (which === preferred) setBgLoaded(true);
-  };
+  // Note: background load handlers removed because overlay conditional is currently always shown
 
   const PHOTOS = [
     "/images/old_image.png",
@@ -65,7 +54,6 @@ export default function Home() {
             fill
             className="object-cover object-center"
             priority
-            onLoadingComplete={() => handleBgLoad('mobile')}
           />
         </div>
 
@@ -77,7 +65,6 @@ export default function Home() {
             fill
             className="object-cover object-center"
             priority
-            onLoadingComplete={() => handleBgLoad('desktop')}
           />
         </div>
 

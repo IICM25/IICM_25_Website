@@ -84,8 +84,8 @@ function AboutIITK() {
             borderColor: "rgb(223,165,83)",
           }}
         >
-          "Freedom of thought and action is the cornerstone of our academic
-          philosophy"
+            &quot;Freedom of thought and action is the cornerstone of our academic
+            philosophy&quot;
         </blockquote>
       </section>
 
@@ -103,12 +103,12 @@ function AboutIITK() {
             className="bg-white rounded-xl shadow-lg p-8 border-t-4"
             style={{ borderTopColor: "rgb(89,126,130)" }}
           >
-            <h3
-              className="text-2xl font-semibold mb-2"
-              style={{ color: "rgb(89,126,130)" }}
-            >
-              Director's Message
-            </h3>
+              <h3
+                className="text-2xl font-semibold mb-2"
+                style={{ color: "rgb(89,126,130)" }}
+              >
+                Director&apos;s Message
+              </h3>
             <p className="font-semibold">Prof. [Director Name]</p>
             <p className="text-gray-600 mb-4">Director, IIT Kanpur</p>
             <p className="text-gray-700 leading-relaxed">
@@ -132,12 +132,12 @@ function AboutIITK() {
             className="bg-white rounded-xl shadow-lg p-8 border-t-4"
             style={{ borderTopColor: "rgb(223,165,83)" }}
           >
-            <h3
-              className="text-2xl font-semibold mb-2"
-              style={{ color: "rgb(89,126,130)" }}
-            >
-              Dean's Message
-            </h3>
+              <h3
+                className="text-2xl font-semibold mb-2"
+                style={{ color: "rgb(89,126,130)" }}
+              >
+                Dean&apos;s Message
+              </h3>
             <p className="font-semibold">Prof. [Dean Name]</p>
             <p className="text-gray-600 mb-4">
               Dean of Academic Affairs, IIT Kanpur

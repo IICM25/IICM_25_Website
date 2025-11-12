@@ -19,12 +19,7 @@ export default function Footer() {
     { label: "ICC Website", href: "#" },
   ];
 
-  const docs = [
-    { label: "Mandate", href: "#" },
-    { label: "POSH Act", href: "#" },
-    { label: "The Indian Penal Code", href: "#" },
-    { label: "CSS Conduct Rules", href: "#" },
-  ];
+  // documents list removed because it's currently unused
 
   return (
     <footer className="bg-black text-[#e9e6e0] pt-10">
@@ -65,7 +60,7 @@ export default function Footer() {
 
           {/* RIGHT: IITK links */}
           <div className="md:col-span-2 lg:col-span-2">
-            <h4 className="text-xs font-semibold tracking-widest mb-4 text-[#d6cfc6]">IITK'S LINK</h4>
+            <h4 className="text-xs font-semibold tracking-widest mb-4 text-[#d6cfc6]">IITK&apos;S LINK</h4>
             <ul className="space-y-2 text-sm">
               {iitLinks.map((l) => (
                 <li key={l.href}>

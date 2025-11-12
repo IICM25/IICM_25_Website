@@ -9,7 +9,6 @@ interface MobileDrawerProps {
 }
 
 const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
-  const [isRoadtripsOpen, setIsRoadtripsOpen] = useState(false);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
   return (

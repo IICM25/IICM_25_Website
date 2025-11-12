@@ -270,25 +270,38 @@ export default function GalleryPage() {
     try {
       const data = await getSingleDoc("WebContents", "Gallery");
       if (data) {
-        const rawItems: any[] = Array.isArray(data)
-          ? data
-          : data && Array.isArray((data as any).data)
-          ? (data as any).data
-          : [];
+        // Normalize unknown backend shapes without using `any`.
+        const hasDataArray = (x: unknown): x is { data: unknown[] } =>
+          typeof x === "object" && x !== null && "data" in (x as object) && Array.isArray((x as { data?: unknown }).data);
+
+        const rawItems: unknown[] = Array.isArray(data) ? (data as unknown[]) : hasDataArray(data) ? data.data : [];
+
+        const pickUrl = (maybe: unknown): string | undefined => {
+          if (typeof maybe === "string") return maybe;
+          if (typeof maybe === "object" && maybe !== null) {
+            const m = maybe as Record<string, unknown>;
+            const u = m.url;
+            if (typeof u === "string") return u;
+            const r = m.Ref;
+            if (typeof r === "string") return r;
+          }
+          return undefined;
+        };
 
         const mapped = rawItems
-          .map((it: any) => {
+          .map((it) => {
+            if (typeof it !== "object" || it === null) return null;
+            const rec = it as Record<string, unknown>;
             const src =
-              it.IMAGE?.url ??
-              it.image?.url ??
-              it.img?.url ??
-              it.IMAGE?.Ref ??
-              it.image?.Ref ??
-              "";
+              pickUrl(rec.IMAGE) ?? pickUrl(rec.image) ?? pickUrl(rec.img) ?? "";
             if (!src) return null;
             const alt =
-              it.title ?? it.caption ?? `Gallery Image ${it.Id ?? it.id ?? ""}`;
-            const like = Number(it.like ?? 0);
+              (typeof rec.title === "string"
+                ? rec.title
+                : typeof rec.caption === "string"
+                ? rec.caption
+                : `Gallery Image ${typeof rec.Id === "string" ? rec.Id : typeof rec.id === "string" ? rec.id : ""}`) || "";
+            const like = typeof rec.like === "number" ? rec.like : (typeof rec.like === "string" && !Number.isNaN(Number(rec.like)) ? Number(rec.like) : 0);
             return { src, alt, like } as ImageItem | null;
           })
           .filter((x): x is ImageItem => x !== null);

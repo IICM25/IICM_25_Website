@@ -15,7 +15,7 @@ import {
   
   const addData = async (collectionName, data) => {
     try {
-      const docRef = await addDoc(collection(db, collectionName), data);
+      await addDoc(collection(db, collectionName), data);
       return;
     } catch (error) {
       console.log("Error in adding data: ", error);
