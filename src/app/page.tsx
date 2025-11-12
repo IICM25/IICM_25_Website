@@ -1,11 +1,14 @@
-
-
+import AboutHero from '@/components/layout/AboutHome';
+import Hero from '@/components/layout/Hero';
 import React from 'react';
 
 export default function Home() {
+
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div className="container">
       {/* Empty content as requested */}
+      <Hero />
+    {/* <AboutHero /> */}
     </div>
   );
 }

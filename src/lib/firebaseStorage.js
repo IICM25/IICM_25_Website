@@ -13,7 +13,7 @@ import {
   const uploadFile = async (path, file) => {
     try {
       const storageRef = ref(storage, path);
-      let res = await uploadBytes(storageRef, file);
+      await uploadBytes(storageRef, file);
       let url = await getDownloadURL(storageRef);
       return url;
     } catch (error) {
@@ -24,7 +24,7 @@ import {
   const deleteFile = async (path) => {
     try {
       const storageRef = ref(storage, path);
-      let res = await deleteObject(storageRef);
+      await deleteObject(storageRef);
     } catch (error) {
       console.log("Error in deleting file: ", error);
     }

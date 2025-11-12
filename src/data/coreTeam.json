@@ -1,0 +1,22 @@
+{
+  "current": [
+    {
+      "Id": "1",
+      "Name": "Alice",
+      "Vertical": "Marketing",
+      "Email": "alice@example.com",
+      "Phone": "9999999999",
+      "LinkedIn": "https://linkedin.com/in/alice",
+      "Pic": { "ref": "picRef", "url": "/images/alice.jpg" }
+    }
+  ],
+  "previous": [
+    {
+      "Id": "2",
+      "Name": "Bob",
+      "Vertical": "Marketing",
+      "Email": "bob@example.com",
+      "Pic": { "ref": "picRef2", "url": "/images/bob.jpg" }
+    }
+  ]
+}
