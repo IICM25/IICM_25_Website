@@ -394,7 +394,7 @@ export default function Home() {
           </div>
         </div>
         {/* spacing for next section */}
-        <div className="absolute -left-2 right-0 bottom-[-120px] pointer-events-none z-0">
+        <div className="absolute -left-2 right-0 bottom-[-120px]  pointer-events-none z-0">
           <div className="relative w-screen overflow-visible transform rotate-1 ">
             <div className="relative w-screen h-16 md:h-24 lg:h-48 ">
               <Image src="/Elements/stripe.png" alt="stripe top" fill style={{ objectFit: "cover" }} priority />
@@ -405,7 +405,7 @@ export default function Home() {
       </section>
       <section className="relative w-full overflow-visible bg-black">
 
-        {/* <Footer /> */}
+        <Footer />
       </section>
     </main>
   );
