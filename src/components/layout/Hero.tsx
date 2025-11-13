@@ -9,22 +9,22 @@ export default function Home() {
   // Note: background load handlers removed because overlay conditional is currently always shown
 
   const PHOTOS = [
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
+    "/images/1.jpg",
+    "/images/2.jpg",
+    "/images/3.jpg",
+    "/images/4.jpg",
+    "/images/5.jpg",
+    "/images/6.jpg",
+    "/images/7.jpeg",
+    "/images/8.jpg",
+    "/images/9.jpg",
 
   ];
   const PHOTOS1 = [
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
+    "/images/10.jpeg",
+    "/images/11.jpg",
+    "/images/12.jpeg",
+    "/images/13.jpg",
 
   ];
 
@@ -126,10 +126,18 @@ export default function Home() {
 
                     {/* polaroid frame */}
                     <div className="bg-white rounded-sm shadow-[0_10px_20px_rgba(0,0,0,0.25)] pt-4 pb-6 px-3">
-                      <div className="relative w-full aspect-[4/3] bg-black">
-                        {/* inner image (cover) */}
-                        <Image src={src} alt={`gallery-${idx + 1}`} fill style={{ objectFit: "cover" }} />
-                      </div>
+                      <div className="relative w-full aspect-[4/3] bg-black overflow-hidden rounded-lg">
+  {/* inner image */}
+  <Image
+    src={src}
+    alt={`gallery-${idx + 1}`}
+    fill
+    style={{ objectFit: "cover" }}
+  />
+
+  {/* transparent overlay */}
+  <div className="absolute inset-0 bg-black/50"></div>
+</div>
 
                       {/* small caption / white strip (polaroid) */}
                       <div className="mt-3 h-8" />
@@ -374,10 +382,18 @@ export default function Home() {
 
                 {/* polaroid frame */}
                 <div className="bg-white rounded-sm shadow-[0_10px_20px_rgba(0,0,0,0.25)] pt-4 pb-6 px-3">
-                  <div className="relative w-full aspect-[4/3] bg-black">
-                    {/* inner image (cover) */}
-                    <Image src={src} alt={`gallery-${idx + 1}`} fill style={{ objectFit: "cover" }} />
-                  </div>
+                 <div className="relative w-full aspect-[4/3] bg-black overflow-hidden rounded-lg">
+  {/* inner image */}
+  <Image
+    src={src}
+    alt={`gallery-${idx + 1}`}
+    fill
+    style={{ objectFit: "cover" }}
+  />
+
+  {/* transparent overlay */}
+  <div className="absolute inset-0 bg-black/50"></div>
+</div>
 
                   {/* small caption / white strip (polaroid) */}
                   <div className="mt-3 h-8" />
