@@ -23,7 +23,7 @@ interface TeamMember {
   Instagram?: string;
   Facebook?: string;
   Twitter?: string;
-  Pic?: Pic;
+  Pic?: string;
 }
 
 interface ContactCardProps {
