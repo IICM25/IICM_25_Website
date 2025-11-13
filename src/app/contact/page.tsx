@@ -79,32 +79,29 @@ const normalizeMember = (raw: unknown): TeamMember => {
 const Contact = () => {
   const [coreTeam, setCoreTeam] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [yearType, setYearType] = useState<'current' | 'previous'>('current');
 
-  // Load data from imported JSON
+  // Load data from imported JSON (single-year mode)
   useEffect(() => {
     setLoading(true);
-
     try {
-      // coreTeamJson may be either { current: [...], previous: [...] } or a plain array
       const json = coreTeamJson as unknown;
 
       if (Array.isArray(json)) {
-        // plain array -> treat as current year
         setCoreTeam((json as unknown[]).map(normalizeMember));
       } else if (json && typeof json === 'object') {
         const obj = json as Record<string, unknown>;
-        const arr =
-          (yearType === 'current'
-            ? (Array.isArray(obj.current) ? obj.current : Array.isArray(obj.CURRENT) ? obj.CURRENT : undefined)
-            : (Array.isArray(obj.previous) ? obj.previous : Array.isArray(obj.PREVIOUS) ? obj.PREVIOUS : undefined)) as
-          unknown[] | undefined;
-
-        if (Array.isArray(arr)) {
-          setCoreTeam(arr.map(normalizeMember));
-        } else {
-          setCoreTeam([]);
+        // Prefer explicit 'current' keys, then fallback to any first array found
+        let arr: unknown[] | undefined = undefined;
+        if (Array.isArray(obj.current)) arr = obj.current as unknown[];
+        else if (Array.isArray(obj.CURRENT)) arr = obj.CURRENT as unknown[];
+        else {
+          // find first array property on the object
+          const val = Object.values(obj).find((v) => Array.isArray(v));
+          if (Array.isArray(val)) arr = val as unknown[];
         }
+
+        if (Array.isArray(arr)) setCoreTeam(arr.map(normalizeMember));
+        else setCoreTeam([]);
       } else {
         setCoreTeam([]);
       }
@@ -114,7 +111,7 @@ const Contact = () => {
     } finally {
       setLoading(false);
     }
-  }, [yearType]);
+  }, []);
 
   const sections = [
     { id: "t1", title: "Overall Coordinators" },
@@ -176,37 +173,10 @@ const Contact = () => {
             OUR CORE TEAM
           </h1>
 
-          {/* Toggle Buttons */}
-          <div className="flex justify-center gap-6 mb-12">
-            <button
-              onClick={() => setYearType('current')}
-              className={`px-7 py-2.5 rounded-full font-semibold tracking-wide text-sm md:text-base 
-                border border-yellow-400/40 backdrop-blur-sm 
-                transition-all duration-300 ease-in-out
-                ${yearType === 'current'
-                  ? 'bg-gradient-to-r from-yellow-500 to-amber-400 text-[#0c0b26] shadow-[0_0_20px_rgba(255,215,0,0.4)] scale-105'
-                  : 'bg-transparent text-yellow-300 hover:bg-yellow-400/10 hover:shadow-[0_0_15px_rgba(255,215,0,0.3)] hover:scale-105'
-                }`}
-            >
-              Current Year
-            </button>
-
-            <button
-              onClick={() => setYearType('previous')}
-              className={`px-7 py-2.5 rounded-full font-semibold tracking-wide text-sm md:text-base 
-                border border-blue-400/40 backdrop-blur-sm 
-                transition-all duration-300 ease-in-out
-                ${yearType === 'previous'
-                  ? 'bg-gradient-to-r from-blue-500 to-cyan-400 text-[#0c0b26] shadow-[0_0_20px_rgba(0,191,255,0.4)] scale-105'
-                  : 'bg-transparent text-blue-300 hover:bg-blue-400/10 hover:shadow-[0_0_15px_rgba(0,191,255,0.3)] hover:scale-105'
-                }`}
-            >
-              Previous Year
-            </button>
-          </div>
+          {/* single-year mode: no toggle */}
 
           {loading ? (
-            <p className="text-center text-gray-400">Loading {yearType} team...</p>
+            <p className="text-center text-gray-400">Loading team...</p>
           ) : (
             sections.map((section) => (
               <div key={section.id} className="mb-20  text-center">
