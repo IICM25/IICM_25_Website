@@ -28,7 +28,7 @@ interface TeamMember {
   LinkedIn?: string;
   Instagram?: string;
   Facebook?: string;
-  Pic?: Pic;
+  Pic?: Pic | string;
 }
 
 // Normalizer: convert raw JSON member objects to TeamMember shape
@@ -71,7 +71,8 @@ const normalizeMember = (raw: unknown): TeamMember => {
     LinkedIn: linkedIn,
     Instagram: instagram,
     Facebook: facebook,
-    Pic: picObj,
+    // prefer returning a simple string URL for Pic to keep usage simple in UI
+    Pic: picObj ? picObj.url : undefined,
   };
 };
 
@@ -218,23 +219,56 @@ const Contact = () => {
                 >
                   {section.title}
                 </h2>
-                
-                <div className="w-full flex justify-center">
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
-    {coreTeam
-      .filter((member) => matchesSection(member.Vertical, section))
-      .map((member, index) => (
-        <div
-          key={index}
-          className="w-full max-w-xs text-center 
+
+                {/* <div className="w-full flex justify-center">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+                    {coreTeam
+                      .filter((member) => matchesSection(member.Vertical, section))
+                      .map((member, index) => (
+                        <div
+                          key={index}
+                          className="w-full max-w-xs text-center 
                      transform transition-all hover:scale-105 hover:shadow-xl 
                      rounded-2xl p-4"
-        >
-          <ContactCard member={member} />
-        </div>
-      ))}
-  </div>
+                        >
+                          <ContactCard member={member} />
+                        </div>
+                      ))}
+                  </div>
+                </div> */}
+                <div className="w-full flex justify-center">
+  {(() => {
+    const members = coreTeam.filter((member) =>
+      matchesSection(member.Vertical, section)
+    );
+
+    // Determine grid class dynamically
+    const gridColsClass =
+      members.length >= 4
+        ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        : members.length === 3
+        ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+        : members.length === 2
+        ? "grid-cols-1 sm:grid-cols-2"
+        : "grid-cols-1";
+
+    return (
+      <div
+        className={`grid ${gridColsClass} gap-6 justify-items-center items-center justify-center`}
+      >
+        {members.map((member, index) => (
+          <div
+            key={index}
+            className="w-full max-w-xs text-center transform transition-all hover:scale-105 hover:shadow-xl rounded-2xl p-4"
+          >
+            <ContactCard member={member} />
+          </div>
+        ))}
+      </div>
+    );
+  })()}
 </div>
+
 
               </div>
             ))

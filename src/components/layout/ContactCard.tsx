@@ -23,7 +23,7 @@ interface TeamMember {
   Instagram?: string;
   Facebook?: string;
   Twitter?: string;
-  Pic?: string;
+  Pic?: Pic | string;
 }
 
 interface ContactCardProps {
@@ -45,7 +45,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ member }) => {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-8 h-8 flex justify-center items-center rounded bg-[#d4a437]/20 text-[#5a3a14]/70 hover:text-[#5a3a14] hover:bg-[#d4a437]/40 transition"
+          className="w-8 h-8 flex justify-center items-center rounded bg-[#d4a437]/20 text-white hover:text-[#5a3a14] hover:bg-[#d4a437]/40 transition"
         >
           {icon}
         </a>
@@ -72,14 +72,23 @@ const ContactCard: React.FC<ContactCardProps> = ({ member }) => {
 
       {/* profile image or placeholder */}
       {member.Pic ? (
-        <img
-          src={member.Pic}
-          alt={member.Name}
-          loading="lazy"
-          className={`absolute left-[6px] top-[6px] z-20 w-[calc(100%-12px)] h-[calc(100%-12px)] object-cover rounded transition-all duration-500 ${
-            showInfo ? "scale-95 brightness-90" : "group-hover:scale-95 group-hover:brightness-90"
-          }`}
-        />
+        (() => {
+          const src = typeof member.Pic === 'string' ? member.Pic : member.Pic?.url;
+          return src ? (
+            <img
+              src={src}
+              alt={member.Name}
+              loading="lazy"
+              className={`absolute left-[6px] top-[6px] z-20 w-[calc(100%-12px)] h-[calc(100%-12px)] object-cover rounded transition-all duration-500 ${
+                showInfo ? "scale-95 brightness-90" : "group-hover:scale-95 group-hover:brightness-90"
+              }`}
+            />
+          ) : (
+            <div className="absolute left-[6px] top-[6px] z-20 w-[calc(100%-12px)] h-[calc(100%-12px)] bg-gray-200 rounded flex items-center justify-center text-[#5a3a14] font-semibold">
+              <span>{member.Name.split(" ")[0]}</span>
+            </div>
+          );
+        })()
       ) : (
         <div className="absolute left-[6px] top-[6px] z-20 w-[calc(100%-12px)] h-[calc(100%-12px)] bg-gray-200 rounded flex items-center justify-center text-[#5a3a14] font-semibold">
           <span>{member.Name.split(" ")[0]}</span>
@@ -98,7 +107,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ member }) => {
               : "opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100"
           }`}
       >
-        <p className="text-[#3a2a1a] font-semibold text-sm tracking-wide uppercase text-center drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]">
+        <p className="text-white font-semibold text-sm tracking-wide uppercase text-center drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]">
           {member.Name}
           <br />
           <span className="font-light text-xs opacity-80">
