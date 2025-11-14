@@ -1,5 +1,4 @@
 import firebaseApp from "./firebaseConfig";
-import db from "./firestore";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -10,7 +9,6 @@ import {
   signOut,
 } from "firebase/auth";
 import { getSingleDoc } from "./firestore";
-import { json } from "react-router-dom";
 
 const auth = getAuth(firebaseApp);
 
@@ -78,7 +76,7 @@ const firebaseDeleteUser = async (user) => {
 
 const updateUser = async () => {
   try {
-    let user = await updateProfile(auth.currentUser, {
+    await updateProfile(auth.currentUser, {
       displayName: "Yash",
     });
   } catch (error) {

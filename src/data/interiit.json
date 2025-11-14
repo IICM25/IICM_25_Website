@@ -1,0 +1,91 @@
+
+{
+  "seo": {
+    "title": "Inter IIT Cultural Meet",
+    "description": "Inter IIT Cultural Meet – About, Events, Gallery, and Contacts"
+  },
+  "assetsBase": "/assets/interiit", 
+  "sections": [
+    {
+      "id": "hero",
+      "type": "hero",
+      "bg": "${assetsBase}/bg-hero.jpg",
+      "logo": "${assetsBase}/logo.png",
+      "heading": "INTER IIT",
+      "subheading": "CULTURAL MEET",
+      "decor": [
+        { "src": "${assetsBase}/tower-left.png", "alt": "left tower", "className": "absolute left-0 bottom-0 w-[26%] max-w-[340px]" },
+        { "src": "${assetsBase}/tower-right.png", "alt": "right tower", "className": "absolute right-0 bottom-0 w-[26%] max-w-[340px]" },
+        { "src": "${assetsBase}/film-strip.png", "alt": "film strip", "className": "absolute -bottom-6 left-0 w-full" }
+      ]
+    },
+    {
+      "id": "about",
+      "type": "copy",
+      "bg": "${assetsBase}/bg-about.jpg",
+      "title": "About",
+      "html": "Ekta is the annual cultural festival of Indian Institutes of Technology, celebrating music, dance, drama, literature, and design. The meet brings together the brightest talents to showcase creativity, build friendships, and push the boundaries of artistic expression.",
+      "decor": [
+        { "src": "${assetsBase}/guitar.png", "alt": "guitar", "className": "absolute right-6 md:right-16 bottom-6 md:bottom-10 w-28 md:w-36 rotate-12" },
+        { "src": "${assetsBase}/film-strip.png", "alt": "film strip", "className": "absolute -bottom-6 left-0 w-full" }
+      ]
+    },
+    {
+      "id": "events",
+      "type": "list",
+      "bg": "${assetsBase}/bg-events.jpg",
+      "title": "Events",
+      "items": [
+        "Stage Play, Street Play, Mono-Act",
+        "Western & Indian Music – Solo and Group",
+        "Classical & Western Dance – Solo, Duet, Crew",
+        "Fine Arts Marathon – live sketching, clay, murals",
+        "Photography & Short Films",
+        "Literary Arts – Slam, Debates, JAM"
+      ],
+      "decor": [
+        { "src": "${assetsBase}/masks.png", "alt": "masks", "className": "absolute right-8 -top-8 w-20 md:w-24" },
+        { "src": "${assetsBase}/paint-brush.png", "alt": "brush", "className": "absolute left-4 bottom-6 w-24" },
+        { "src": "${assetsBase}/film-strip.png", "alt": "film strip", "className": "absolute -bottom-6 left-0 w-full" }
+      ]
+    },
+    {
+      "id": "gallery",
+      "type": "gallery",
+      "bg": "${assetsBase}/bg-gallery.jpg",
+      "title": "Gallery",
+      "polaroid": "${assetsBase}/polaroid.png",
+      "items": [
+        { "src": "${assetsBase}/photos/p1.jpg", "alt": "" },
+        { "src": "${assetsBase}/photos/p2.jpg", "alt": "" },
+        { "src": "${assetsBase}/photos/p3.jpg", "alt": "" },
+        { "src": "${assetsBase}/photos/p4.jpg", "alt": "" },
+        { "src": "${assetsBase}/photos/p5.jpg", "alt": "" },
+        { "src": "${assetsBase}/photos/p6.jpg", "alt": "" },
+        { "src": "${assetsBase}/photos/p7.jpg", "alt": "" },
+        { "src": "${assetsBase}/photos/p8.jpg", "alt": "" },
+        { "src": "${assetsBase}/photos/p9.jpg", "alt": "" }
+      ],
+      "decor": [
+        { "src": "${assetsBase}/camera.png", "alt": "camera", "className": "absolute left-2 -top-8 w-24" },
+        { "src": "${assetsBase}/piano-keys.png", "alt": "piano", "className": "absolute right-0 bottom-3 w-56 md:w-72" },
+        { "src": "${assetsBase}/film-strip.png", "alt": "film strip", "className": "absolute -bottom-6 left-0 w-full" }
+      ]
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "bg": "${assetsBase}/bg-footer.jpg",
+      "links": [
+        { "label": "Home", "href": "/" },
+        { "label": "Events", "href": "#events" },
+        { "label": "Gallery", "href": "#gallery" },
+        { "label": "Contact", "href": "#contact" }
+      ],
+      "contacts": {
+        "email": "gendercell@iitk.ac.in",
+        "address": "Office: New Student’s Building, IIT Kanpur"
+      }
+    }
+  ]
+}
