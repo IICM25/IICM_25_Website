@@ -16,7 +16,7 @@ export default function Footer() {
   const iitLinks = [
     { label: "IITK Homepage", href: "https://iitk.ac.in" },
     { label: "Students Gymkhana", href: "#" },
-    { label: "ICC Website", href: "#" },
+    { label: "ICC Website", href: "##" },
   ];
 
   // documents list removed because it's currently unused
