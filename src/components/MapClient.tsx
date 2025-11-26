@@ -227,9 +227,13 @@
 //     </div>
 //   );
 // }
+// src/components/MapClient.tsx
 "use client";
+
 import React, { useEffect, useMemo, useState } from "react";
 import { MapContainer, TileLayer, Marker, useMap, Popup } from "react-leaflet";
+import type { Icon as LeafletIcon, IconOptions } from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 type Category = "eatery" | "venue";
 
@@ -271,8 +275,8 @@ interface MapComponentProps {
   locations: Location[];
   selectedId: number | undefined;
   onMarkerClick: (location: Location) => void;
-  defaultIcon: any;
-  selectedIcon: any;
+  defaultIcon: LeafletIcon;
+  selectedIcon: LeafletIcon;
 }
 
 const MapComponent: React.FC<MapComponentProps> = ({
@@ -302,7 +306,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
         return (
           <Marker
             key={loc.id}
-            position={[loc.lat, loc.lng]}
+            position={[loc.lat, loc.lng] as [number, number]}
             icon={iconToUse}
             title={loc.name}
             eventHandlers={{
@@ -359,51 +363,56 @@ export default function MapClient() {
   };
 
   // icons (created on client only)
-  const [defaultIcon, setDefaultIcon] = useState<any | null>(null);
-  const [selectedIcon, setSelectedIcon] = useState<any | null>(null);
+  const [defaultIcon, setDefaultIcon] = useState<LeafletIcon | null>(null);
+  const [selectedIcon, setSelectedIcon] = useState<LeafletIcon | null>(null);
 
   useEffect(() => {
-    // only run on client
     if (typeof window === "undefined") return;
 
-    // require leaflet lazily
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const L = require("leaflet");
+    // dynamic import of leaflet so module evaluation happens only in browser
+    import("leaflet")
+      .then((L) => {
+        // remove prototype _getIconUrl if present (prevents broken default icon lookups)
+        const proto = (L.Icon.Default.prototype as unknown) as Record<string, unknown>;
+        if (proto && proto._getIconUrl) {
+          // delete runtime-only property
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          delete proto._getIconUrl;
+        }
 
-    // remove prototype _getIconUrl if present (same as before)
-    const proto = (L.Icon.Default.prototype as unknown) as Record<string, unknown>;
-    if (proto && proto._getIconUrl) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      delete proto._getIconUrl;
-    }
+        const iconOpts = (opts: IconOptions) => L.icon(opts);
 
-    const dIcon = L.icon({
-      iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-      shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41],
-    });
+        const dIcon = iconOpts({
+          iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+          shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+          shadowSize: [41, 41],
+        });
 
-    const sIcon = L.icon({
-      iconUrl:
-        "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
-      shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-      iconSize: [32, 50],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41],
-    });
+        const sIcon = iconOpts({
+          iconUrl:
+            "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+          shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+          iconSize: [32, 50],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+          shadowSize: [41, 41],
+        });
 
-    setDefaultIcon(dIcon);
-    setSelectedIcon(sIcon);
-
-    // optional: fix leaflet's CSS not being loaded automatically in some setups
-    // you can import 'leaflet/dist/leaflet.css' in a client-entrypoint or global css
+        setDefaultIcon(dIcon);
+        setSelectedIcon(sIcon);
+      })
+      .catch((err) => {
+        // handle failure to load leaflet in very constrained environments
+        // keep icons null so we render the loading fallback below
+        // eslint-disable-next-line no-console
+        console.error("Failed to load leaflet:", err);
+      });
   }, []);
 
-  // don't render the map until icons are ready (to avoid server/browser mismatch and leaflet errors)
+  // don't render the map until icons are ready (prevents SSR/CSR mismatch & leaflet runtime errors)
   if (!defaultIcon || !selectedIcon) {
     return (
       <div className="flex items-center justify-center h-screen">
