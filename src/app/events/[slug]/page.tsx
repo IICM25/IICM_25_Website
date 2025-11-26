@@ -4,7 +4,8 @@ import { useParams } from "next/navigation";
 import { EventDetails } from "./eventDetails";
 import eventsData from "./events.json" assert { type: "json" };
 
-const data = eventsData as Record<string, any>;
+// keep JSON typing strict: treat entries as unknown and narrow later
+const data = eventsData as Record<string, unknown>;
 
 const IndividualEventPage = () => {
   const params = useParams<{ slug: string }>();
@@ -22,9 +23,7 @@ const IndividualEventPage = () => {
     );
   }
 
-  const category =
-    slug === "MnM" ? "Management & Marketing" : "Technology Event";
-  const title = slug.charAt(0).toUpperCase() + slug.slice(1);
+  // don't create unused variables; pages can derive and render these later if needed
 
   return (
     <section

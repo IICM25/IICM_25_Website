@@ -26,7 +26,7 @@ export const Guidelines = () => {
           <span>Scoresheet of each judge will be provided to the participating teams.</span>
         </li>
         <li className="flex items-start pl-8 relative before:content-[''] before:absolute before:left-0 before:top-1.5 before:w-2 before:h-2 before:bg-secondary before:rounded-full">
-          <span>"Decision of the judges will be final and binding".</span>
+          <span>Decision of the judges will be final and binding.</span>
         </li>
         <li className="flex items-start pl-8 relative before:content-[''] before:absolute before:left-0 before:top-1.5 before:w-2 before:h-2 before:bg-secondary before:rounded-full">
           <span>The organizing team reserves the right to change or modify the rules.</span>

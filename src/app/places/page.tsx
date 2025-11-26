@@ -28,8 +28,13 @@ const allLocations: Location[] = [
   { id: 106, name: "Main Stadium", lat: 26.506725, lng: 80.240766, category: 'venue' },
 ];
 
-const IITK_CENTER: LatLngTuple = [26.512, 80.232]; 
-delete (L.Icon.Default.prototype as any)._getIconUrl;
+const IITK_CENTER: LatLngTuple = [26.512, 80.232];
+// avoid `any` cast: treat prototype as an indexable record to safely delete the property
+const proto = L.Icon.Default.prototype as unknown as Record<string, unknown>;
+if (proto._getIconUrl) {
+   
+  delete proto._getIconUrl;
+}
 
 const defaultIcon = L.icon({
   iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
