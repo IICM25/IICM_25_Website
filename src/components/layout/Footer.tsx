@@ -5,18 +5,14 @@ import Link from "next/link";
 export default function Footer() {
   const quickLinks = [
     { label: "Home", href: "/" },
-    { label: "About us", href: "/about" },
-    { label: "Events", href: "/events" },
-    { label: "Resources", href: "/resources" },
-    { label: "Blogs", href: "/blogs" },
-    { label: "Support Services", href: "/support" },
-    { label: "Surveys", href: "/surveys" },
+    { label: "About IITK", href: "/iitk" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Core Team", href: "/contact" },
   ];
 
   const iitLinks = [
     { label: "IITK Homepage", href: "https://iitk.ac.in" },
-    { label: "Students Gymkhana", href: "#" },
-    { label: "ICC Website", href: "#" },
+    { label: "Students Gymkhana", href: "https://itsgyanendra.github.io/website/cells/" },
   ];
 
   // documents list removed because it's currently unused

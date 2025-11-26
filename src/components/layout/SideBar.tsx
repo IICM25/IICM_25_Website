@@ -4,16 +4,17 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const sections = [
-  { id: "t1", label: "Festival Coordinators" },
-  { id: "t2", label: "Events & Competitions" },
-  { id: "t3", label: "Marketing" },
-  { id: "t4", label: "Media & Publicity" },
+  { id: "t1", label: "Overall Coordinators" },
+  { id: "t2", label: "Hospitality" },
+  { id: "t3", label: "Events" },
+  { id: "t4", label: "Finance" },
   { id: "t5", label: "Show Management" },
-  { id: "t6", label: "Finance" },
+  { id: "t6", label: "Marketing" },
   { id: "t7", label: "Public Relations" },
-  { id: "t8", label: "Security" },
-  { id: "t10", label: "Web & App" },
-  { id: "t9", label: "Design" },
+  { id: "t8", label: "Media and Publicity" },
+  { id: "t9", label: "Security" },
+  { id: "t10", label: "Design" },
+  { id: "t11", label: "Web and App" },
 ];
 
 const SideBar: React.FC = () => {
@@ -74,7 +75,7 @@ const SideBar: React.FC = () => {
           </button>
         </div>
 
-        <ul className="flex flex-col justify-center h-full space-y-6 px-10">
+        <ul className="flex flex-col vintage-title justify-center h-full space-y-6 px-10">
           {sections.map((section) => (
             <li key={section.id}>
               <Link
@@ -82,8 +83,8 @@ const SideBar: React.FC = () => {
   className={`block transition-all duration-300 font-bold text-lg
     ${
       activeSection === section.id
-        ? "text-white scale-105"
-        : "text-gray-400 hover:text-white hover:scale-105"
+        ? "text-black scale-105"
+        : "text-7a1b04 hover:text-black hover:scale-105"
     }`}
   onClick={() => setIsOpen(false)} // close sidebar on link click (mobile)
 >

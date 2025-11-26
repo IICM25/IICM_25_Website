@@ -48,7 +48,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
 
           <li className="my-2">
             <Link href="/contact" onClick={onClose} className="text-white text-[22px] hover:text-white">
-              Contact
+              Core Team
             </Link>
           </li>
 

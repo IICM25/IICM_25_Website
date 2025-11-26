@@ -82,7 +82,7 @@ const Header = () => {
             className={`hover:text-[var(--secondary-color)] ${pathname === "/contact" ? "text-[var(--secondary-color)]" : ""
               }`}
           >
-            Contact
+            Core Team
           </Link>
         </li>
         {/* <li>
@@ -109,24 +109,24 @@ const Header = () => {
 
       {/* Social Icons */}
       <div className="hidden lg:flex space-x-3 text-white">
-        <a href="https://whatsapp.com/channel/0029Vak8LmD9mrGWHTsPIR3r">
+        {/* <a href="https://whatsapp.com/channel/0029Vak8LmD9mrGWHTsPIR3r">
           <FontAwesomeIcon icon={faWhatsapp} className="hover:text-[var(--secondary-color)]" />
-        </a>
-        <a href="https://www.instagram.com/antaragni.iitkanpur/">
+        </a> */}
+        <a href="https://www.instagram.com/interiit_culturals/">
           <FontAwesomeIcon icon={faInstagram} className="hover:text-[var(--secondary-color)]" />
         </a>
-        <a href="https://twitter.com/antaragni">
+        {/* <a href="https://twitter.com/antaragni">
           <FontAwesomeIcon icon={faXTwitter} className="hover:text-[var(--secondary-color)]" />
         </a>
         <a href="https://www.youtube.com/user/antaragniiitkanpur">
           <FontAwesomeIcon icon={faYoutube} className="hover:text-[var(--secondary-color)]" />
-        </a>
-        <a href="https://www.linkedin.com/company/antaragni-iit-kanpur/mycompany/">
+        </a> */}
+        <a href="https://www.linkedin.com/company/inter-iit-cultural-meet1/posts/?feedView=all">
           <FontAwesomeIcon icon={faLinkedin} className="hover:text-[var(--secondary-color)]" />
         </a>
-        <a href="https://www.facebook.com/antaragni.iitk/">
+        {/* <a href="https://www.facebook.com/antaragni.iitk/">
           <FontAwesomeIcon icon={faFacebook} className="hover:text-[var(--secondary-color)]" />
-        </a>
+        </a> */}
       </div>
 
       {/* Mobile Drawer */}
