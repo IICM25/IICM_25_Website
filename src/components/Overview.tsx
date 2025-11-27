@@ -27,7 +27,7 @@ export const Overview = ({
 			<div className="prose prose-invert prose-lg vintage-body max-w-none text-foreground/80 prose-headings:text-secondary prose-strong:text-foreground prose-a:text-primary hover:prose-a:text-secondary prose-p:leading-relaxed">
 				<ReactMarkdown>{content}</ReactMarkdown>
 			</div>
-			{slug !== "MnM" && (
+			{/* {slug !== "MnM" && (
 				<div className="mt-8">
 					<h2 className="font-title vintage-title text-3xl text-secondary mb-4">
 						Competitions
@@ -45,7 +45,7 @@ export const Overview = ({
 						))}
 					</ul>
 				</div>
-			)}
+			)} */}
 		</div>
 	);
 };

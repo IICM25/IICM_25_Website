@@ -424,7 +424,7 @@ export default function MapClient() {
   return (
     <div
       className="flex flex-col md:flex-row h-screen p-4 md:p-8 
-                 bg-[url('/images/mid.png')] bg-cover bg-center bg-fixed 
+                 bg-[url('/images/top.png')] bg-cover bg-center bg-fixed 
                  backdrop-blur-sm overflow-hidden "
     >
       <div className="w-full md:w-1/2 md:pr-4 mb-4 mt-16 md:mb-0 overflow-hidden">
