@@ -14,79 +14,86 @@ export interface EventsDetails {
 }
 
 export const eventsData: EventData[] = [
-	{
-		slug: "mnm",
-		title: "Anime Convention",
-		category: "Special Event",
-		imageUrl: "/events/anime.jpg",
-	},
-	{
-		slug: "dance",
-		title: "Dance",
-		category: "Performing Arts",
-		imageUrl: "/events/dance.jpeg",
-	},
-	{
-		slug: "debate",
-		title: "Debate",
-		category: "Literary Arts",
-		imageUrl: "/events/debate.png",
-	},
-	{
-		slug: "dramatics",
-		title: "Dramatics",
-		category: "Performing Arts",
-		imageUrl: "/events/dramatics.jpg",
-	},
-	{
-		slug: "ele",
-		title: "English Literary",
-		category: "Literary Arts",
-		imageUrl: "/events/ELS.png",
-	},
-	{
-		slug: "fnp",
-		title: "Films & Photography",
-		category: "Media Arts",
-		imageUrl: "/events/Photography.png",
-	},
-	{
-		slug: "finearts",
-		title: "Fine Arts",
-		category: "Visual Arts",
-		imageUrl: "/events/fineArts.jpg",
-	},
-	{
-		slug: "hle",
-		title: "Hindi Literary",
-		category: "Literary Arts",
-		imageUrl: "/events/HLE.png",
-	},
-	{
-		slug: "MnM",
-		title: "Mr & Ms Antaragni",
-		category: "Personality",
-		imageUrl: "/events/mnm.jpg",
-	},
-	{
-		slug: "musicals",
-		title: "Music",
-		category: "Performing Arts",
-		imageUrl: "/events/musical.jpg",
-	},
-	{
-		slug: "quiz",
-		title: "Quiz",
-		category: "Literary Arts",
-		imageUrl: "/events/quiz1.png",
-	},
-	{
-		slug: "ritambhara",
-		title: "Ritambhara",
-		category: "Fashion",
-		imageUrl: "/events/ritambhara1.JPG",
-	},
-];
+  {
+    slug: "literaryartscup",
+    title: "Literary Arts Cup",
+    category: "Cup Event",
+    imageUrl: "/events/ELS.png"
+  },
+  {
+    slug: "quizcup",
+    title: "Quiz Cup",
+    category: "Cup Event",
+    imageUrl: "/events/quiz1.png"
+  },
+  {
+    slug: "speakingarts",
+    title: "Speaking Arts Cup",
+    category: "Cup Event",
+    imageUrl: "/events/speaking.png"
+  },
+  {
+    slug: "comedic",
+    title: "Comedic Arts Cup",
+    category: "Cup Event",
+    imageUrl: "/events/comedy.jpg"
+  },
+  {
+    slug: "dance",
+    title: "Dance Arts Cup",
+    category: "Cup Event",
+    imageUrl: "/events/dance.jpeg"
+  },
+  {
+    slug: "theatre",
+    title: "Theatre Arts Cup",
+    category: "Cup Event",
+    imageUrl: "/events/dramatics.jpg"
+  },
+  {
+    slug: "musicalarts",
+    title: "Musical Arts Cup",
+    category: "Cup Event",
+    imageUrl: "/events/music.jpeg"
+  },
+  {
+    slug: "finearts",
+    title: "Fine Arts Cup",
+    category: "Cup Event",
+    imageUrl: "/events/fineArts.jpg"
+  },
+  {
+    slug: "filmmaking",
+    title: "Film Making Cup",
+    category: "Cup Event",
+    imageUrl: "/events/Photography.png"
+  },
+  {
+    slug: "digitalarts",
+    title: "Digital Arts Cup",
+    category: "Cup Event",
+    imageUrl: "/events/digital.png"
+  },
+  {
+    slug: "photography",
+    title: "Photography Arts Cup",
+    category: "Cup Event",
+    imageUrl: "/events/photo.png"
+  },
+  {
+    slug: "fashion",
+    title: "Fashion Arts Cup",
+    category: "Cup Event",
+    imageUrl: "/events/mnm.jpg"
+  },
+  {
+    slug: "culinary",
+    title: "Culinary Arts Cup",
+    category: "Cup Event",
+    imageUrl: "/events/culinary.png"
+  }
+]
+
 
 export const competitions = [
 	{

@@ -81,7 +81,7 @@ export const Competitions = ({ competitions, openCompetition, setOpenCompetition
 
   return (
     <div className="bg-foreground/5 p-6 sm:p-8 rounded-lg border border-primary/10">
-      <div className="flex flex-col">
+      <div className="flex flex-col vintage-body">
         {competitions.map((comp) => (
           <AccordionItem
             key={comp.name}

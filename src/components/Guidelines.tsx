@@ -1,8 +1,8 @@
 export const Guidelines = () => {
   return (
     // A container with a subtle background and border to make the section distinct
-    <div className="bg-foreground/5 p-8 rounded-lg border border-primary/10">
-      <ul className="list-none space-y-4">
+    <div className="bg-foreground/5 p-8  rounded-lg border border-primary/10">
+      <ul className="list-none space-y-4 vintage-body">
         {/* Each list item now has a custom, theme-aligned bullet point */}
         <li className="flex items-start pl-8 relative before:content-[''] before:absolute before:left-0 before:top-1.5 before:w-2 before:h-2 before:bg-secondary before:rounded-full">
           <span>Teams must follow the Time Limits and strictly stick to the allowed styles. Teams shall be penalized for not doing so.</span>

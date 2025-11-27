@@ -80,10 +80,10 @@ export function EventDetails({ slug }: { slug: string }) {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`font-title text-md sm:!text-lg md:!text-3xl pb-3 transition-colors duration-300 ${poppins.className} ${
+            className={`font-title text-md sm:!text-lg md:!text-3xl  pb-3 transition-colors duration-300 ${poppins.className} ${
               activeTab === tab
-                ? "text-white/60 border-b-2 border-yellow-500 "
-                : "text-black hover:text-red"
+                ? "text-white border-b-2 border-yellow-500 "
+                : "vintage-body hover:text-red"
             }`}
           >
             {tab}
