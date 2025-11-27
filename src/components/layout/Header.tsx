@@ -74,7 +74,16 @@ const Header = () => {
             Gallery
           </Link>
         </li>
-
+        <li>
+          <Link
+            href="/events"
+            className={`hover:text-[var(--secondary-color)] ${
+              pathname === "/events" ? "text-[var(--secondary-color)]" : ""
+            }`}
+          >
+            Events and Competetions
+          </Link>
+        </li>
         {/* Other Links */}
         <li>
           <Link
@@ -85,16 +94,16 @@ const Header = () => {
             Core Team
           </Link>
         </li>
-        {/* <li>
+        <li>
           <Link
-            href="/hof"
+            href="/places"
             className={`hover:text-[var(--secondary-color)] ${
-              pathname === "/hof" ? "text-[var(--secondary-color)]" : ""
+              pathname === "/places" ? "text-[var(--secondary-color)]" : ""
             }`}
           >
-            Hall Of Fame
+            Venues and Places
           </Link>
-        </li> */}
+        </li>
 
         <li>
           <Link

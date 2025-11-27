@@ -1,0 +1,933 @@
+{
+  "quizcup": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Quiz Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "Descriptions & General Rules" },
+        "desc": {
+          "type": "string",
+          "content": "Each Event is a typical quiz event, consisting of prelims and finals, set by reputed QMs from across the country. Each Quiz Cup Event is a Group Event.\n\nGeneral Rules:\n- Number of teams per IIT: maximum 6 teams in prelims, out of which maximum 2 teams may qualify for the finals.\n- Number of Participants in a team: maximum 3 (Group Event).\n1. Each quiz consists of a written prelims round followed by finals for the 10 qualifying teams.\n2. The quiz will start on the arrival of the quiz master. No request for delaying the quiz will be entertained.\n3. In case of any discrepancy, the word of the quiz master shall be final and binding.\n4. Use of unfair means will lead to immediate disqualification of the IIT from the Quiz Cup.\n5. The Event Points would be given only to the top 8 finalist teams at the end of the Quiz. Prelims participation (at least one team in the prelims) would fetch 3 Event Points to IIT, irrespective of the number of teams.\n6. A participant can only be a part of one team per quiz.\n7. Tiebreakers and other rules will be announced by the quizmaster.\n8. In case of multiple qualifications in the prelims, from the same IIT, only the best 2 teams from an IIT will proceed to the finals, and the points received by the highest placed team will be considered, and the rest positions obtained by the respective IITs will be blocked."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "General Quiz [30]" },
+        "desc": {
+          "type": "string",
+          "content": "A Quiz that spans a vast spectrum of knowledge, encompassing anything and everything under the sun. With questions that traverse diverse topics, this quiz promises to challenge your wits and test both the depth and breadth of your understanding."
+        }
+      },
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Sports Quiz [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Spanning the entire sporting universe, from legendary athletes like Ashe to iconic events like the Ashes, this challenge covers all things sports-related."
+        }
+      },
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Sci-Biz-Tech Quiz [30]" },
+        "desc": {
+          "type": "string",
+          "content": "From groundbreaking innovations and scientific breakthroughs to the latest trends in business and tech, this quiz challenges your knowledge across all aspects of the ever-evolving Sci-Biz-Tech world."
+        }
+      },
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "HELM Quiz [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Delve deep into the realms of History, Etymology, Language, and Mythology. From tracing the origins of words to unearthing forgotten tales of the past, this quiz tests both depth and breadth of knowledge in the humanities."
+        }
+      },
+      {
+        "Id": "7",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "TLC Quiz [30]" },
+        "desc": {
+          "type": "string",
+          "content": "From exploring global destinations to discovering unique lifestyles and rich cultural traditions, this quiz offers a comprehensive dive into Travelling, Living, and Culture."
+        }
+      },
+      {
+        "Id": "8",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "MELA Quiz [30]" },
+        "desc": {
+          "type": "string",
+          "content": "The MELA Quiz encompasses Music, Entertainment, Literature, and Art — a broad quiz covering the creative and entertainment domains."
+        }
+      },
+      {
+        "Id": "9",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "India Quiz [30]" },
+        "desc": {
+          "type": "string",
+          "content": "An immersive quiz on India's culture, art, history, sports, and beyond — exploring the richness of the nation."
+        }
+      },
+      {
+        "Id": "10",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For queries regarding the Quiz Cup, contact the Inter IIT Cultural Meet Organising Committee (refer to official rulebook contact section)."
+        }
+      }
+    ]
+  },
+  "literaryartscup": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Literary Arts Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "Descriptions & General Rules" },
+        "desc": {
+          "type": "string",
+          "content": "Literary Arts Cup comprises multiple prose, poetry and word/speaking events: Hindi Story Writing, English Story Writing, Hindi Poetry Writing, English Poetry Writing, Cryptic Crossword and Scrabble. Events include both individual and group formats with specified durations and word/participant limits as listed in the official rulebook. Standard rules apply regarding originality, script requirements (Devanagari / Roman as specified per event), penalties for exceeding word limits, prohibition of electronic devices, and judge/setter decisions being final."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Hindi Story Writing [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Description:\nA prompt-based Individual Event where participants will write a short story of 1000-2000 words in Hindi on the spot, where the prompt will be provided.\n\nNumber of teams per IIT: maximum 2\nNumber of Participants in a team: 1\nDuration: 4 hours.\n\nRules and Penalties:\n1. Entries shall have a title. Entries without a title will lead to a penalty of 5 Score Points.\n2. At least 2 prompts will be provided by the judge on the spot. The participants must choose one of the prompts and come up with the story in the given time.\n3. The word limit (including the title) for each entry is 2000 words. Complex words separated by hyphen or space such as ‘शाम-ओ-सहर’, ‘जान-ए-जहाँ’ will be counted as 3 words, ‘सखु -दःखु ’ as 2 words, and so on. For exceeding the limit, the participant will be penalised as follows: -1 Score Point for 2001-2050 words, -2 Score Points for 2051-2100 words, and so on.\n4. The short story shall be an original work of the participant. Plagiarism of any kind is not allowed. The story can be inspired, but it must be mentioned on top before the title. Any charges of plagiarism will be dealt with by the judges.\n5. Entries must be written in Devanagari Script. The use of words not in this script will be penalized as follows: -1 Score Point for 1-5 words, -2 Score Points for 6-10 words, and so on. Further ambiguities will be left to the judge’s discretion.\n6. No participant will be allowed to enter the hall after 1 hour from the start of the Event. Participants will be allowed to leave after submitting their entry.\n7. Communication between any team, irrespective of the IIT, during the Event is strictly prohibited and may lead to the disqualification of the participant(s).\n8. The use of electronic gadgets, including smartwatches, mobile phones, and similar devices, is strictly prohibited."
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "English Story Writing [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Description:\nA prompt-based Individual Event where participants will write a short story of 1000-2000 words in English on the spot, where the prompt will be provided.\n\nNumber of teams per IIT: maximum 2\nNumber of Participants in a team: 1\nDuration: 4 hours.\n\nRules and Penalties:\n1. Entries shall have a title. Entries without a title will lead to a penalty of 5 Score Points.\n2. At least 2 prompts will be provided by the judge on the spot. The participants must choose one of the prompts and come up with the story in the given time.\n3. The word limit (including the title) for each entry is 2000 words. Complex words separated by hyphen or space will be counted as multiple words. For exceeding the limit, the participant will be penalised as follows: -1 Score Point for 2001-2050 words, -2 Score Points for 2051-2100 words, and so on.\n4. The short story shall be an original work of the participant. Plagiarism of any kind is not allowed. The story can be inspired, but it must be mentioned on top before the title. Any charges of plagiarism will be dealt with by the judges.\n5. Entries must be written in Roman/Latin Script. The use of words not in this script will be penalised as follows: -1 Score Point for 1-5 words, -2 Score Points for 6-10 words, and so on.\n6. No participant will be allowed to enter the hall after 1 hour from the start of the Event. Participants will be allowed to leave after submitting their entry.\n7. Communication between any team, irrespective of the IIT, during the Event is strictly prohibited and may lead to the disqualification of the participant(s).\n8. The use of electronic gadgets, including smartwatches, mobile phones, and similar devices, is strictly prohibited."
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Hindi Poetry Writing [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Description:\nA prompt-based Individual Event where participants will write a poetry piece of 100-250 words in Hindi on the spot, where the prompt will be provided.\n\nNumber of teams per IIT: maximum 2\nNumber of Participants in a team: 1\nDuration: 2 hours.\n\nRules and Penalties:\n1. Entries shall have a title. Entries without a title will lead to a penalty of 5 Score Points.\n2. At least 2 prompts will be provided by the judge on the spot. The participants must choose one of the prompts and come up with the poem in the given time.\n3. The word limit (including the title) for each entry is 250 words. Complex words separated by hyphen or space such as ‘शाम-ओ-सहर’, ‘जान-ए-जहाँ’ will be counted as 3 words, ‘सखु -दःखु ’ as 2 words, and so on. For exceeding the limit, the participant will be penalised as follows: -1 Score Points for 251-255 words, -2 Score Points for 256-260 words, and so on.\n4. The poem shall be an original work of the participant. Plagiarism of any kind is not allowed. In cases where plagiarism is found, the participant’s entry will be disqualified from the event.\n5. Entries must be written in Devanagari Script. The use of words not in this script will be penalised as follows: -1 Score Points for 1-5 words, -2 Score Points for 6-10 words, and so on. The poem can be in either Mukt Chhand (मुक्त छंद) or Chhand-based (छंद) form.\n6. No participant will be allowed to enter the hall after 15 minutes from the start of the Event. Participants will be allowed to leave after submitting their entry.\n7. Communication between any team, irrespective of the IIT, during the Event is strictly prohibited and may lead to the disqualification of the participant(s).\n8. The use of electronic gadgets, including smartwatches, mobile phones, and similar devices, is strictly prohibited.\n9. Illustrations such as graphs and sketches are not allowed; otherwise, a penalty of 5 Score Points will be imposed.\n10. Any form of vulgarity/obscenity in the content will be dealt with very strictly; the participant’s entry may be disqualified at the judge’s discretion.\n\nJudging Criteria:\nPoetry Structure and Complexity 25%\nCreativity and Content 30%\nRelevance to theme 30%\nOverall Impact 15%."
+        }
+      },
+
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "English Poetry Writing [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Description:\nA prompt-based Individual Event where participants will write a poetry piece of 100-250 words in English on the spot, where the prompt will be provided.\n\nNumber of teams per IIT: maximum 2\nNumber of Participants in a team: 1\nDuration: 2 hours.\n\nRules and Penalties:\n1. Entries shall have a title. Entries without a title will lead to a penalty of 5 Score Points.\n2. At least 2 prompts will be provided by the judge on the spot. The participants must choose one of the prompts and come up with the poem in the given time.\n3. The word limit (including the title) for each entry is 250 words. Complex words separated by hyphen or space will be counted as multiple words. For exceeding the limit, the participant will be penalised as follows: -1 Score Points for 251-255 words, -2 Score Points for 256-260 words, and so on.\n4. The poem shall be an original work of the participant. Plagiarism of any kind is not allowed. In cases where plagiarism is found, the participant’s entry will be disqualified from the event.\n5. Entries must be written in Roman/Latin Script. The use of words not in this script will be penalised as follows: -1 Score Points for 1-5 words, -2 Score Points for 6-10 words, and so on.\n6. No participant will be allowed to enter the hall after 15 minutes from the start of the Event. Participants will be allowed to leave after submitting their entry.\n7. Communication between any team, irrespective of the IIT, during the Event is strictly prohibited and may lead to the disqualification of the participant(s).\n8. The use of electronic gadgets, including smartwatches, mobile phones, and similar devices, is strictly prohibited.\n9. Illustrations such as graphs and sketches are not allowed; otherwise, a penalty of 5 Score Points will be imposed.\n\nJudging Criteria:\nPoetry Structure and Complexity 25%\nCreativity and Content 30%\nRelevance to theme 30%\nOverall Impact 15%."
+        }
+      },
+
+      {
+        "Id": "7",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Cryptic Crossword [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Description:\nSharpen your linguistic skills and engage your intellect as you decipher clues that will lead you to the hidden answers. A standard cryptic crossword grid, set by an external setter for prelims, following which the top 8 teams proceed to the finals in a bounce/pounce + written format. This is a Group Event.\n\nNumber of teams per IIT: maximum 4\nNumber of Participants in a team: 1-2\nDuration: 1 hour in prelims, 2 hours in finals.\n\nRules and Penalties:\n1. Prelims will consist of a grid to solve in the stipulated time.\n2. The top 8 teams advance to the finals, which will have a format similar to quiz finals (bounce/pounce and written rounds). The exact format would be at the discretion of the judge.\n3. For prelims, there will be starred clues to break ties if multiple teams have the points. Bounce and Pounce rules will be announced by the Setter during the finals.\n4. More than two teams from the same IIT shall not advance to the finals.\n5. In case a dispute arises, the Setter’s word shall be final and binding.\n6. Communication between any team, irrespective of the IIT, during the Event is strictly prohibited and may lead to the disqualification of the participant(s).\n7. The use of electronic gadgets, including smartwatches, mobile phones, and similar devices, is strictly prohibited.\n8. No participant will be allowed to enter the hall after 15 minutes from the start of the Event.\n\nJudging Criteria: As per the scoring format of the set."
+        }
+      },
+
+      {
+        "Id": "8",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Scrabble [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Description:\nA Scrabble tournament where players battle it out over multiple rounds of games to crown the ultimate Scrabble Champions. Games will happen on physical Scrabble Boards. This is an Individual Event.\n\nNumber of Participants per IIT: 2\nDuration: 44 minutes per game.\n\nRules and Penalties:\n1. Format and rules of the tournament is detailed in the following document: https://drive.google.com/file/d/1zOI7ol0u5tIywPu5b8VrYmCwNf47VakR/view?usp=sharing\n2. WESPA 5.1 Ruleset is to be followed: https://wespa.org/wp-content/uploads/2024/09/Rules-V5.1.pdf\n3. For verification of challenges, Collins Dictionary (CSW24) is to be followed: https://scrabble.collinsdictionary.com/check/\n4. Official Scrabble rules as detailed here may also be followed: https://instructions.hasbro.com/en-us/instruction/Scrabble-Game\n5. All disputes shall be settled by the Tournament Director, whose decision is final."
+        }
+      },
+
+      {
+        "Id": "9",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For queries regarding Literary Arts Cup, contact the Inter IIT Cultural Meet Organising Committee (refer to the official rulebook contact section)."
+        }
+      }
+    ]
+  },
+  "speakingarts": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Speaking Arts Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "Overview" },
+        "desc": {
+          "type": "string",
+          "content": "The Speaking Arts Cup consists of multiple individual and group speaking events including Hindi Slam Poetry, English Slam Poetry, Mushaira, Just-A-Minute, and Asian Parliamentary Debate."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Hindi Slam Poetry [30]" },
+        "desc": {
+          "type": "string",
+          "content": "A non-theme-based Individual Event where participants perform their original works of poetry. Number of teams per IIT: maximum 2. Number of Participants: 1. Duration: 5 minutes.\nRules:\n1. All kinds of poem compositions are allowed. The poem should be in Hindi. Words of English/Urdu allowed occasionally, but not entire composition.\n2. Script must be in Devanagari; use of non-Hindi words may be penalised.\n3. Originality must be announced, or entry is cancelled.\n4. Incorrect originality claim disqualifies entry.\n5. Time limit: 5 minutes. >5 min = -10 points, >6 min = disqualification.\n6. Jazz/beat poetry gives no extra marks.\n7. Participants may refer to paper/phone.\n8. Vulgarity penalised strictly.\n9. Judge's decision final.\nJudging:\nVocabulary 25%, Creativity 20%, Style/Diction 20%, Originality 20%, Impact 15%."
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "English Slam Poetry [30]" },
+        "desc": {
+          "type": "string",
+          "content": "A non-theme-based Individual Event where participants perform original works of English poetry. Number of teams per IIT: 2. Participants: 1. Duration: 5 minutes.\nRules:\n1. Poem must be in English.\n2. Originality must be announced; otherwise Score Points for content/creativity/originality are zero.\n3. Incorrect originality claim invalidates entry.\n4. Time: 5 minutes max. >5 = -10 points, >6 = disqualification.\n5. Jazz/beat poetry no extra marking.\n6. Reading aids allowed.\n7. Vulgarity penalised.\n8. Judge's decision is final.\nJudging similar to Hindi Slam Poetry."
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Mushaira [30]" },
+        "desc": {
+          "type": "string",
+          "content": "A non-theme-based Individual Event featuring original Urdu poetry (Ghazal, Nazm, Qita, Rubai, etc.). Teams per IIT: 2. Participants: 1. Duration: 5 minutes.\nRules:\n1. Shayari/Ghazal compositions allowed; must use maximum Urdu/Persian/Arabic-origin words.\n2. English words strictly prohibited.\n3. Must follow metrical composition (beher/chand).\n4. Originality must be declared.\n5. Incorrect originality claim invalidates entry.\n6. Time: 5 minutes max. >5 = -10 points, >6 = disqualification.\n7. Reading aids allowed.\n8. Vulgarity penalised.\n9. Judge’s decision final.\nJudging criteria identical to Slam Poetry events."
+        }
+      },
+
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Just A Minute (JAM) [40]" },
+        "desc": {
+          "type": "string",
+          "content": "A fast-paced English speaking Individual Event. Number of teams per IIT: 5. Participants per team: 1.\nRules:\n1. Only Queen’s English allowed.\n2. Prelims panel max 6 participants.\n3. Judge finalizes standard rules.\n4. No gesticulation allowed.\n5. Topic repetition allowed only once.\n6. JAM objection rules apply.\n7. Judge’s decision final.\nLinks:\nJAM Rules: https://drive.google.com/file/d/1xkeTp6wbqqwxno5WOQ0krReQDyezyYgs/view"
+        }
+      },
+
+      {
+        "Id": "7",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Asian Parliamentary Debate [75 + 15]" },
+        "desc": {
+          "type": "string",
+          "content": "Group Event. Teams per IIT: 1. Participants: 3 speakers + 2 adjudicators. Duration: 2 days.\nStructure:\n– 4 prelim rounds (ranked by wins, speaker scores, margin).\n– Top 4 progress to semifinals → finals.\n– Motions set by core adjudicators.\n– Oral adjudication followed by secret ballots.\nRules:\n1. 25 min prep time.\n2. 7 min speeches (first/last minute protected).\n3. 4 min reply speech.\n4. Adjudicators judged and awarded points (max 15 added to IIT).\n5. UADC norms followed.\n6. Judge roles & methods per Asian Parliamentary rules.\n7. Debaters must score adjudicators.\n8. Adjudicator limit enforced.\nPenalties:\n– If adjudicators missing → -5 Event Points.\nJudging:\nManner, Matter, Method (Standard AP format)."
+        }
+      },
+
+      {
+        "Id": "8",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For any queries related to the Speaking Arts Cup, contact the Inter IIT Cultural Meet Organising Committee."
+        }
+      }
+    ]
+  },
+  "comedic": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Comedic Arts Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "General Rules" },
+        "desc": {
+          "type": "string",
+          "content": "1. Any plagiarism will lead to immediate disqualification.\n2. Obscenity and vulgarity are subject to the judges' discretion.\n3. The performance must be delivered only in English or Hindi. Vernacular words may be used but may or may not be graded at the judge’s discretion.\n4. No pre-recorded music is allowed.\n5. Props are allowed but carry no weightage.\n6. No visual aids (slides/videos/pictures) are allowed.\n7. Heckling penalties:\na. First offence: Warning.\nb. Second offence: 20% Event Points deducted.\nc. Third offence: 50% Event Points deducted.\nd. Fourth offence: Disqualification.\ne. Repeated offences → sent to Disciplinary Committee."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Stand Up Comedy [40]" },
+        "desc": {
+          "type": "string",
+          "content": "An Individual Event where participants perform a stand-up set before a live audience.\n• Teams per IIT: 3\n• Participants per team: 1\n• Duration: 8 minutes\nTime Penalties:\n> 8 to 9 min → -5 pts\n> 9 to 10 min → -10 pts\n> 10 min → performance stopped; -15 pts\nJudging Criteria:\nHumorous Content 30%\nDelivery 30%\nStage Presence + Engagement 20%\nOverall Impact 20%"
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Improv Battle [40]" },
+        "desc": {
+          "type": "string",
+          "content": "A spontaneous improvisational comedy event. Group Event.\n• Teams per IIT: 2\n• Participants: 3–4\n• Duration: ~8 minutes (judge decides)\nRules:\n1. Two rounds; 10 teams reach finals.\n2. Time Penalties:\n>0–1 min → -5 pts\n>1–2 min → -10 pts\n>2 min → performance stopped; -15 pts\nJudging Criteria:\nHumor 20%\nSpontaneity 20%\nAudience Appeal 10%\nConfidence 10%\nRelevance to Theme/Prompt 10%\nCast Chemistry 10%\nJudge-specific Metrics 20%"
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For queries, contact the Inter IIT Cultural Meet Organising Committee (refer to official rulebook contact section)."
+        }
+      }
+    ]
+  },
+  "dance": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Dance Arts Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "General Rules" },
+        "desc": {
+          "type": "string",
+          "content": "1. Stunts that pose any risk to life are not permitted.\n2. Spilling of powder, fluids, usage of fire, props or substances that may damage the stage or affect other teams is strictly not allowed. Violation results in a 30-point penalty. If a prop causes temporary changes, the team must restore the stage within the given time.\n3. Tracks for Group Dance and Just Duet must be submitted in MP3 format as per schedule.\n4. Vulgarity or obscenity is strictly prohibited and will be judged at the judges’ discretion. Their decision is final."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Group Dance [100]" },
+        "desc": {
+          "type": "string",
+          "content": "A Group Event where participants perform as a cohesive unit showcasing musicality, various styles and cultures.\n• Teams per IIT: 1\n• Team size: 10–20 dancers (including backstage crew & technical support)\n• Duration: 6–10 minutes (empty stage to empty stage)\nRules:\n1. All dance forms allowed (Classical, Hip-Hop, Contemporary, Folk, Fusion, etc.).\n2. Only MP3 tracks allowed; no live music.\n3. Overly hazardous stunts prohibited.\n4. Time penalties apply if performance exceeds limits.\nJudging Criteria:\nChoreography 30%\nCoordination & Synchronisation 30%\nExpression & Energy 20%\nCostume/Props/Theme 10%\nOverall Impact 10%"
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Just Duet [50]" },
+        "desc": {
+          "type": "string",
+          "content": "A duet dance performance involving two members.\n• Teams per IIT: 2\n• Participants: 2 per team\n• Duration: 2.5–4 minutes\nRules:\n1. Only two dancers allowed on stage.\n2. All styles permitted.\n3. Props allowed but carry no extra points.\n4. Tracks must be submitted in MP3.\nJudging Criteria:\nChoreography 30%\nCoordination 25%\nExpression & Musicality 25%\nCreativity 10%\nOverall Impact 10%"
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Street Battle [50]" },
+        "desc": {
+          "type": "string",
+          "content": "A freestyle/street-style battle event.\n• Teams per IIT: 1\n• Participants: 1–3 (battle qualifiers + finals)\nStructure:\n– Prelims: Cypher rounds\n– Finals: 1v1 battles\nRules:\n1. All street dance styles allowed (hip-hop, popping, locking, krump, house, waacking, etc.).\n2. Music chosen by judges.\n3. Time limits apply as announced.\nJudging Criteria:\nMusicality 30%\nTechnique 25%\nOriginality & Creativity 20%\nExecution 15%\nOverall Battle Presence 10%"
+        }
+      },
+
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For queries related to the Dance Arts Cup, contact the Inter IIT Cultural Meet Organising Committee."
+        }
+      }
+    ]
+  },
+  "theatre": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Theatre Arts Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "General Rules" },
+        "desc": {
+          "type": "string",
+          "content": "1. Any form of usage of fire and flammable substances is strictly prohibited. Violation leads to 30 Event Points penalty.\n2. Use of colours, gulal, liquids, food items, pyrotechnics, glitter, confetti or any substance that may damage the stage is not allowed.\n3. Props are allowed but cannot be thrown into the audience.\n4. Vulgarity or obscenity is strictly prohibited and judged at the discretion of judges.\n5. Pre-recorded dialogues are not allowed.\n6. Teams must reset the stage within the given time window."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Stage Play [100]" },
+        "desc": {
+          "type": "string",
+          "content": "A full-length theatrical performance.\n• Teams per IIT: 1\n• Participants: 10–25 (actors + backstage)\n• Duration: 25–40 minutes (empty stage to empty stage)\nRules:\n1. Language: English or Hindi; mixing allowed.\n2. Original scripts allowed; adaptations must credit sources.\n3. No pre-recorded dialogues or narration.\n4. Props allowed; must not cause stage damage.\n5. Fire, liquids, powder, glitter not allowed.\nJudging Criteria:\nActing 40%\nDirection 25%\nScript 20%\nProduction Value 10%\nOverall Impact 5%"
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Mono Act [40]" },
+        "desc": {
+          "type": "string",
+          "content": "A solo theatrical performance by a single actor.\n• Teams per IIT: 2\n• Participants per team: 1\n• Duration: 3–6 minutes\nRules:\n1. Single actor only.\n2. No lip-sync or pre-recorded dialogues.\n3. Props allowed.\n4. No fire, powder, liquids.\nJudging Criteria:\nActing 50%\nExpression & Diction 25%\nScript/Concept 15%\nOverall Impact 10%"
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Improv Theatre [40]" },
+        "desc": {
+          "type": "string",
+          "content": "A spontaneous theatre event based on on-spot prompts.\n• Teams per IIT: 1\n• Participants: 4–6\n• Duration: Judge-decided (usually 6–10 minutes)\nRules:\n1. Prompts/themes given on the spot.\n2. No pre-written scripts.\n3. Props allowed but must be safe.\n4. Vulgarity penalised.\nJudging Criteria:\nSpontaneity 30%\nActing 25%\nCreativity 20%\nTeam Coordination 15%\nAudience Engagement 10%"
+        }
+      },
+
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For queries related to the Theatre Arts Cup, contact the Inter IIT Cultural Meet Organising Committee."
+        }
+      }
+    ]
+  },
+  "musicalarts": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Musical Arts Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "Overview" },
+        "desc": {
+          "type": "string",
+          "content": "The Musical Arts Cup consists of multiple solo and group musical competitions such as Western Vocals Solo, Eastern Vocals Solo, Instrumentals Solo, Acapella, Battle of Bands and more. Rules regarding time limits, originality, plagiarism, and vulgarity apply strictly."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Western Vocals Solo [30]" },
+        "desc": {
+          "type": "string",
+          "content": "A solo Western singing competition.\n• Teams per IIT: 2\n• Participants per team: 1\n• Duration: 3–4 minutes\nRules:\n1. Only Western vocals allowed.\n2. Karaoke/backing tracks allowed (no backing vocals).\n3. Original songs allowed.\n4. Pitch correction or audio effects not permitted.\nJudging Criteria:\nVocal Quality 40%\nMusicality 30%\nSong Choice 15%\nOverall Impact 15%"
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Eastern Vocals Solo [30]" },
+        "desc": {
+          "type": "string",
+          "content": "A solo singing event for Indian classical/semi-classical/folk genres.\n• Teams per IIT: 2\n• Participants: 1\n• Duration: 3–4 minutes\nRules:\n1. Only Indian genres permitted.\n2. Shruti box/tanpura track allowed.\n3. No auto-tuning.\nJudging Criteria:\nSur/Taal 40%\nExpression 25%\nDifficulty Level 20%\nOverall Impact 15%"
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Instrumentals Solo [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Any instrument performance (Western or Indian).\n• Teams per IIT: 2\n• Participants: 1\n• Duration: 3–5 minutes\nRules:\n1. Backing tracks allowed only if they DO NOT contain the lead melody.\n2. No pre-recorded solos.\n3. Instruments must be brought by the participant.\nJudging Criteria:\nTechnique 40%\nMusical Interpretation 30%\nComplexity 15%\nOverall Impact 15%"
+        }
+      },
+
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Acapella Group [50]" },
+        "desc": {
+          "type": "string",
+          "content": "A vocal-only group performance with no instruments.\n• Teams per IIT: 1\n• Participants: 6–12\n• Duration: 4–6 minutes\nRules:\n1. No instruments allowed.\n2. Beatboxing allowed.\n3. Harmonies expected.\nJudging Criteria:\nHarmony 40%\nArrangement 25%\nSynchronization 20%\nOverall Impact 15%"
+        }
+      },
+
+      {
+        "Id": "7",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Battle of Bands [80]" },
+        "desc": {
+          "type": "string",
+          "content": "A full-band performance event.\n• Teams per IIT: 1\n• Participants: 4–10\n• Duration: 8–12 minutes\nRules:\n1. Only live instruments.\n2. No pre-recorded backing.\n3. Original songs allowed.\n4. Sound setup time will be provided.\nJudging Criteria:\nMusicianship 40%\nBand Coordination 25%\nStage Presence 20%\nOriginality 15%"
+        }
+      },
+
+      {
+        "Id": "8",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For queries regarding the Musical Arts Cup, contact the Inter IIT Cultural Meet Organising Committee."
+        }
+      }
+    ]
+  },
+  "finearts": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Fine Arts Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "Overview" },
+        "desc": {
+          "type": "string",
+          "content": "The Fine Arts Cup features events testing creativity, interpretation, craftsmanship, and artistic skill across multiple mediums including Sketching, Painting, Digital Illustration, Installation Art, and Doodling."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Sketching [30]" },
+        "desc": {
+          "type": "string",
+          "content": "A pencil/charcoal sketching event based on a theme.\n• Teams per IIT: 2\n• Participants per team: 1\n• Duration: 2 hours\nRules:\n1. Only dry mediums allowed (pencil, charcoal, graphite).\n2. No colors.\n3. Theme disclosed on the spot.\n4. Only A3 sheets allowed.\nJudging Criteria: Technique 40%, Creativity 30%, Relevance 20%, Overall Impact 10%"
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Painting [40]" },
+        "desc": {
+          "type": "string",
+          "content": "A themed painting competition.\n• Teams per IIT: 2\n• Participants: 1\n• Duration: 2.5 hours\nRules:\n1. Watercolors, acrylics, poster colors allowed.\n2. No digital tools.\n3. A3/A2 sheets permitted.\nJudging: Creativity 40%, Concept 30%, Technique 20%, Impact 10%"
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Digital Illustration [40]" },
+        "desc": {
+          "type": "string",
+          "content": "A digital art event using tablets/laptops.\n• Teams per IIT: 2\n• Participants: 1\n• Duration: 2 hours\nRules:\n1. Only drawing software allowed (Photoshop, Procreate, Krita).\n2. AI-generated assets prohibited.\n3. Theme disclosed on the spot.\nJudging Criteria: Technique 35%, Creativity 35%, Composition 20%, Impact 10%"
+        }
+      },
+
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Installation Art [50]" },
+        "desc": {
+          "type": "string",
+          "content": "A group event creating a physical installation.\n• Teams per IIT: 1\n• Participants: 3–6\n• Duration: 3 hours + setup time\nRules:\n1. Materials must be arranged by the team.\n2. No fire/liquids/chemical hazards.\n3. Must clean up post-event.\nJudging: Originality 40%, Execution 30%, Theme Relevance 20%, Impact 10%"
+        }
+      },
+
+      {
+        "Id": "7",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Doodling [20]" },
+        "desc": {
+          "type": "string",
+          "content": "Freestyle doodle artwork.\n• Teams per IIT: 2\n• Participants: 1\n• Duration: 1 hour\nRules:\n1. Black/colored pens allowed.\n2. Only A4/A3 sheets.\nJudging: Creativity 40%, Complexity 30%, Presentation 20%, Impact 10%"
+        }
+      },
+
+      {
+        "Id": "8",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For queries regarding the Fine Arts Cup, contact the Inter IIT Cultural Meet Organising Committee."
+        }
+      }
+    ]
+  },
+  "filmmaking": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Film Making Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "Overview" },
+        "desc": {
+          "type": "string",
+          "content": "The Film Making Cup focuses on video storytelling, cinematography, editing, and narrative craft through events like Short Film, Ad-Making, Documentary, and On-The-Spot Filmmaking."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Short Film [60]" },
+        "desc": {
+          "type": "string",
+          "content": "A narrative short film created and submitted prior to the meet.\n• Teams per IIT: 1\n• Participants: 5–15\n• Duration: 4–8 minutes\nRules:\n1. Only original scripts.\n2. Plagiarism leads to disqualification.\n3. No copyrighted music unless licensed.\n4. Violence/vulgarity at judge’s discretion.\nJudging: Script 30%, Direction 25%, Cinematography 20%, Editing 15%, Impact 10%"
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Ad-Making [30]" },
+        "desc": {
+          "type": "string",
+          "content": "A creative advertisement video.\n• Teams per IIT: 1\n• Participants: 3–8\n• Duration: 30–60 seconds\nRules:\n1. Topic/theme provided beforehand.\n2. No copyrighted logos without permission.\nJudging: Creativity 40%, Messaging 30%, Execution 20%, Impact 10%"
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Documentary [40]" },
+        "desc": {
+          "type": "string",
+          "content": "A non-fiction documentary film.\n• Teams per IIT: 1\n• Participants: 4–10\n• Duration: 3–7 minutes\nRules:\n1. Must be factual.\n2. Interviews/statistics must be properly cited.\nJudging: Research 30%, Storytelling 25%, Cinematography 20%, Editing 15%, Impact 10%"
+        }
+      },
+
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "On-The-Spot Filmmaking [40]" },
+        "desc": {
+          "type": "string",
+          "content": "Teams shoot and edit a film on campus within a strict time limit.\n• Teams per IIT: 2\n• Participants: 3–6\n• Duration: 6 hours (shoot + edit)\nRules:\n1. Topic revealed at start.\n2. No pre-shot footage.\n3. Only campus locations allowed.\nJudging: Story 30%, Creativity 25%, Camera Work 20%, Editing 15%, Impact 10%"
+        }
+      },
+
+      {
+        "Id": "7",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For queries regarding the Film Making Cup, contact the Inter IIT Cultural Meet Organising Committee."
+        }
+      }
+    ]
+  },
+  "digitalarts": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Digital Arts Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "Overview" },
+        "desc": {
+          "type": "string",
+          "content": "The Digital Arts Cup covers events that assess creativity and skill in animation, design, and digital media. Events include Anime Sketching, Photo Manipulation, UI/UX Design, 3D Art, and Motion Graphics Design."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Anime Sketching [20]" },
+        "desc": {
+          "type": "string",
+          "content": "Participants create an anime-style sketch based on a theme revealed on the spot.\n• Teams per IIT: 2\n• Participants: 1\n• Duration: 1.5 Hours\nRules:\n1. Only dry mediums (pens, pencils, markers) allowed.\n2. No colors unless stated.\n3. Only A4/A3 sheets permitted.\nJudging Criteria:\nLine Art Quality 40%\nAnatomy & Style Accuracy 30%\nCreativity 20%\nOverall Appeal 10%"
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Photo Manipulation [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Digital artwork created using editing/compositing techniques.\n• Teams per IIT: 2\n• Participants: 1\n• Duration: 2 Hours\nRules:\n1. Only provided images + self-created assets allowed.\n2. AI-generated elements are NOT allowed.\n3. Photoshop/GIMP/Krita allowed.\nJudging:\nCreativity 35%\nTechnical Execution 30%\nComposition 20%\nTheme Relevance 15%"
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "UI/UX Design [40]" },
+        "desc": {
+          "type": "string",
+          "content": "Teams design a UI/UX prototype for a given problem.\n• Teams per IIT: 1\n• Participants: 2–3\n• Duration: 3 Hours\nRules:\n1. Tools like Figma/Adobe XD allowed.\n2. Must submit wireframes + mockups.\n3. AI-generated designs not allowed.\nJudging:\nUser Flow 30%\nVisual Design 25%\nCreativity 20%\nProblem Understanding 15%\nPresentation 10%"
+        }
+      },
+
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "3D Art [40]" },
+        "desc": {
+          "type": "string",
+          "content": "Participants model and render a 3D scene/object based on the theme.\n• Teams per IIT: 1\n• Participants: 1–2\n• Duration: 3 Hours\nRules:\n1. Blender, Maya, 3ds Max allowed.\n2. Only original models — no premade assets.\n3. AI 3D generators prohibited.\nJudging:\nModeling 30%\nLighting & Rendering 25%\nCreativity 25%\nScene Composition 20%"
+        }
+      },
+
+      {
+        "Id": "7",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Motion Graphics Design [40]" },
+        "desc": {
+          "type": "string",
+          "content": "Teams create a short motion graphics sequence using the given theme.\n• Teams per IIT: 1\n• Participants: 1–3\n• Duration: 2 Hours\nRules:\n1. After Effects/Blender/Kdenlive allowed.\n2. No pre-made templates.\n3. Sound effects allowed if royalty-free.\nJudging:\nAnimation Smoothness 30%\nCreativity 25%\nDesign Consistency 20%\nTransitions 15%\nOverall Impact 10%"
+        }
+      },
+
+      {
+        "Id": "8",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For queries regarding the Digital Arts Cup, contact the Inter IIT Cultural Meet Organising Committee."
+        }
+      }
+    ]
+  },
+  "photography": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Photography Arts Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "Overview" },
+        "desc": {
+          "type": "string",
+          "content": "Photography Arts Cup includes events that test composition, technique, storytelling, and creativity through categories such as Mobile Photography, DSLR Photography, Photo Story, and Photo Editing."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Mobile Photography [20]" },
+        "desc": {
+          "type": "string",
+          "content": "A themed mobile photography competition.\n• Teams per IIT: 3\n• Participants per team: 1\n• Duration: 2 hours\nRules:\n1. Only mobile cameras allowed.\n2. Basic edits allowed (exposure, contrast).\n3. Heavy manipulation prohibited.\n4. Metadata may be checked.\nJudging: Composition 40%, Creativity 30%, Theme Relevance 20%, Impact 10%"
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "DSLR Photography [30]" },
+        "desc": {
+          "type": "string",
+          "content": "A DSLR-based photo competition with a given concept.\n• Teams per IIT: 3\n• Participants: 1\n• Duration: 2 hours\nRules:\n1. Only DSLR/Mirrorless cameras allowed.\n2. No composite editing.\n3. RAW/JPEG must be submitted.\nJudging: Technique 35%, Composition 35%, Creativity 20%, Impact 10%"
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Photo Story [40]" },
+        "desc": {
+          "type": "string",
+          "content": "A sequence of images that convey a narrative.\n• Teams per IIT: 1\n• Participants: 2–3\n• Deliverables: 5–10 photos\nRules:\n1. Storyboard compulsory.\n2. Minimal editing permitted.\n3. No AI-generated images.\nJudging: Storytelling 40%, Visual Flow 25%, Creativity 20%, Technical Quality 15%"
+        }
+      },
+
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Photo Editing [30]" },
+        "desc": {
+          "type": "string",
+          "content": "An editing-based event using provided RAW images.\n• Teams per IIT: 2\n• Participants: 1\n• Duration: 1.5 hours\nRules:\n1. Only event-provided photos allowed.\n2. Compositing not allowed.\n3. Lightroom/Photoshop permitted.\nJudging: Editing Technique 40%, Creativity 30%, Final Look 20%, Theme 10%"
+        }
+      },
+
+      {
+        "Id": "7",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For queries regarding the Photography Arts Cup, contact the Inter IIT Cultural Meet Organising Committee."
+        }
+      }
+    ]
+  },
+  "fashion": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Fashion Arts Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "Overview" },
+        "desc": {
+          "type": "string",
+          "content": "The Fashion Arts Cup celebrates creativity in styling, modelling, fabric use, runway presentation, costume design, and thematic fashion expression. Includes Runway Show, Costume Design, and Styling Challenges."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Runway Fashion Show [80]" },
+        "desc": {
+          "type": "string",
+          "content": "A themed runway performance by a fashion team.\n• Teams per IIT: 1\n• Participants: 8–20 (models + designers + backstage)\n• Duration: 8–12 minutes\nRules:\n1. No fire, liquids, glitter.\n2. Costumes must be safe and non-hazardous.\n3. Tracks must be submitted beforehand.\n4. Choreography free-form.\nJudging:\nCostume Design 30%\nTheme Interpretation 25%\nWalk + Choreography 25%\nVisual Impact 20%"
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Costume Design [40]" },
+        "desc": {
+          "type": "string",
+          "content": "Teams submit an original costume display based on a concept.\n• Teams per IIT: 1\n• Participants: 2–4\nRules:\n1. Handmade costume mandatory.\n2. Any materials allowed except hazardous items.\n3. Display can include sketches + mannequin + explanation.\nJudging:\nCraftsmanship 35%\nCreativity 30%\nTheme Fit 25%\nPresentation 10%"
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Styling Challenge [30]" },
+        "desc": {
+          "type": "string",
+          "content": "A quick styling challenge where contestants style a model based on a theme revealed on the spot.\n• Teams per IIT: 2\n• Participants: 2 (stylist + model)\n• Duration: 45 minutes\nRules:\n1. Only clothing & accessories provided/allowed.\n2. Makeup allowed but no prosthetics.\nJudging:\nStyling Creativity 40%\nExecution 30%\nTheme Accuracy 20%\nImpact 10%"
+        }
+      },
+
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For queries regarding the Fashion Arts Cup, contact the Inter IIT Cultural Meet Organising Committee."
+        }
+      }
+    ]
+  },
+  "culinary": {
+    "data": [
+      {
+        "Id": "1",
+        "flag": { "type": "string", "content": "heading" },
+        "title": { "type": "string", "content": "Culinary Arts Cup" },
+        "desc": { "type": "string", "content": "" }
+      },
+
+      {
+        "Id": "2",
+        "flag": { "type": "string", "content": "overview" },
+        "title": { "type": "string", "content": "General Rules & Equipment" },
+        "desc": {
+          "type": "string",
+          "content": "Equipment provided by the Organising Committee: basic cooking equipment (cutlery, cookware, mixer grinder, induction, etc.) and presentation equipment (plates, bowls, platters). A tentative equipment list will be announced. Participants may bring only non-electric, non-flame equipment (manual tools such as peelers, whisks). Personal presentation items (unique plates/trays) are prohibited. All participant equipment will be inspected; non-compliant items will not be permitted and may lead to disqualification."
+        }
+      },
+
+      {
+        "Id": "3",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Cook Off [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Description: A timed cooking competition. Teams receive a fixed pantry and a theme; each team must prepare two dishes. Teams per IIT: 1. Participants per team: 2. Duration: 2 hours.\n\nRules & Penalties:\n1. Prepare, cook and present two dishes in 120 minutes.\n2. A theme will be announced by 1st December, 2025.\n3. A common ingredient list will be provided at least 15 days before the event; ingredients will be basic household raw/unprocessed items.\n4. Every team may suggest one extra raw ingredient to be added to the list (to be mailed to a provided email address).\n5. Participants get 15 minutes to browse ingredients before competition.\n6. Induction-stove-based; each team is provided one stove.\n7. Exceeding time causes deduction of 1 mark per 5 seconds.\n8. Once time is over, team members must remain at their designated workstations; no bringing/taking items to/from stations.\n9. Use of any personal ingredient results in disqualification.\n\nJudging Criteria:\nTaste 40%, Presentation 20%, Adherence to Theme 15%, Creativity & Skill 25%."
+        }
+      },
+
+      {
+        "Id": "4",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Tag Team [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Description: A team relay challenge where participants switch cooking every 15 minutes; only one participant cooks at a time. Teams per IIT: 1. Participants per team: 2. Duration: 1 hour.\n\nRules & Penalties:\n1. Prepare, cook and plate one dish in 60 minutes.\n2. Members switch every 15 minutes; a whistle indicates switching. Failure to switch within 30 seconds incurs penalties; every extra 10 seconds → deduction of 5 Score Points. Failure to switch within 1 minute → disqualification.\n3. Each team chooses a surprise ingredient via lucky draw 15 minutes before the event and must include it; not including it results in disqualification.\n4. A common ingredient list will be provided at least 15 days before the event; teams may suggest one extra raw ingredient.\n5. Participants have 15 minutes to browse ingredients before the competition.\n6. Induction-stove-based; each team provided one stove.\n7. Exceeding time limit → deduction of 1 mark per 5 seconds.\n8. Once time is over, team members must remain at their workstations; bringing/taking items is prohibited.\n\nJudging Criteria:\nTaste 40%, Presentation 20%, Incorporation of the surprise ingredient 15%, Creativity & Skill 25%."
+        }
+      },
+
+      {
+        "Id": "5",
+        "flag": { "type": "string", "content": "comp" },
+        "title": { "type": "string", "content": "Mixology [30]" },
+        "desc": {
+          "type": "string",
+          "content": "Description: A mocktail-making competition. Teams are given a three-color palette and a theme via lucky draw and must prepare three different drinks adhering to the colors and theme. Teams per IIT: 1. Participants per team: 2. Duration: 1 hour preparation + 15 minutes conceptualisation.\n\nRules & Penalties:\n1. Prepare and present three mocktails in 60 minutes.\n2. Teams must conceptualize and submit final drink plans in the first 15 minutes; a whistle will mark the start of preparation.\n3. Teams choose three colors and a theme 15 minutes prior by lucky draw.\n4. A common ingredient list will be provided at least 15 days before the event; teams may suggest one extra raw ingredient.\n5. Participants get 15 minutes to browse ingredients before competition.\n6. Exceeding time limit → deduction of 1 mark per 5 seconds.\n7. Once time is over, team members must remain at workstations; bringing/taking items is prohibited.\n8. Use of personal ingredients or significant deviation from conceptualized drinks may lead to disqualification.\n\nJudging Criteria:\nTaste 30%, Presentation 20%, Adherence to Theme 20%, Creativity & Skill 30%."
+        }
+      },
+
+      {
+        "Id": "6",
+        "flag": { "type": "string", "content": "contacts" },
+        "title": { "type": "string", "content": "Contacts" },
+        "desc": {
+          "type": "string",
+          "content": "For any queries regarding the Culinary Arts Cup, contact the Inter IIT Cultural Meet Organising Committee (refer to the official rulebook contact section)."
+        }
+      }
+    ]
+  }
+}
