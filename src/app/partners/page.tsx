@@ -1,34 +1,31 @@
 "use client";
 import React, { useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  easeOut,
-  type Variants,
-} from "framer-motion";
+import Image from "next/image";
+import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
 
-// --- SVG Icons ---
-// Using inline SVGs for portability, as we can't import libraries.
-
-const TrophyIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-    <path d="M4 22h16" />
-    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21A3.98 3.98 0 0 1 8 19.95V22" />
-    <path d="M14 14.66V17c0 .55.47.98.97 1.21A3.98 3.98 0 0 0 16 19.95V22" />
-    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
-  </svg>
-);
+// === Icons (Moved Outside Component) ===
+// Optimization: Defined once at the module level, not re-created on every render.
+function TrophyIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+      <path d="M4 22h16" />
+      <path d="M10 14.66V17c0 .55-.47.98-.97 1.21A3.98 3.98 0 0 1 8 19.95V22" />
+      <path d="M14 14.66V17c0 .55.47.98.97 1.21A3.98 3.98 0 0 0 16 19.95V22" />
+      <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+    </svg>
+  );
+}
 
 const UsersIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg
@@ -48,430 +45,227 @@ const UsersIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
-const HeartIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-  </svg>
-);
+// === Sponsor Data (Moved Outside Component) ===
+// Optimization: This constant data doesn't need to be part of the component.
+const sponsors = {
+  title: [{ name: "Stellar Corp", sponsor: "Stellar", level: "Title Sponsor" }],
+  gold: [
+    { name: "Quantum Inc.", sponsor: "Stellar", level: "Gold Sponsor" },
+    { name: "Nova Digital", sponsor: "Stellar", level: "Gold Sponsor" },
+    { name: "Apex Solutions", sponsor: "Stellar", level: "Gold Sponsor" },
+  ],
+  silver: [
+    { name: "Ecoverse", sponsor: "Stellar", level: "Silver Sponsor" },
+    { name: "Momentum AI", sponsor: "Stellar", level: "Silver Sponsor" },
+    { name: "Nexus Systems", sponsor: "Stellar", level: "Silver Sponsor" },
+    { name: "Helios Energy", sponsor: "Stellar", level: "Silver Sponsor" },
+  ],
+  partners: [
+    { name: "Orion Logistics", sponsor: "Stellar", level: "Partner" },
+    { name: "ByteWave", sponsor: "Stellar", level: "Partner" },
+    { name: "Zenith Media", sponsor: "Stellar", level: "Partner" },
+  ],
+};
 
-const HomeIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-    <polyline points="9 22 9 12 15 12 15 22" />
-  </svg>
-);
+// === Animation Variants (Moved Outside Component) ===
+// Optimization: Also a constant, no need to re-create on render.
+const sectionVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: easeOut, staggerChildren: 0.1 },
+  },
+};
 
-const TicketIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M2 9a3 3 0 0 1 0 6v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
-    <path d="M13 5v2" />
-    <path d="M13 17v2" />
-    <path d="M13 11v2" />
-  </svg>
-);
-
-const StarIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-  </svg>
-);
-
-// --- Define Sponsor Card Props ---
 interface SponsorCardProps {
   name: string;
-  level: string;
-  logoBg: string;
-  levelColor: string;
   sponsor: string;
+  // Optimization: Removed unused 'level' prop from the interface
 }
 
-// --- Re-usable Sponsor Card Component ---
-const SponsorCard: React.FC<SponsorCardProps> = ({
-  name,
-  level,
-  logoBg,
-  levelColor,
-  sponsor,
-}) => {
+// === SponsorCard (Working Full Blur on Hover) ===
+const SponsorCard: React.FC<SponsorCardProps> = ({ name, sponsor }) => {
   return (
     <motion.div
-      className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 group"
-      whileHover={{ scale: 1.03 }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      className={`relative aspect-square rounded-2xl overflow-hidden 
+        bg-white/10 backdrop-blur-md
+        border border-white/20 
+        shadow-[0_8px_40px_rgba(255,255,255,0.1)]
+        hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]
+        transition-shadow duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]
+        group will-change-transform will-change-filter`}
+      whileHover={{
+        scale: 1.04,
+        transition: { type: "spring", stiffness: 120, damping: 14 },
+      }}
+      initial={{ opacity: 0, y: 25 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
+      viewport={{ once: true, amount: 0.3 }}
     >
-      <div
-        className={`h-32 flex items-center justify-center ${logoBg} transition-all duration-300 group-hover:opacity-90`}
-      >
-        <span className="text-xl font-bold text-white opacity-80">
-          {sponsor}
-        </span>
+      {/* Base static glass layer */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none" />
+
+      {/* Blur overlay */}
+      <div className="absolute inset-0 bg-transparent transition-all duration-700 ease-in-out group-hover:backdrop-blur-[40px] group-hover:brightness-75 pointer-events-none" />
+
+      {/* Logo */}
+      <div className="absolute inset-0 flex items-center justify-center p-10 transition-all duration-700 ease-in-out group-hover:opacity-0 pointer-events-none">
+        <Image
+          src={`/images/logos/${sponsor.toLowerCase()}.png`}
+          alt={`${sponsor} logo`}
+          fill
+          className="object-contain"
+        />
       </div>
-      <div className="p-5">
-        <h3 className="text-xl font-semibold text-gray-800">{name}</h3>
-        <p className={`text-sm font-medium ${levelColor}`}>{level}</p>
+
+      {/* Company Name */}
+      <div className="absolute inset-0 flex items-center justify-center text-center transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100 pointer-events-none">
+        <span className="text-white text-3xl font-bold tracking-wide drop-shadow-[0_0_20px_rgba(255,255,255,0.7)] select-none">
+          {name}
+        </span>
       </div>
     </motion.div>
   );
 };
 
-// --- Main Partners Component ---
+// === Main Component ===
 const Partners = () => {
   const [activeTab, setActiveTab] = useState("sponsors");
 
-  const sponsors = {
-    title: [
-      {
-        name: "Stellar Corp",
-        level: "Title Sponsor",
-        logoBg: "bg-gradient-to-br from-blue-600 to-blue-800",
-      },
-    ],
-    gold: [
-      {
-        name: "Quantum Inc.",
-        level: "Gold Sponsor",
-        logoBg: "bg-gradient-to-br from-amber-400 to-orange-500",
-        levelColor: "text-amber-600",
-      },
-      {
-        name: "Nova Digital",
-        level: "Gold Sponsor",
-        logoBg: "bg-gradient-to-br from-amber-400 to-orange-500",
-        levelColor: "text-amber-600",
-      },
-      {
-        name: "Apex Solutions",
-        level: "Gold Sponsor",
-        logoBg: "bg-gradient-to-br from-amber-400 to-orange-500",
-        levelColor: "text-amber-600",
-      },
-    ],
-    silver: [
-      {
-        name: "Ecoverse",
-        level: "Silver Sponsor",
-        logoBg: "bg-gradient-to-br from-gray-400 to-gray-600",
-        levelColor: "text-gray-500",
-      },
-      {
-        name: "Momentum AI",
-        level: "Silver Sponsor",
-        logoBg: "bg-gradient-to-br from-gray-400 to-gray-600",
-        levelColor: "text-gray-500",
-      },
-      {
-        name: "Nexus Systems",
-        level: "Silver Sponsor",
-        logoBg: "bg-gradient-to-br from-gray-400 to-gray-600",
-        levelColor: "text-gray-500",
-      },
-      {
-        name: "Helios Energy",
-        level: "Silver Sponsor",
-        logoBg: "bg-gradient-to-br from-gray-400 to-gray-600",
-        levelColor: "text-gray-500",
-      },
-    ],
-    partners: [
-      {
-        name: "Orion Logistics",
-        level: "Partner",
-        logoBg: "bg-gradient-to-br from-teal-400 to-cyan-600",
-        levelColor: "text-teal-600",
-      },
-      {
-        name: "ByteWave",
-        level: "Partner",
-        logoBg: "bg-gradient-to-br from-teal-400 to-cyan-600",
-        levelColor: "text-teal-600",
-      },
-      {
-        name: "Zenith Media",
-        level: "Partner",
-        logoBg: "bg-gradient-to-br from-teal-400 to-cyan-600",
-        levelColor: "text-teal-600",
-      },
-      {
-        name: "Aura Foods",
-        level: "Partner",
-        logoBg: "bg-gradient-to-br from-teal-400 to-cyan-600",
-        levelColor: "text-teal-600",
-      },
-      {
-        name: "Pivot Designs",
-        level: "Partner",
-        logoBg: "bg-gradient-to-br from-teal-400 to-cyan-600",
-        levelColor: "text-teal-600",
-      },
-      {
-        name: "Stratus Cloud",
-        level: "Partner",
-        logoBg: "bg-gradient-to-br from-teal-400 to-cyan-600",
-        levelColor: "text-teal-600",
-      },
-    ],
-  };
-
-  const sectionVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: easeOut,
-        staggerChildren: 0.1,
-      },
-    },
-  };
+  // All constants (icons, sponsors, variants) are now defined outside.
+  // The component is cleaner and only contains state and JSX.
 
   return (
-    <div className="font-sans bg-[#fffcf6] text-gray-800 overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-orange-500 to-amber-400 text-white pt-32 pb-40 shadow-lg overflow-hidden">
-        <div className="relative z-10 text-center px-6">
-          <motion.h1
-            initial={{ opacity: 0, y: -40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
-            className="text-5xl md:text-7xl font-extrabold tracking-tight"
-          >
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-orange-100 block drop-shadow-lg">
-              Our Partners
-            </span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl mt-5 max-w-2xl mx-auto font-medium text-white/90"
-          >
-            Celebrating the incredible supporters who make Kreiva Kllanz possible.
-          </motion.p>
+    <div className="font-sans overflow-x-hidden min-h-screen relative text-white">
+      {/* === Background === */}
+      <div className="fixed inset-0 -z-20">
+        <Image
+          src="/images/background_image/top.png"
+          alt="Background"
+          fill
+          priority
+          className="object-cover brightness-[0.65]"
+        />
+      </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex justify-center gap-4 md:gap-6 mt-12 flex-wrap"
-          >
-          </motion.div>
-        </div>
-
-        {/* Wave Divider */}
-        <div className="absolute bottom-0 left-0 w-full z-0">
-          <svg
-            className="w-full h-auto"
-            viewBox="0 0 1440 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0 100C0 100 360 0 720 0C1080 0 1440 100 1440 100V101H0V100Z"
-              fill="#fffcf6"
-            />
-          </svg>
-        </div>
+      {/* === Hero === */}
+      <section className="relative text-center pt-28 sm:pt-48 pb-16 sm:pb-28 px-4 z-10">
+        <motion.h1
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+          className="font-['Playfair_Display',serif] text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#FDE6A3] drop-shadow-[0_3px_6px_rgba(0,0,0,0.4)]"
+        >
+          Our Partners
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="text-base sm:text-lg md:text-xl mt-5 max-w-2xl mx-auto text-gray-300"
+        >
+          The visionaries who make{" "}
+          <span className="font-semibold text-[#FFD37F]">Kreiva Kllanz</span>{" "}
+          possible.
+        </motion.p>
       </section>
 
-      {/* Tabs */}
-      <div className="py-6 sticky top-0 z-20 bg-gradient-to-b from-[#fffcf6] via-[#fffcf6]/90 to-[#fffcf6]/70 backdrop-blur-lg">
+      {/* === Navbar === */}
+      <div className="sticky top-0 py-3 sm:py-4 z-30 bg-black/30 backdrop-blur-md">
         <div className="flex justify-center">
-          <div className="relative flex items-center rounded-full bg-white/60 shadow-inner border border-white/50 p-1.5">
+          <div className="flex items-center rounded-full bg-white/10 shadow-md border border-white/20 p-1 sm:p-2">
             {["sponsors", "MNP"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`relative z-10 flex items-center gap-2 rounded-full px-5 sm:px-8 py-2.5 text-sm sm:text-base font-medium transition-colors duration-300 ${
+                className={`flex items-center gap-2 rounded-full px-4 sm:px-6 py-2 text-sm sm:text-base font-medium transition-all duration-300 ${
                   activeTab === tab
-                    ? "text-orange-800"
-                    : "text-gray-600 hover:text-black"
+                    ? "text-yellow-800 bg-white shadow-md"
+                    : "text-gray-200 hover:text-yellow-400"
                 }`}
               >
                 {tab === "sponsors" ? (
-                  <TrophyIcon className="w-5 h-5" />
+                  <TrophyIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                 ) : (
-                  <UsersIcon className="w-5 h-5" />
+                  <UsersIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                 )}
                 <span className="capitalize">{tab}</span>
-                {activeTab === tab && (
-                  <motion.div
-                    layoutId="active-pill"
-                    className="absolute inset-0 z-[-1] rounded-full bg-white shadow-md"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Content */}
-      <main className="px-4 md:px-8">
+      {/* === Content === */}
+      <main className="px-4 sm:px-8 md:px-16 relative z-10">
         <AnimatePresence mode="wait">
           {activeTab === "sponsors" ? (
             <motion.div
               key="sponsors"
               initial="hidden"
               animate="visible"
-              exit={{ opacity: 0 }}
+              exit={{ opacity: 0, y: 10 }}
               variants={sectionVariants}
             >
               {/* Title Sponsor */}
               <motion.section
-                className="py-16 md:py-24 text-center"
+                className="py-12 sm:py-16 text-center"
                 variants={sectionVariants}
               >
-                <h2 className="text-4xl md:text-5xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
+                <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">
                   Title Sponsor
                 </h2>
-                <p className="text-gray-600 text-lg mb-12">
-                  Our prestigious platinum partner
-                </p>
-                <motion.div
-                  whileHover={{
-                    scale: 1.02,
-                    boxShadow: "0 25px 50px -12px rgba(0,0,0,0.15)",
-                  }}
-                  className="max-w-md mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden border-t-8 border-amber-400"
-                >
-                  <div className="flex flex-col sm:flex-row items-center p-6 sm:p-8">
-                    <div
-                      className={`w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 flex items-center justify-center rounded-lg sm:rounded-xl mb-4 sm:mb-0 sm:mr-6 ${sponsors.title[0].logoBg}`}
-                    >
-                      <span className="text-2xl font-bold text-white">
-                        {sponsors.title[0].name.split(" ")[0]}
-                      </span>
-                    </div>
-                    <div className="text-left">
-                      <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
-                        {sponsors.title[0].name}
-                      </h3>
-                      <div className="flex justify-start text-amber-400 mt-2">
-                        {[...Array(5)].map((_, i) => (
-                          <StarIcon key={i} className="w-6 h-6" />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
+                <div className="max-w-xs sm:max-w-sm mx-auto">
+                  {/* Optimization: Using spread props {...s} passes name and sponsor */}
+                  <SponsorCard {...sponsors.title[0]} />
+                </div>
               </motion.section>
 
               {/* Gold Sponsors */}
               <motion.section
-                className="py-16 md:py-24 text-center bg-orange-50/50 rounded-3xl"
+                className="py-12 sm:py-16 text-center"
                 variants={sectionVariants}
               >
-                <h2 className="text-4xl md:text-5xl font-extrabold mb-3 text-orange-700">
+                <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">
                   Gold Sponsors
                 </h2>
-                <p className="text-gray-600 text-lg mb-12">
-                  Our golden supporters who shine bright
-                </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                  {sponsors.gold.map((s, i) => (
-                    <SponsorCard
-                      key={i}
-                      sponsor={s.name.split(" ")[0]}
-                      name={s.name}
-                      level={s.level}
-                      logoBg={s.logoBg}
-                      levelColor={s.levelColor}
-                    />
+                  {/* Optimization: Use a unique string (s.name) for the key, not the index */}
+                  {sponsors.gold.map((s) => (
+                    <SponsorCard key={s.name} {...s} />
                   ))}
                 </div>
               </motion.section>
 
               {/* Silver Sponsors */}
               <motion.section
-                className="py-16 md:py-24 text-center"
+                className="py-12 sm:py-16 text-center"
                 variants={sectionVariants}
               >
-                <h2 className="text-4xl md:text-5xl font-extrabold mb-3 text-gray-700">
+                <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">
                   Silver Sponsors
                 </h2>
-                <p className="text-gray-600 text-lg mb-12">
-                  Harmonizing support for our cultural celebration
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                  {sponsors.silver.map((s, i) => (
-                    <SponsorCard
-                      key={i}
-                      sponsor={s.name.split(" ")[0]}
-                      name={s.name}
-                      level={s.level}
-                      logoBg={s.logoBg}
-                      levelColor={s.levelColor}
-                    />
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                  {sponsors.silver.map((s) => (
+                    <SponsorCard key={s.name} {...s} />
                   ))}
                 </div>
               </motion.section>
             </motion.div>
           ) : (
-            /* Partners Section */
             <motion.section
               key="partners"
-              className="py-16 md:py-24 text-center"
-              initial="hidden"
-              animate="visible"
-              exit={{ opacity: 0 }}
+              className="py-12 sm:py-16 text-center"
               variants={sectionVariants}
             >
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-3 text-teal-700">
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-teal-300">
                 Our MNP
               </h2>
-              <p className="text-gray-600 text-lg mb-12">
-                Together we create magic
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                {sponsors.partners.map((s, i) => (
-                  <SponsorCard
-                    key={i}
-                    sponsor={s.name.split(" ")[0]}
-                    name={s.name}
-                    level={s.level}
-                    logoBg={s.logoBg}
-                    levelColor={s.levelColor}
-                  />
+              <p className="text-gray-300 mb-12">Together we create magic</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                {sponsors.partners.map((s) => (
+                  <SponsorCard key={s.name} {...s} />
                 ))}
               </div>
             </motion.section>
@@ -479,81 +273,12 @@ const Partners = () => {
         </AnimatePresence>
       </main>
 
-      {/* Join Section (CTA) */}
-      <section className="relative bg-gradient-to-br from-orange-600 to-red-700 text-white py-24 md:py-32 text-center mt-20 overflow-hidden">
-        {/* Subtle dot pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(#ffffff22_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
-        <div className="relative z-10 px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-extrabold mb-6"
-          >
-            Join Our Festival Family
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="max-w-2xl mx-auto mb-10 text-lg text-white/90"
-          >
-            Be part of something extraordinary. Partner with Kreiva Kllanz and
-            help us celebrate art, culture, and community.
-          </motion.p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, delay: 0.2, type: "spring" }}
-            className="flex items-center gap-2.5 mx-auto bg-white text-orange-800 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-orange-50 transition-all duration-300"
-          >
-            <TicketIcon className="w-6 h-6" />
-            Sponsorship Opportunities
-          </motion.button>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-[#1e1308] text-gray-400 py-12 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-          <div>
-            <p className="font-semibold text-white/90">
-              © 2025 Kreiva Kllanz • IIIT Vadodara
-            </p>
-            <p className="text-sm mt-1">
-              Celebrating Art, Culture, and Technology.
-            </p>
-          </div>
-          <div className="flex justify-center gap-6 mt-6 md:mt-0 text-base">
-            <a
-              href="#"
-              className="hover:text-white transition-colors duration-300"
-            >
-              Home
-            </a>
-            <a
-              href="#"
-              className="hover:text-white transition-colors duration-300"
-            >
-              Contact
-            </a>
-            <a
-              href="#"
-              className="hover:text-white transition-colors duration-300"
-            >
-              Sponsor
-            </a>
-          </div>
-        </div>
+      {/* === Footer === */}
+      <footer className="mt-16 py-8 text-center text-white/70 bg-gradient-to-t from-black/60 to-transparent">
+        © 2025 Kreiva Kllanz | All Rights Reserved
       </footer>
     </div>
   );
 };
 
 export default Partners;
-
