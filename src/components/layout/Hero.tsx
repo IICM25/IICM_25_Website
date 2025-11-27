@@ -9,22 +9,22 @@ export default function Home() {
   // Note: background load handlers removed because overlay conditional is currently always shown
 
   const PHOTOS = [
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
+    "/images/1.jpg",
+    "/images/2.jpg",
+    "/images/3.jpg",
+    "/images/4.jpg",
+    "/images/5.jpg",
+    "/images/6.jpg",
+    "/images/7.jpeg",
+    "/images/8.jpg",
+    "/images/9.jpg",
 
   ];
   const PHOTOS1 = [
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
-    "/images/old_image.png",
+    "/images/10.jpeg",
+    "/images/11.jpg",
+    "/images/12.jpeg",
+    "/images/13.jpg",
 
   ];
 
@@ -111,7 +111,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="relative z-20 max-w-6xl mx-auto px-6 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20">
+            <div className="relative z-20 max-w-6xl mx-auto px-6 md:px-8 lg:px-12 py-6 md:py-16 lg:py-20">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-10 justify-items-center">
                 {PHOTOS1.map((src, idx) => (
                   <div key={idx} className={`relative w-[220px] sm:w-[240px] md:w-[260px] lg:w-[280px] ${ROTATIONS[idx % ROTATIONS.length]}`}>
@@ -126,9 +126,17 @@ export default function Home() {
 
                     {/* polaroid frame */}
                     <div className="bg-white rounded-sm shadow-[0_10px_20px_rgba(0,0,0,0.25)] pt-4 pb-6 px-3">
-                      <div className="relative w-full aspect-[4/3] bg-black">
-                        {/* inner image (cover) */}
-                        <Image src={src} alt={`gallery-${idx + 1}`} fill style={{ objectFit: "cover" }} />
+                      <div className="relative w-full aspect-[4/3] bg-black overflow-hidden rounded-lg">
+                        {/* inner image */}
+                        <Image
+                          src={src}
+                          alt={`gallery-${idx + 1}`}
+                          fill
+                          style={{ objectFit: "cover" }}
+                        />
+
+                        {/* transparent overlay */}
+                        <div className="absolute inset-0 bg-black/50"></div>
                       </div>
 
                       {/* small caption / white strip (polaroid) */}
@@ -205,15 +213,15 @@ export default function Home() {
         <div className="absolute right-0 bottom-12 md:bottom-12 lg:bottom-36 z-30 pointer-events-none md:rotate-0 -rotate-12 guitar-smooth"
           style={{ width: "32%", maxWidth: 380, minWidth: 180 }}>
           {/* Use a wrapper with responsive width; Image with layout 'fill' to preserve ratio */}
-         <div className="relative w-full aspect-[3/4] hidden lg:block">
-  <Image
-    src="/Elements/guitar.png"
-    alt="guitar"
-    fill
-    style={{ objectFit: "contain" }}
-    priority
-  />
-</div>
+          <div className="relative w-full aspect-[3/4] hidden lg:block">
+            <Image
+              src="/Elements/guitar.png"
+              alt="guitar"
+              fill
+              style={{ objectFit: "contain" }}
+              priority
+            />
+          </div>
 
         </div>
 
@@ -269,16 +277,16 @@ export default function Home() {
                   What began as a modest effort to promote cultural exchange among IITs has now grown into one of the most anticipated and respected intercollegiate events in India. Each year, one of the IITs hosts this grand celebration, transforming its campus into a melting pot of cultures, ideas, and imagination. Participants spend months preparing, perfecting performances, and curating experiences that reflect both creativity and technical finesse.
                 </p>
                 <p>
-              The Inter IIT Cultural Meet is not just a competition — it is a shared experience of learning, expression, and collaboration. From soulful musical renditions to powerful theatrical performances, from graceful classical displays to electrifying street art — every performance tells a story, every participant adds a new shade to the canvas of culture.
-            </p>
+                  The Inter IIT Cultural Meet is not just a competition — it is a shared experience of learning, expression, and collaboration. From soulful musical renditions to powerful theatrical performances, from graceful classical displays to electrifying street art — every performance tells a story, every participant adds a new shade to the canvas of culture.
+                </p>
 
-            <p className="font-semibold">
-              More than just a fest, the Inter IIT Cultural Meet is a celebration of diversity, unity, and the boundless spirit of creation. Join us as we celebrate expression, imagination, and the timeless energy that defines the cultural heart of every IIT — join us, to celebrate the Inter IIT Cultural Meet!
-            </p>
+                <p className="font-semibold">
+                  More than just a fest, the Inter IIT Cultural Meet is a celebration of diversity, unity, and the boundless spirit of creation. Join us as we celebrate expression, imagination, and the timeless energy that defines the cultural heart of every IIT — join us, to celebrate the Inter IIT Cultural Meet!
+                </p>
 
-            <p className="font-semibold">
-              Join us to celebrate creativity — join us, to celebrate Inter-IIT Cultural!
-            </p>
+                <p className="font-semibold">
+                  Join us to celebrate creativity — join us, to celebrate Inter-IIT Cultural!
+                </p>
               </div>
             </div>
 
@@ -374,9 +382,17 @@ export default function Home() {
 
                 {/* polaroid frame */}
                 <div className="bg-white rounded-sm shadow-[0_10px_20px_rgba(0,0,0,0.25)] pt-4 pb-6 px-3">
-                  <div className="relative w-full aspect-[4/3] bg-black">
-                    {/* inner image (cover) */}
-                    <Image src={src} alt={`gallery-${idx + 1}`} fill style={{ objectFit: "cover" }} />
+                  <div className="relative w-full aspect-[4/3] bg-black overflow-hidden rounded-lg">
+                    {/* inner image */}
+                    <Image
+                      src={src}
+                      alt={`gallery-${idx + 1}`}
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
+
+                    {/* transparent overlay */}
+                    <div className="absolute inset-0 bg-black/50"></div>
                   </div>
 
                   {/* small caption / white strip (polaroid) */}

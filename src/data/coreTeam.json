@@ -2,21 +2,303 @@
   "current": [
     {
       "Id": "1",
-      "Name": "Alice",
-      "Vertical": "Marketing",
-      "Email": "alice@example.com",
-      "Phone": "9999999999",
-      "LinkedIn": "https://linkedin.com/in/alice",
-      "Pic": { "ref": "picRef", "url": "/images/alice.jpg" }
-    }
-  ],
-  "previous": [
+      "Name": "Anish Sahu",
+      "Vertical": "Overall Coordinators",
+      "Email": "anishsahu004@gmail.com",
+      "Phone": "9958941401",
+      "Instagram": "https://www.instagram.com/anishsahu_?igsh=MTBpbnVnYXh4a2o0dg%3D%3D&utm_source=qr",
+      "LinkedIn": "https://www.linkedin.com/in/anish-sahu-640b7827b/",
+      "Pic": "/coreteam/01_Anish_Sahu.jpg"
+    },
     {
       "Id": "2",
-      "Name": "Bob",
+      "Name": "Anmol Bansal",
+      "Vertical": "Overall Coordinators",
+      "Email": "unschatzbar22@gmail.com",
+      "Phone": "8077655480",
+      "Instagram": "https://www.instagram.com/_unschatzbar",
+      "LinkedIn": "https://www.linkedin.com/in/anmolb22/",
+      "Pic": null
+    },
+    {
+      "Id": "3",
+      "Name": "Sujal Jain",
+      "Vertical": "Overall Coordinators",
+      "Email": "jainsujal004@gmail.com",
+      "Phone": "7509057901",
+      "Instagram": "https://www.instagram.com/sujal__1103?igsh=MXQ1dDM1ZWFldDB5aw%3D%3D&utm_source=qr",
+      "LinkedIn": "https://www.linkedin.com/in/sujal-jain-8645b0315/",
+      "Pic": "/coreteam/03_Sujal_Jain.jpg"
+    },
+    {
+      "Id": "4",
+      "Name": "Chiranshu Kataria",
+      "Vertical": "Hospitality",
+      "Email": "chiranshukataria10@gmail.com",
+      "Phone": "7011542734",
+      "Instagram": "https://www.instagram.com/chiranshu_kataria",
+      "LinkedIn": "https://www.linkedin.com/in/chiranshu-kataria-5b3959250?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      "Pic": null
+    },
+    {
+      "Id": "5",
+      "Name": "Mausam Kumawat",
+      "Vertical": "Hospitality",
+      "Email": null,
+      "Phone": "8209781453",
+      "Instagram": "https://www.instagram.com/mausamkumawat",
+      "LinkedIn": "https://www.linkedin.com/in/mausam-kumawat-41b5bb267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "Pic": null
+    },
+    {
+      "Id": "6",
+      "Name": "Kshitij Garud",
+      "Vertical": "Hospitality",
+      "Email": "kshitij.garud27@gmail.com",
+      "Phone": "9428486947",
+      "Instagram": "https://www.instagram.com/kshitij7._?igsh=MWZjNWVnNzNvZzlldw==",
+      "LinkedIn": "https://www.linkedin.com/in/kshitij-garud-28b670256?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "Pic": null
+    },
+    {
+      "Id": "7",
+      "Name": "Vyom Pratap Singh",
+      "Vertical": "Hospitality",
+      "Email": "vyom1217@gmail.com",
+      "Phone": "7222926797",
+      "Instagram": "https://www.instagram.com/v_ohm_fl?igsh=MTQ0ZHAyOGlwOGVyMw==",
+      "LinkedIn": "https://www.linkedin.com/in/vyomps",
+      "Pic": "/coreteam/07_Vyom_Pratap_Singh.jpg"
+    },
+    {
+      "Id": "8",
+      "Name": "Aaditya Vanara",
+      "Vertical": "Events",
+      "Email": "aadityavanara@gmail.com",
+      "Phone": "8780519601",
+      "Instagram": "https://www.instagram.com/aadivanara",
+      "LinkedIn": "https://www.linkedin.com/in/aaditya-vanara-33b851255?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "Pic": "/coreteam/08_Aaditya_Vanara.jpg"
+    },
+    {
+      "Id": "9",
+      "Name": "Akshat Srivastava",
+      "Vertical": "Events",
+      "Email": "akshatzzz104@gmail.com",
+      "Phone": "9818130217",
+      "Instagram": "https://www.instagram.com/sriv_akzzz04?igsh=cm56ejM3bHhyam04",
+      "LinkedIn": "https://in.linkedin.com/in/akshat-srivastava-bb058725b",
+      "Pic": "/coreteam/09_Akshat_Srivastava.jpg"
+    },
+    {
+      "Id": "10",
+      "Name": "Ashutosh Anand",
+      "Vertical": "Events",
+      "Email": "anandmehtaashutosh@gmail.com",
+      "Phone": "9771060504",
+      "Instagram": "https://www.instagram.com/aanand_me/",
+      "LinkedIn": "https://www.linkedin.com/in/ashutoshanandmehta/",
+      "Pic": "/coreteam/10_Ashutosh_Anand.jpg"
+    },
+    {
+      "Id": "11",
+      "Name": "Mrunmay",
+      "Vertical": "Events",
+      "Email": "mrunmays763@gmail.com",
+      "Phone": "7424810183",
+      "Instagram": "https://www.instagram.com/mrunmay.cr3?igsh=MW5yNWV1NGUzeHo5OQ%3D%3D&utm_source=qr",
+      "LinkedIn": "https://www.linkedin.com/in/mrunmay-suryawanshi-8a32a2362/",
+      "Pic": "/coreteam/11_Mrunmay.jpg"
+    },
+    {
+      "Id": "12",
+      "Name": "Pranshu Thirani",
+      "Vertical": "Events",
+      "Email": null,
+      "Phone": null,
+      "Instagram": null,
+      "LinkedIn": null,
+      "Pic": null
+    },
+    {
+      "Id": "13",
+      "Name": "Vinayak Gupta",
+      "Vertical": "Events",
+      "Email": "vinayak1806@gmail.com",
+      "Phone": "9044435399",
+      "Instagram": "https://www.instagram.com/its_vinayak_gt",
+      "LinkedIn": "https://www.linkedin.com/in/vinayak-gupta-aa72b316b/",
+      "Pic": null
+    },
+    {
+      "Id": "14",
+      "Name": "Pratham Sharma",
+      "Vertical": "Finance",
+      "Email": null,
+      "Phone": null,
+      "Instagram": null,
+      "LinkedIn": null,
+      "Pic": null
+    },
+    {
+      "Id": "15",
+      "Name": "Anil Kushwah",
+      "Vertical": "Show Management",
+      "Email": "anilkushwah1807@gmail.com",
+      "Phone": "9917634273",
+      "Instagram": "https://www.instagram.com/anilkushwah07/",
+      "LinkedIn": "https://www.linkedin.com/in/anil-kushwah-457664338/",
+      "Pic": null
+    },
+    {
+      "Id": "16",
+      "Name": "Shreyansh Singh",
+      "Vertical": "Show Management",
+      "Email": "shreyanshksp@gmail.com",
+      "Phone": "8989489574",
+      "Instagram": "https://www.instagram.com/shreyansh.2004_",
+      "LinkedIn": null,
+      "Pic": null
+    },
+    {
+      "Id": "17",
+      "Name": "Harsh Patil",
+      "Vertical": "Show Management",
+      "Email": "harshpatil0102@gmail.com",
+      "Phone": "8290736449",
+      "Instagram": "https://www.instagram.com/_harsh__patil_11",
+      "LinkedIn": "https://www.linkedin.com/in/harsh-patil-b3a1aa268/",
+      "Pic": null
+    },
+    {
+      "Id": "18",
+      "Name": "Sanyam",
       "Vertical": "Marketing",
-      "Email": "bob@example.com",
-      "Pic": { "ref": "picRef2", "url": "/images/bob.jpg" }
+      "Email": "sanyam0815@gmail.com",
+      "Phone": "9817957452",
+      "Instagram": "https://www.instagram.com/sanyam.k_",
+      "LinkedIn": "https://www.linkedin.com/in/sanyam-467408208?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "Pic": null
+    },
+    {
+      "Id": "19",
+      "Name": "Ayush Yadav",
+      "Vertical": "Marketing",
+      "Email": "ayushhnov26@gmail.com",
+      "Phone": "8640086587",
+      "Instagram": "https://www.instagram.com/ayux.ydv",
+      "LinkedIn": "https://www.linkedin.com/in/ayush-yadav-21b445257/",
+      "Pic": null
+    },
+    {
+      "Id": "20",
+      "Name": "Sarthak Patil",
+      "Vertical": "Marketing",
+      "Email": "iamsarthakarvind975@gmail.com",
+      "Phone": "8459799219",
+      "Instagram": "https://www.instagram.com/sarthkkk___?igsh=emJmdXc4YXRzY3d6",
+      "LinkedIn": "https://www.linkedin.com/in/sarthak-patil-140aa2256",
+      "Pic": "/coreteam/21_Sarthak_Patil.jpg"
+    },
+    {
+      "Id": "21",
+      "Name": "Ujjawal Agarwal",
+      "Vertical": "Marketing",
+      "Email": "aujjawal726@gmail.com",
+      "Phone": "6392223772",
+      "Instagram": null,
+      "LinkedIn": null,
+      "Pic": null
+    },
+    {
+      "Id": "22",
+      "Name": "Singh Princekumar",
+      "Vertical": "Public Relations",
+      "Email": "princekumar.singh2003.ss@gmail.com",
+      "Phone": "8780168481",
+      "Instagram": "https://www.instagram.com/princekss22?igsh=MTczbGszejl2bHc3cg==",
+      "LinkedIn": "https://www.linkedin.com/in/singh-princekumar-630bb21a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "Pic": "/coreteam/24_Singh_Princekumar.jpg"
+    },
+    {
+      "Id": "23",
+      "Name": "Pragati Rathi",
+      "Vertical": "Public Relations",
+      "Email": null,
+      "Phone": null,
+      "Instagram": null,
+      "LinkedIn": null,
+      "Pic": null
+    },
+    {
+      "Id": "24",
+      "Name": "Abhishek Sahu",
+      "Vertical": "Media and Publicity",
+      "Email": null,
+      "Phone": null,
+      "Instagram": null,
+      "LinkedIn": null,
+      "Pic": null
+    },
+    {
+      "Id": "25",
+      "Name": "Aryan Jadon",
+      "Vertical": "Media and Publicity",
+      "Email": "aryanjadon1997gmail.com",
+      "Phone": "8569811596",
+      "Instagram": "https://www.instagram.com/arryyaaannnn",
+      "LinkedIn": "https://www.linkedin.com/in/aryan-jadon-6a5217212/",
+      "Pic": "/coreteam/28_Aryan_Jadon.jpg"
+    },
+    {
+      "Id": "26",
+      "Name": "Rahul Bokan",
+      "Vertical": "Security",
+      "Email": "rahulbokan90@gmail.com",
+      "Phone": "9588042584",
+      "Instagram": "https://www.instagram.com/rahulbokan85",
+      "LinkedIn": "https://www.linkedin.com/in/rahul-bokan-683a92255/",
+      "Pic": null
+    },
+    {
+      "Id": "27",
+      "Name": "Vidit",
+      "Vertical": "Security",
+      "Email": "viditmahla@gmail.com",
+      "Phone": "9982802188",
+      "Instagram": "https://www.instagram.com/viditmahla",
+      "LinkedIn": "https://www.linkedin.com/in/viditmahla",
+      "Pic": null
+    },
+    {
+      "Id": "28",
+      "Name": "Udaybhanu",
+      "Vertical": "Design",
+      "Email": null,
+      "Phone": null,
+      "Instagram": null,
+      "LinkedIn": null,
+      "Pic": null
+    },
+    {
+      "Id": "29",
+      "Name": "Siddhant Singh",
+      "Vertical": "Web and App",
+      "Email": null,
+      "Phone": "95554 09072",
+      "Instagram": null,
+      "LinkedIn": null,
+      "Pic": null
+    },
+    {
+      "Id": "30",
+      "Name": "Pushpender",
+      "Vertical": "Web and App",
+      "Email": "pushpender23@iitk.ac.in",
+      "Phone": "9257009192",
+      "Instagram": "https://www.instagram.com/pushpender.9257/",
+      "LinkedIn": "https://www.linkedin.com/in/pushpender-371176287/",
+      "Pic": "/coreteam/pushpender.png"
     }
   ]
 }

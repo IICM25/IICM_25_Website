@@ -45,10 +45,19 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
               Gallery
             </Link>
           </li>
+          <li className="my-2">
+            <Link href="/events" onClick={onClose} className="text-white text-[22px] hover:text-white">
+              Events and Competetions
+            </Link>
+          </li><li className="my-2">
+            <Link href="/places" onClick={onClose} className="text-white text-[22px] hover:text-white">
+              Places and Venues
+            </Link>
+          </li>
 
           <li className="my-2">
             <Link href="/contact" onClick={onClose} className="text-white text-[22px] hover:text-white">
-              Contact
+              Core Team
             </Link>
           </li>
 
