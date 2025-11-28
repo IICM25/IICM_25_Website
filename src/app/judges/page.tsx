@@ -79,27 +79,27 @@ const Judges = () => {
     {
       name: "Dr. A. Verma",
       title: "Dean of Cultural Affairs",
-      image: "/images/logos/judge1.jpg",
+      image: "/images/logos/judge1.png",
     },
     {
       name: "Ms. R. Iyer",
       title: "Renowned Choreographer",
-      image: "/images/logos/judge1.jpg",
+      image: "/images/logos/judge1.png",
     },
     {
       name: "Mr. K. Sharma",
       title: "Film Director",
-      image: "/images/logos/judge1.jpg",
+      image: "/images/logos/judge1.png",
     },
     {
       name: "Ms. T. Banerjee",
       title: "Classical Vocalist",
-      image: "/images/logos/judge1.jpg",
+      image: "/images/logos/judge1.png",
     },
     {
       name: "Mr. P. Das",
       title: "Cultural Critic",
-      image: "/images/logos/judge1.jpg",
+      image: "/images/logos/judge1.png",
     },
   ];
 
@@ -117,16 +117,16 @@ const Judges = () => {
       {/* === Background === */}
       <div className="fixed inset-0 -z-20">
         <Image
-          src="/images/background_image/mid.png"
+          src="/Elements/top2.png"
           alt="Background"
           fill
           priority
-          className="object-cover brightness-[0.7]"
+          className="object-cover brightness-[1]"
         />
       </div>
 
       {/* === Hero === */}
-      <section className="relative text-center pt-32 sm:pt-48 pb-12 sm:pb-20 px-4 z-10">
+      <section className="relative text-center pt-10   sm:pt-30  px-4 z-10">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -169,11 +169,6 @@ const Judges = () => {
           </motion.section>
         </AnimatePresence>
       </main>
-
-      {/* === Footer === */}
-      <footer className="mt-16 py-8 text-center text-white/70 bg-gradient-to-t from-black/60 to-transparent">
-        © 2025 Kreiva Kllanz | All Rights Reserved
-      </footer>
     </div>
   );
 };
