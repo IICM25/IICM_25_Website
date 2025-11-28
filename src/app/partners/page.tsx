@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { getSingleDoc } from '@/lib/firebaseFirestore';
 import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
 
 // === Icons (Moved Outside Component) ===
-// Optimization: Defined once at the module level, not re-created on every render.
 function TrophyIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg
@@ -45,30 +45,17 @@ const UsersIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
-// === Sponsor Data (Moved Outside Component) ===
-// Optimization: This constant data doesn't need to be part of the component.
-const sponsors = {
-  title: [{ name: "Stellar Corp", sponsor: "Stellar", level: "Title Sponsor" }],
-  gold: [
-    { name: "Quantum Inc.", sponsor: "Stellar", level: "Gold Sponsor" },
-    { name: "Nova Digital", sponsor: "Stellar", level: "Gold Sponsor" },
-    { name: "Apex Solutions", sponsor: "Stellar", level: "Gold Sponsor" },
-  ],
-  silver: [
-    { name: "Ecoverse", sponsor: "Stellar", level: "Silver Sponsor" },
-    { name: "Momentum AI", sponsor: "Stellar", level: "Silver Sponsor" },
-    { name: "Nexus Systems", sponsor: "Stellar", level: "Silver Sponsor" },
-    { name: "Helios Energy", sponsor: "Stellar", level: "Silver Sponsor" },
-  ],
-  partners: [
-    { name: "Orion Logistics", sponsor: "Stellar", level: "Partner" },
-    { name: "ByteWave", sponsor: "Stellar", level: "Partner" },
-    { name: "Zenith Media", sponsor: "Stellar", level: "Partner" },
-  ],
-};
+// === Sponsor Interface ===
+interface Sponsor {
+  Id?: string;
+  name: string;
+  sponsor?: string;
+  level?: string;
+  url?: string;
+  logo?: any; // firestore returns { url, ref } sometimes
+}
 
 // === Animation Variants (Moved Outside Component) ===
-// Optimization: Also a constant, no need to re-create on render.
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -79,15 +66,20 @@ const sectionVariants: Variants = {
 };
 
 interface SponsorCardProps {
+  id?: string;
   name: string;
-  sponsor: string;
-  // Optimization: Removed unused 'level' prop from the interface
+  sponsor?: string;
+  logoUrl?: string | null;
+  url?: string;
 }
 
-// === SponsorCard (Working Full Blur on Hover) ===
-const SponsorCard: React.FC<SponsorCardProps> = ({ name, sponsor }) => {
+// SponsorCard: uses logoUrl if provided, otherwise shows name.
+const SponsorCard: React.FC<SponsorCardProps> = ({ id, name, sponsor, logoUrl, url }) => {
   return (
-    <motion.div
+    <motion.a
+      href={url ?? "#"}
+      target={url ? "_blank" : "_self"}
+      rel={url ? "noopener noreferrer" : undefined}
       className={`relative aspect-square rounded-2xl overflow-hidden 
         bg-white/10 backdrop-blur-md
         border border-white/20 
@@ -103,38 +95,118 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ name, sponsor }) => {
       animate={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
       viewport={{ once: true, amount: 0.3 }}
     >
-      {/* Base static glass layer */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none" />
-
-      {/* Blur overlay */}
       <div className="absolute inset-0 bg-transparent transition-all duration-700 ease-in-out group-hover:backdrop-blur-[40px] group-hover:brightness-75 pointer-events-none" />
 
-      {/* Logo */}
-      <div className="absolute inset-0 flex items-center justify-center p-10 transition-all duration-700 ease-in-out group-hover:opacity-0 pointer-events-none">
-        <Image
-          src={`/images/logos/${sponsor.toLowerCase()}.png`}
-          alt={`${sponsor} logo`}
-          fill
-          className="object-contain"
-        />
+      <div className="absolute inset-0 flex items-center justify-center p-6 transition-all duration-700 ease-in-out group-hover:opacity-0 pointer-events-none">
+        {logoUrl ? (
+          <Image
+            src={logoUrl.startsWith("http") ? logoUrl : logoUrl.startsWith("/") ? logoUrl : `/images/logos/${logoUrl}`}
+            alt={`${name} logo`}
+            fill
+            className="object-contain"
+          />
+        ) : (
+          <div className="text-white/80 text-center select-none">
+            <span className="text-2xl font-semibold">{name}</span>
+          </div>
+        )}
       </div>
 
-      {/* Company Name */}
-      <div className="absolute inset-0 flex items-center justify-center text-center transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100 pointer-events-none">
+      <div className="absolute inset-0 flex items-center justify-center text-center transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100 pointer-events-none px-4">
         <span className="text-white text-3xl font-bold tracking-wide drop-shadow-[0_0_20px_rgba(255,255,255,0.7)] select-none">
           {name}
         </span>
       </div>
-    </motion.div>
+    </motion.a>
   );
 };
+
+// helper: normalize group from sponsor/level fields
+function normalizeGroup(s: Sponsor): "title" | "sponsors" | "MNP" | "" {
+  const raw = `${s.sponsor ?? ""} ${s.level ?? ""}`.toLowerCase();
+  if (raw.includes("title")) return "title";
+  if (raw.includes("mnp")) return "MNP";
+  // accept common misspellings / variations for sponsor
+  if (raw.includes("spon") || raw.includes("sponsor") || raw.includes("sponser")) return "sponsors";
+  return "";
+}
 
 // === Main Component ===
 const Partners = () => {
   const [activeTab, setActiveTab] = useState("sponsors");
+  const [sponsors, setSponsors] = useState<Sponsor[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [titleSponsor, setTitleSponsor] = useState<Sponsor | null>(null);
 
-  // All constants (icons, sponsors, variants) are now defined outside.
-  // The component is cleaner and only contains state and JSX.
+  // fetching logic left unchanged, only added console.log + post-fetch flexible processing
+  const fetchSponsors = async () => {
+    try {
+      const data = await getSingleDoc('WebContents', 'sponsors');
+
+      // log raw fetched data so you can inspect shape in console
+      console.log("fetched sponsors raw data:", data);
+
+      if (data && data.data) {
+        // keep fetching logic exactly as before
+        const arr = data.data as Sponsor[];
+        setSponsors(arr);
+
+        // detect title sponsor by looking at both sponsor and level fields (flexible)
+        const found = arr.find((s) => normalizeGroup(s) === "title");
+        setTitleSponsor(found ?? null);
+
+        setLoading(false);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchSponsors();
+  }, []);
+
+  // compute visible sponsors (exclude title and filter by activeTab) and map logo -> logoUrl
+  const visibleSponsors = sponsors
+    .filter((s) => {
+      // exclude the detected title sponsor
+      if (titleSponsor && s.Id && titleSponsor.Id) {
+        if (s.Id === titleSponsor.Id) return false;
+      } else if (titleSponsor && s.name === titleSponsor.name) {
+        // fallback check by name
+        return false;
+      }
+
+      // normalize the group for this sponsor and compare to activeTab
+      const group = normalizeGroup(s);
+      if (activeTab === "sponsors") return group === "sponsors";
+      if (activeTab.toLowerCase() === "mnp") return group === "MNP";
+      return false;
+    })
+    .map((s) => {
+      // produce a safe logoUrl for SponsorCard
+      let logoUrl: string | null = null;
+      if (s.logo) {
+        // if Firestore stored object like { url, ref }
+        if (typeof s.logo === "object" && s.logo !== null && typeof s.logo.url === "string") {
+          logoUrl = s.logo.url;
+        } else if (typeof s.logo === "string") {
+          logoUrl = s.logo;
+        }
+      }
+      return { ...s, logoUrl };
+    });
+
+  // title sponsor logoUrl extraction for render
+  const titleSponsorLogoUrl = (() => {
+    if (!titleSponsor) return null;
+    if (titleSponsor.logo) {
+      if (typeof titleSponsor.logo === "object" && titleSponsor.logo.url) return titleSponsor.logo.url;
+      if (typeof titleSponsor.logo === "string") return titleSponsor.logo;
+    }
+    return null;
+  })();
 
   return (
     <div className="font-sans overflow-x-hidden min-h-screen relative text-white">
@@ -172,7 +244,7 @@ const Partners = () => {
       </section>
 
       {/* === Navbar === */}
-      <div className="sticky top-0 py-3 sm:py-4 z-30 bg-black/30 backdrop-blur-md">
+      <div className="sticky top-0 py-3 sm:py-4 z-30 backdrop-blur-md">
         <div className="flex justify-center">
           <div className="flex items-center rounded-full bg-white/10 shadow-md border border-white/20 p-1 sm:p-2">
             {["sponsors", "MNP"].map((tab) => (
@@ -200,83 +272,75 @@ const Partners = () => {
       {/* === Content === */}
       <main className="px-4 sm:px-8 md:px-16 relative z-10">
         <AnimatePresence mode="wait">
-          {activeTab === "sponsors" ? (
-            <motion.div
-              key="sponsors"
-              initial="hidden"
-              animate="visible"
-              exit={{ opacity: 0, y: 10 }}
-              variants={sectionVariants}
-            >
-              {/* Title Sponsor */}
-              <motion.section
-                className="py-12 sm:py-16 text-center"
-                variants={sectionVariants}
-              >
-                <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">
-                  Title Sponsor
-                </h2>
-                <div className="max-w-xs sm:max-w-sm mx-auto">
-                  {/* Optimization: Using spread props {...s} passes name and sponsor */}
-                  <SponsorCard {...sponsors.title[0]} />
-                </div>
-              </motion.section>
+          <motion.div
+            key={activeTab}
+            initial="hidden"
+            animate="visible"
+            exit={{ opacity: 0, y: 10 }}
+            variants={sectionVariants}
+          >
+            {/* Title Sponsor — now rendered in the same grid layout as other cards so size matches */}
+            <motion.section className="py-12 sm:py-16 text-center" variants={sectionVariants}>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">
+                Title Sponsor
+              </h2>
 
-              {/* Gold Sponsors */}
-              <motion.section
-                className="py-12 sm:py-16 text-center"
-                variants={sectionVariants}
-              >
-                <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">
-                  Gold Sponsors
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                  {/* Optimization: Use a unique string (s.name) for the key, not the index */}
-                  {sponsors.gold.map((s) => (
-                    <SponsorCard key={s.name} {...s} />
-                  ))}
+              {loading ? (
+                <div className="max-w-6xl mx-auto">
+                  <div className="aspect-square rounded-2xl bg-white/5 flex items-center justify-center">
+                    <span className="text-gray-300">Loading...</span>
+                  </div>
                 </div>
-              </motion.section>
+              ) : titleSponsor ? (
+                // use same grid so the title sponsor card is identical size to other cards
+                
+                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 max-w-4xl mx-auto gap-8">
+                  <div></div>
+                  <SponsorCard
+                   id={titleSponsor.Id}
+                   name={titleSponsor.name}
+                   sponsor={titleSponsor.sponsor}
+                   logoUrl={titleSponsorLogoUrl}
+                   url={titleSponsor.url}
+                 />
+                </div>
 
-              {/* Silver Sponsors */}
-              <motion.section
-                className="py-12 sm:py-16 text-center"
-                variants={sectionVariants}
-              >
-                <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">
-                  Silver Sponsors
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                  {sponsors.silver.map((s) => (
-                    <SponsorCard key={s.name} {...s} />
-                  ))}
-                </div>
-              </motion.section>
-            </motion.div>
-          ) : (
-            <motion.section
-              key="partners"
-              className="py-12 sm:py-16 text-center"
-              variants={sectionVariants}
-            >
-              <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-teal-300">
-                Our MNP
+
+                
+              ) : (
+                <div className="max-w-6xl mx-auto text-gray-300">No title sponsor found</div>
+              )}
+            </motion.section>
+
+            {/* Remaining sponsors / MNP */}
+            <motion.section className="py-12 sm:py-16 text-center" variants={sectionVariants}>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-teal-300">
+                {activeTab === "sponsors" ? "Sponsors" : "MNP"}
               </h2>
               <p className="text-gray-300 mb-12">Together we create magic</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                {sponsors.partners.map((s) => (
-                  <SponsorCard key={s.name} {...s} />
-                ))}
-              </div>
+
+              {loading ? (
+                <div className="text-gray-300">Loading...</div>
+              ) : visibleSponsors.length === 0 ? (
+                <div className="text-gray-300">No {activeTab} found</div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                  {visibleSponsors.map((s: any) => (
+                    <SponsorCard
+                      key={s.Id ?? s.name}
+                      id={s.Id}
+                      name={s.name}
+                      sponsor={s.sponsor}
+                      logoUrl={s.logoUrl}
+                      url={s.url}
+                    />
+                  ))}
+                </div>
+              )}
             </motion.section>
-          )}
+          </motion.div>
         </AnimatePresence>
       </main>
-
-      {/* === Footer === */}
-      <footer className="mt-16 py-8 text-center text-white/70 bg-gradient-to-t from-black/60 to-transparent">
-        © 2025 Kreiva Kllanz | All Rights Reserved
-      </footer>
     </div>
   );
 };
