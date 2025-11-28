@@ -334,7 +334,7 @@ export default function MapClient() {
   }, [activeTab]);
 
   const currentTabTitle = activeTab === "eatery" ? "Eateries & Spots" : "Events & Venues";
-  const currentTabEmoji = activeTab === "eatery" ? "🍕" : "🏟️";
+  const currentTabEmoji = activeTab === "eatery" ? "" : "";
 
   const mapCenter: LatLng = useMemo(() => {
     if (selectedLocation) {
@@ -452,7 +452,7 @@ export default function MapClient() {
                   : "text-cyan-700 bg-white hover:bg-cyan-50 border-cyan-400/50 hover:shadow-lg"
                 }`}
             >
-              🍕 Eateries
+              Eateries
             </button>
             <button
               onClick={() => handleTabChange("venue")}
@@ -462,7 +462,7 @@ export default function MapClient() {
                   : "text-cyan-700 bg-white hover:bg-cyan-50 border-cyan-400/50 hover:shadow-lg"
                 }`}
             >
-              🏟️ Venues
+              Venues
             </button>
           </div>
 
