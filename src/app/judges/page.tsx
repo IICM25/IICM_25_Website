@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
+import { getSingleDoc } from "@/lib/firebaseFirestore";
 
 // === Icons ===
 const TrophyIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
@@ -24,84 +25,206 @@ const TrophyIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
-// === Glassy Judge Card ===
-// === Glassy Judge Card (Now Square) ===
+// === JudgeCard ===
 interface JudgeCardProps {
   name: string;
   title: string;
-  image: string;
+  image?: string | null; // optional now
 }
 
-const JudgeCard: React.FC<JudgeCardProps> = ({ name, title, image }) => (
-  <motion.div
-    className={`relative aspect-square rounded-2xl overflow-hidden
+const JudgeCard: React.FC<JudgeCardProps> = ({ name, title, image }) => {
+  const safeImage = image && image.trim().length > 0 ? image : null;
+  return (
+    <motion.div
+      className={`relative aspect-square rounded-2xl overflow-hidden
       bg-white/10 backdrop-blur-md
       border border-white/20 
       shadow-[0_8px_40px_rgba(255,255,255,0.1)]
       hover:shadow-[0_0_50px_rgba(255,255,255,0.3)]
       transition-all duration-700 ease-out group will-change-transform`}
-    whileHover={{
-      scale: 1.04,
-      transition: { type: "spring", stiffness: 120, damping: 15 },
-    }}
-    initial={{ opacity: 0, y: 25 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-  >
-    {/* Judge Image */}
-    <div className="absolute inset-0 overflow-hidden">
-      <Image
-        src={image}
-        alt={name}
-        fill
-        className="object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
-      />
-      {/* Frosted Blur Overlay */}
-      <div className="absolute inset-0 bg-transparent transition-all duration-700 ease-in-out group-hover:backdrop-blur-3xl group-hover:brightness-75" />
-    </div>
+      whileHover={{
+        scale: 1.04,
+        transition: { type: "spring", stiffness: 120, damping: 15 },
+      }}
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      {/* Judge Image or fallback */}
+      <div className="absolute inset-0 overflow-hidden bg-gray-800/40 flex items-center justify-center">
+        {safeImage ? (
+          <Image
+            src={safeImage}
+            alt={name}
+            unoptimized
+            fill
+            className="object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
+          />
+        ) : (
+          // simple fallback placeholder (initials)
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="w-28 h-28 rounded-full bg-gray-600/40 flex items-center justify-center text-white text-xl font-bold">
+              {name
+                .split(" ")
+                .map((s) => s[0])
+                .join("")
+                .slice(0, 2)
+                .toUpperCase()}
+            </div>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-transparent transition-all duration-700 ease-in-out group-hover:backdrop-blur-3xl group-hover:brightness-75" />
+      </div>
 
-    {/* Judge Name + Title */}
-    <div className="absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100">
-      <h3 className="text-white text-2xl sm:text-3xl font-bold tracking-wide drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]">
-        {name}
-      </h3>
-      <p className="text-gray-200 text-sm sm:text-base mt-2 font-medium">
-        {title}
-      </p>
-    </div>
-  </motion.div>
-);
-// === Page Component ===
-const Judges = () => {
-  const [activeTab] = useState("judges");
+      {/* Judge Name + Title */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100">
+        <h3 className="text-white text-2xl sm:text-3xl font-bold tracking-wide drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]">
+          {name}
+        </h3>
+        <p className="text-gray-200 text-sm sm:text-base mt-2 font-medium">
+          {title}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
 
-  const judges = [
-    {
-      name: "Dr. A. Verma",
-      title: "Dean of Cultural Affairs",
-      image: "/images/logos/judge1.png",
-    },
-    {
-      name: "Ms. R. Iyer",
-      title: "Renowned Choreographer",
-      image: "/images/logos/judge1.png",
-    },
-    {
-      name: "Mr. K. Sharma",
-      title: "Film Director",
-      image: "/images/logos/judge1.png",
-    },
-    {
-      name: "Ms. T. Banerjee",
-      title: "Classical Vocalist",
-      image: "/images/logos/judge1.png",
-    },
-    {
-      name: "Mr. P. Das",
-      title: "Cultural Critic",
-      image: "/images/logos/judge1.png",
-    },
-  ];
+// === Judges page ===
+interface Judge {
+  id: number;
+  name: string;
+  title: string;
+  image?: string;
+  Id?: string; // optional original Firestore string id if present
+}
+
+const fallbackJudges: Judge[] = [
+  { id: 1, name: "Dr. A. Verma", title: "Dean of Cultural Affairs", image: "/images/logos/judge1.png" },
+  { id: 2, name: "Ms. R. Iyer", title: "Renowned Choreographer", image: "/images/logos/judge1.png" },
+];
+
+const Judges: React.FC = () => {
+  const [judges, setJudges] = useState<Judge[]>(fallbackJudges);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const hasDataArray = (x: unknown): x is { data: unknown[] } =>
+      typeof x === "object" && x !== null && "data" in (x as object) && Array.isArray((x as { data?: unknown }).data);
+
+    const normalizeString = (s: unknown): string | undefined =>
+      typeof s === "string" && s.trim().length > 0 ? s.trim() : undefined;
+
+    const pickImageUrl = (img: unknown): string | undefined => {
+      // if it's already a non-empty string, return it
+      if (typeof img === "string" && img.trim().length > 0) return img.trim();
+      // if it's an object, try common keys
+      if (typeof img === "object" && img !== null) {
+        const o = img as Record<string, unknown>;
+        const candidates = ["url", "src", "image", "path", "Ref", "ref", "downloadURL", "downloadUrl"];
+        for (const k of candidates) {
+          const v = o[k];
+          if (typeof v === "string" && v.trim().length > 0) return v.trim();
+        }
+        // sometimes the object may be nested like { file: { url: "..." } }
+        for (const k of Object.keys(o)) {
+          const nested = o[k];
+          if (typeof nested === "object" && nested !== null) {
+            const nestedObj = nested as Record<string, unknown>;
+            for (const nk of candidates) {
+              const nv = nestedObj[nk];
+              if (typeof nv === "string" && nv.trim().length > 0) return nv.trim();
+            }
+          }
+        }
+      }
+      return undefined;
+    };
+
+    const fetchJudges = async () => {
+      try {
+        const raw = await getSingleDoc("WebContents", "judges");
+        if (!mounted) return;
+
+        console.log("🔥 Raw Judges Data from Firestore:", raw);
+
+        const arr: unknown[] = Array.isArray(raw) ? (raw as unknown[]) : hasDataArray(raw) ? raw.data : [];
+
+        const ignored: Array<{ idx: number; raw: unknown; reason: string }> = [];
+
+        const parsed: Judge[] = arr
+          .map((it, idx) => {
+            if (typeof it !== "object" || it === null) {
+              ignored.push({ idx, raw: it, reason: "not an object" });
+              return null;
+            }
+            const rec = it as Record<string, unknown>;
+
+            const name =
+              normalizeString(rec.name) ??
+              normalizeString(rec.Name) ??
+              undefined;
+
+            const title =
+              normalizeString(rec.title) ??
+              normalizeString(rec.designation) ??
+              undefined;
+
+            // handle image string or object (see pickImageUrl)
+            const imageCandidate =
+              rec.image ?? rec.img ?? rec.url ?? undefined;
+            const image = pickImageUrl(imageCandidate);
+
+            const Id = typeof rec.Id === "string" ? rec.Id : typeof rec.id === "string" ? rec.id : undefined;
+
+            if (!name) {
+              ignored.push({ idx, raw: rec, reason: "missing name" });
+              return null;
+            }
+            if (!title) {
+              ignored.push({ idx, raw: rec, reason: "missing title" });
+              return null;
+            }
+            // allow missing image (we render fallback), but still log if missing
+            if (!image) {
+              ignored.push({ idx, raw: rec, reason: "missing/invalid image (will show fallback)" });
+            }
+
+            return {
+              id: idx + 1,
+              name,
+              title,
+              image,
+              Id,
+            } as Judge;
+          })
+          .filter((x): x is Judge => x !== null);
+
+        console.log("✅ Parsed Judges:", parsed);
+        if (ignored.length > 0) {
+          console.warn("⚠️ Ignored / flagged judge rows (some may be missing image):", ignored);
+        }
+
+        if (mounted && parsed.length > 0) {
+          setJudges(parsed);
+        } else if (mounted) {
+          setJudges(fallbackJudges);
+        }
+      } catch (err) {
+        console.error("❌ Failed to fetch judges:", err);
+        if (mounted) setJudges(fallbackJudges);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    };
+
+    fetchJudges();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
@@ -161,11 +284,16 @@ const Judges = () => {
             <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">
               Our Esteemed Panel
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-              {judges.map((judge, index) => (
-                <JudgeCard key={index} {...judge} />
-              ))}
-            </div>
+
+            {loading ? (
+              <div className="text-center text-gray-300">Loading judges…</div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                {judges.map((judge) => (
+                  <JudgeCard key={judge.Id ?? judge.id} name={judge.name} title={judge.title} image={judge.image} />
+                ))}
+              </div>
+            )}
           </motion.section>
         </AnimatePresence>
       </main>
