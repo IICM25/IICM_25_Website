@@ -545,7 +545,6 @@
 //     </div>
 //   );
 // }
-
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -683,12 +682,17 @@ export default function MapClient() {
   useEffect(() => {
     let mounted = true;
 
+    // typed guard for shape { data: unknown[] }
+    type DocWithData = { data: unknown[] };
+    const hasDataArray = (x: unknown): x is DocWithData =>
+      typeof x === "object" && x !== null && "data" in (x as object) && Array.isArray((x as DocWithData).data);
+
     const fetchPlaces = async () => {
       setIsLoadingPlaces(true);
       try {
         const data = await getSingleDoc("WebContents", "places");
         // Expect: { data: Array(...) }
-        if (!mounted || !data || !Array.isArray((data as any).data)) {
+        if (!mounted || !data || !hasDataArray(data)) {
           // fallback: use minimal built-in list so map still shows something
           if (mounted) {
             setLocations(fallbackLocations);
@@ -698,7 +702,7 @@ export default function MapClient() {
           return;
         }
 
-        const rawItems: unknown[] = (data as any).data;
+        const rawItems: unknown[] = data.data;
 
         const parsed: Location[] = rawItems
           .map((rec: unknown, idx: number) => {
