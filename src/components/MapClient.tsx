@@ -544,7 +544,9 @@
 //       </div>
 //     </div>
 //   );
-// }"use client";
+// }
+
+"use client";
 
 import React, { useEffect, useMemo, useState } from "react";
 import { MapContainer, TileLayer, Marker, useMap, Popup } from "react-leaflet";
