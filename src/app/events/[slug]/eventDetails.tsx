@@ -64,6 +64,11 @@ export function EventDetails({ slug }: { slug: string }) {
     .map((d) => d.desc.content)
     .join("\n");
 
+  const guidelines = details
+    .filter((d) => d.flag.content === "guidelines")
+    .map((d) => d.desc.content)
+    .join("\n");
+
   const handleCompetitionClick = (competitionName: string) => {
     setActiveTab(TABS[2]);
     setOpenCompetition(competitionName);
@@ -110,7 +115,7 @@ export function EventDetails({ slug }: { slug: string }) {
         {activeTab === "Guidelines" && (
           <StaggeredFadeIn>
             <div className={poppins.className}>
-              <Guidelines />
+              <Guidelines guidelines={guidelines} />
             </div>
           </StaggeredFadeIn>
         )}
