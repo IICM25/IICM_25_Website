@@ -1,12 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-   domains: [
-      "firebasestorage.googleapis.com",
-      "storage.googleapis.com", // if you use this host anywhere
-      "lh3.googleusercontent.com" // common for avatars, optional
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+      },
+      {
+        protocol: "https",
+        hostname: "storage.googleapis.com", // optional extra firebase bucket format
+      },
     ],
+  },
 };
 
 export default nextConfig;
