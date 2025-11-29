@@ -86,7 +86,7 @@ const Header = () => {
               pathname === "/events" ? "text-[var(--secondary-color)]" : ""
             }`}
           >
-            Events and Competetions
+            Events 
           </Link>
         </li>
         {/* Other Links */}
@@ -106,7 +106,26 @@ const Header = () => {
               pathname === "/places" ? "text-[var(--secondary-color)]" : ""
             }`}
           >
-            Venues and Places
+            Venues 
+          </Link>
+        </li>
+         <li>
+          <Link
+            href="/partners"
+            className={`hover:text-[var(--secondary-color)] ${
+              pathname === "/partners" ? "text-[var(--secondary-color)]" : ""
+            }`}
+          >
+            Partners
+          </Link>
+        </li> <li>
+          <Link
+            href="/judges"
+            className={`hover:text-[var(--secondary-color)] ${
+              pathname === "/judges" ? "text-[var(--secondary-color)]" : ""
+            }`}
+          >
+            Judges
           </Link>
         </li>
 
