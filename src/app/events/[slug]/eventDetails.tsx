@@ -80,21 +80,28 @@ export function EventDetails({ slug }: { slug: string }) {
   return (
     <div className={`max-w-5xl mx-auto ${poppins.className}`}>
       {/* Tabs */}
-      <div className="border-b border-black/20 flex justify-center space-x-6 sm:space-x-8 mb-8">
-        {visibleTabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`font-title text-md sm:!text-lg md:!text-3xl  pb-3 transition-colors duration-300 ${poppins.className} ${
-              activeTab === tab
-                ? "text-white border-b-2 border-yellow-500 "
-                : "vintage-body hover:text-red"
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
+     <div className="border-b border-black/20 flex justify-center flex-wrap gap-x-6 gap-y-3 mb-8">
+  {visibleTabs.map((tab) => (
+    <button
+      key={tab}
+      onClick={() => setActiveTab(tab)}
+      className={`
+        font-title whitespace-nowrap rounded-md
+        px-3 py-1 sm:px-4 sm:py-2
+        transition-colors duration-200
+        ${poppins.className}
+        ${activeTab === tab
+          ? "text-white border-b-2 border-yellow-500 pb-2"
+          : "text-gray-300 hover:text-red-400"}
+        text-sm sm:text-base md:text-lg lg:text-2xl
+        md:lg:text-3xl
+        mx-1`}
+      >
+      {tab}
+    </button>
+  ))}
+</div>
+
 
       {/* Tab Content */}
       <div className={`prose prose-invert prose-lg max-w-none text-white/80 text-2xl bg-white/5 ${poppins.className}`}>
