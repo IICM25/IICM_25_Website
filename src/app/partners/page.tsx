@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { getSingleDoc } from '@/lib/firebaseFirestore';
+import { getSingleDoc } from "@/lib/firebaseFirestore";
 import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
 
 // === Icons (Moved Outside Component) ===
@@ -52,7 +52,7 @@ interface Sponsor {
   sponsor?: string;
   level?: string;
   url?: string;
-  logo?: any; // firestore returns { url, ref } sometimes
+  logo?: unknown; // unknown shape from Firestore (object | string | nested)
 }
 
 // === Animation Variants (Moved Outside Component) ===
@@ -94,6 +94,7 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ id, name, sponsor, logoUrl, u
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
       viewport={{ once: true, amount: 0.3 }}
+      aria-label={`${name} ${sponsor ? `— ${sponsor}` : ""} ${id ? `(${id})` : ""}`}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none" />
       <div className="absolute inset-0 bg-transparent transition-all duration-700 ease-in-out group-hover:backdrop-blur-[40px] group-hover:brightness-75 pointer-events-none" />
@@ -109,6 +110,7 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ id, name, sponsor, logoUrl, u
         ) : (
           <div className="text-white/80 text-center select-none">
             <span className="text-2xl font-semibold">{name}</span>
+            {sponsor && <div className="text-sm text-gray-300 mt-2">{sponsor}</div>}
           </div>
         )}
       </div>
@@ -132,34 +134,93 @@ function normalizeGroup(s: Sponsor): "title" | "sponsors" | "MNP" | "" {
   return "";
 }
 
+// safe extractor for logo URL from unknown shapes
+function getLogoUrl(logo: unknown): string | null {
+  if (!logo) return null;
+
+  // if it's a string
+  if (typeof logo === "string") {
+    const trimmed = logo.trim();
+    return trimmed.length > 0 ? trimmed : null;
+  }
+
+  // if it's an object, try to find common keys
+  if (typeof logo === "object" && logo !== null) {
+    const obj = logo as Record<string, unknown>;
+    // common candidates
+    const candidates = ["url", "src", "path", "downloadURL", "downloadUrl", "publicUrl", "public_url"];
+    for (const k of candidates) {
+      const v = obj[k];
+      if (typeof v === "string" && v.trim().length > 0) return v.trim();
+    }
+
+    // nested object search one level deep
+    for (const key of Object.keys(obj)) {
+      const sub = obj[key];
+      if (typeof sub === "object" && sub !== null) {
+        const subObj = sub as Record<string, unknown>;
+        for (const k of candidates) {
+          const v = subObj[k];
+          if (typeof v === "string" && v.trim().length > 0) return v.trim();
+        }
+      }
+    }
+  }
+
+  return null;
+}
+
 // === Main Component ===
-const Partners = () => {
-  const [activeTab, setActiveTab] = useState("sponsors");
+const Partners: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<"sponsors" | "MNP">("sponsors");
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [titleSponsor, setTitleSponsor] = useState<Sponsor | null>(null);
 
-  // fetching logic left unchanged, only added console.log + post-fetch flexible processing
+  // fetching logic — safe parsing without any
   const fetchSponsors = async () => {
     try {
-      const data = await getSingleDoc('WebContents', 'sponsors');
+      const raw = await getSingleDoc("WebContents", "sponsors");
+      console.log("fetched sponsors raw data:", raw);
 
-      // log raw fetched data so you can inspect shape in console
-      console.log("fetched sponsors raw data:", data);
-
-      if (data && data.data) {
-        // keep fetching logic exactly as before
-        const arr = data.data as Sponsor[];
-        setSponsors(arr);
-
-        // detect title sponsor by looking at both sponsor and level fields (flexible)
-        const found = arr.find((s) => normalizeGroup(s) === "title");
-        setTitleSponsor(found ?? null);
-
-        setLoading(false);
+      // Accept shapes: array directly OR { data: [...] }
+      let arr: unknown[] = [];
+      if (Array.isArray(raw)) {
+        arr = raw;
+      } else if (typeof raw === "object" && raw !== null && "data" in (raw as Record<string, unknown>) && Array.isArray((raw as Record<string, unknown>).data)) {
+        arr = ((raw as Record<string, unknown>).data as unknown[]) ?? [];
+      } else {
+        // unknown shape — keep empty and log
+        console.warn("Unexpected sponsors payload shape — expected array or { data: [...] }", raw);
+        arr = [];
       }
+
+      // Normalize entries to Sponsor[] as safely as possible
+      const parsed: Sponsor[] = arr
+        .map((item) => {
+          if (typeof item !== "object" || item === null) return null;
+          const it = item as Record<string, unknown>;
+          const name = typeof it.name === "string" ? it.name : typeof it.Name === "string" ? it.Name : undefined;
+          if (!name) return null;
+          const Id = typeof it.Id === "string" ? it.Id : typeof it.id === "string" ? it.id : undefined;
+          const sponsor = typeof it.sponsor === "string" ? it.sponsor : undefined;
+          const level = typeof it.level === "string" ? it.level : undefined;
+          const url = typeof it.url === "string" ? it.url : undefined;
+          const logo = it.logo ?? it.image ?? it.img ?? undefined;
+          return { Id, name, sponsor, level, url, logo } as Sponsor;
+        })
+        .filter((x): x is Sponsor => x !== null);
+
+      setSponsors(parsed);
+
+      // find title sponsor
+      const found = parsed.find((s) => normalizeGroup(s) === "title");
+      setTitleSponsor(found ?? null);
+
+      setLoading(false);
     } catch (e) {
-      console.error(e);
+      console.error("Failed to fetch sponsors:", e);
+      setLoading(false);
     }
   };
 
@@ -170,55 +231,29 @@ const Partners = () => {
   // compute visible sponsors (exclude title and filter by activeTab) and map logo -> logoUrl
   const visibleSponsors = sponsors
     .filter((s) => {
-      // exclude the detected title sponsor
-      if (titleSponsor && s.Id && titleSponsor.Id) {
-        if (s.Id === titleSponsor.Id) return false;
-      } else if (titleSponsor && s.name === titleSponsor.name) {
-        // fallback check by name
-        return false;
+      // exclude the detected title sponsor (use Id if present, otherwise name)
+      if (titleSponsor) {
+        if (titleSponsor.Id && s.Id && titleSponsor.Id === s.Id) return false;
+        if (!titleSponsor.Id && s.name === titleSponsor.name) return false;
       }
 
-      // normalize the group for this sponsor and compare to activeTab
       const group = normalizeGroup(s);
       if (activeTab === "sponsors") return group === "sponsors";
-      if (activeTab.toLowerCase() === "mnp") return group === "MNP";
-      return false;
+      return group === "MNP";
     })
     .map((s) => {
-      // produce a safe logoUrl for SponsorCard
-      let logoUrl: string | null = null;
-      if (s.logo) {
-        // if Firestore stored object like { url, ref }
-        if (typeof s.logo === "object" && s.logo !== null && typeof s.logo.url === "string") {
-          logoUrl = s.logo.url;
-        } else if (typeof s.logo === "string") {
-          logoUrl = s.logo;
-        }
-      }
+      const logoUrl = getLogoUrl(s.logo);
       return { ...s, logoUrl };
     });
 
   // title sponsor logoUrl extraction for render
-  const titleSponsorLogoUrl = (() => {
-    if (!titleSponsor) return null;
-    if (titleSponsor.logo) {
-      if (typeof titleSponsor.logo === "object" && titleSponsor.logo.url) return titleSponsor.logo.url;
-      if (typeof titleSponsor.logo === "string") return titleSponsor.logo;
-    }
-    return null;
-  })();
+  const titleSponsorLogoUrl = titleSponsor ? getLogoUrl(titleSponsor.logo) : null;
 
   return (
     <div className="font-sans overflow-x-hidden min-h-screen relative text-white">
       {/* === Background === */}
       <div className="fixed inset-0 -z-20">
-        <Image
-          src="/images/background_image/top.png"
-          alt="Background"
-          fill
-          priority
-          className="object-cover brightness-[0.65]"
-        />
+        <Image src="/images/background_image/top.png" alt="Background" fill priority className="object-cover brightness-[0.65]" />
       </div>
 
       {/* === Hero === */}
@@ -231,15 +266,8 @@ const Partners = () => {
         >
           Our Partners
         </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-base sm:text-lg md:text-xl mt-5 max-w-2xl mx-auto text-gray-300"
-        >
-          The visionaries who make{" "}
-          <span className="font-semibold text-[#FFD37F]">Kreiva Kllanz</span>{" "}
-          possible.
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-base sm:text-lg md:text-xl mt-5 max-w-2xl mx-auto text-gray-300">
+          The visionaries who make <span className="font-semibold text-[#FFD37F]">Inter IIT Cultural Meet 8.0</span> possible.
         </motion.p>
       </section>
 
@@ -250,18 +278,12 @@ const Partners = () => {
             {["sponsors", "MNP"].map((tab) => (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => setActiveTab(tab as "sponsors" | "MNP")}
                 className={`flex items-center gap-2 rounded-full px-4 sm:px-6 py-2 text-sm sm:text-base font-medium transition-all duration-300 ${
-                  activeTab === tab
-                    ? "text-yellow-800 bg-white shadow-md"
-                    : "text-gray-200 hover:text-yellow-400"
+                  activeTab === tab ? "text-yellow-800 bg-white shadow-md" : "text-gray-200 hover:text-yellow-400"
                 }`}
               >
-                {tab === "sponsors" ? (
-                  <TrophyIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                ) : (
-                  <UsersIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                )}
+                {tab === "sponsors" ? <TrophyIcon className="w-4 h-4 sm:w-5 sm:h-5" /> : <UsersIcon className="w-4 h-4 sm:w-5 sm:h-5" />}
                 <span className="capitalize">{tab}</span>
               </button>
             ))}
@@ -272,18 +294,10 @@ const Partners = () => {
       {/* === Content === */}
       <main className="px-4 sm:px-8 md:px-16 relative z-10">
         <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial="hidden"
-            animate="visible"
-            exit={{ opacity: 0, y: 10 }}
-            variants={sectionVariants}
-          >
-            {/* Title Sponsor — now rendered in the same grid layout as other cards so size matches */}
+          <motion.div key={activeTab} initial="hidden" animate="visible" exit={{ opacity: 0, y: 10 }} variants={sectionVariants}>
+            {/* Title Sponsor */}
             <motion.section className="py-12 sm:py-16 text-center" variants={sectionVariants}>
-              <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">
-                Title Sponsor
-              </h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">Title Sponsor</h2>
 
               {loading ? (
                 <div className="max-w-6xl mx-auto">
@@ -292,21 +306,11 @@ const Partners = () => {
                   </div>
                 </div>
               ) : titleSponsor ? (
-                // use same grid so the title sponsor card is identical size to other cards
-                
                 <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 max-w-4xl mx-auto gap-8">
-                  <div></div>
-                  <SponsorCard
-                   id={titleSponsor.Id}
-                   name={titleSponsor.name}
-                   sponsor={titleSponsor.sponsor}
-                   logoUrl={titleSponsorLogoUrl}
-                   url={titleSponsor.url}
-                 />
+                  <div />
+                  <SponsorCard id={titleSponsor.Id} name={titleSponsor.name} sponsor={titleSponsor.sponsor} logoUrl={titleSponsorLogoUrl} url={titleSponsor.url} />
+                  <div />
                 </div>
-
-
-                
               ) : (
                 <div className="max-w-6xl mx-auto text-gray-300">No title sponsor found</div>
               )}
@@ -314,9 +318,7 @@ const Partners = () => {
 
             {/* Remaining sponsors / MNP */}
             <motion.section className="py-12 sm:py-16 text-center" variants={sectionVariants}>
-              <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-teal-300">
-                {activeTab === "sponsors" ? "Sponsors" : "MNP"}
-              </h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-teal-300">{activeTab === "sponsors" ? "Sponsors" : "MNP"}</h2>
               <p className="text-gray-300 mb-12">Together we create magic</p>
 
               {loading ? (
@@ -325,15 +327,8 @@ const Partners = () => {
                 <div className="text-gray-300">No {activeTab} found</div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                  {visibleSponsors.map((s: any) => (
-                    <SponsorCard
-                      key={s.Id ?? s.name}
-                      id={s.Id}
-                      name={s.name}
-                      sponsor={s.sponsor}
-                      logoUrl={s.logoUrl}
-                      url={s.url}
-                    />
+                  {visibleSponsors.map((s) => (
+                    <SponsorCard key={s.Id ?? s.name} id={s.Id} name={s.name} sponsor={s.sponsor} logoUrl={s.logoUrl ?? null} url={s.url} />
                   ))}
                 </div>
               )}
