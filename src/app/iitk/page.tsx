@@ -1,253 +1,249 @@
-import React from "react";
+"use client"
+import React, { useState, useEffect } from "react";
 
 function AboutIITK() {
-  return (
-    <div className="font-sans text-gray-800">
-      {/* Hero Section */}
-      <section
-        className="relative bg-cover bg-center h-[80vh] flex items-center justify-center"
-        style={{
-          backgroundImage: "url('/images/iitk_image.png')",
-        }}
-      >
-        <div className="absolute inset-0 bg-black opacity-60"></div>
+  // Theme Colors
+  const theme = {
+    bg: "#cd7f32", // Deep ochre/orange
+    accent: "#1f4e5f", // Teal/Dark Cyan
+    textMain: "#fefae0", // Cream/Off-White
+    gold: "#FFD700", // Gold for borders
+  };
 
-        <div className="relative text-center text-white">
-          <h1 className="text-6xl font-bold mb-4 drop-shadow-lg">
-            IIT Kanpur
+  const stats = [
+    { title: "Excellence", desc: "Top Ranked Technical Institute" },
+    { title: "150+ Postdocs", desc: "Leading Innovation & Discovery" },
+    { title: "9500+ Students", desc: "With 1:1 UG:PG Students Ratio" },
+    { title: "570 Faculty", desc: "Across 20 Departments" },
+    { title: "1055 Acres", desc: "Fully Residential Campus" },
+    { title: "Community", desc: "Diverse & Talented Body" },
+    { title: "Global Impact", desc: "Alumni Changing the World" },
+  ];
+
+  // --- CAROUSEL LOGIC ---
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) setItemsPerView(4);
+      else if (window.innerWidth >= 768) setItemsPerView(2);
+      else setItemsPerView(1);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [currentIndex, itemsPerView]);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => 
+      prev >= stats.length - itemsPerView ? 0 : prev + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => 
+      prev === 0 ? stats.length - itemsPerView : prev - 1
+    );
+  };
+  // -----------------------
+
+  return (
+    <div className="min-h-screen font-serif text-[#fefae0] overflow-x-hidden">
+      
+      {/* =========================================
+          1. HERO SECTION
+         ========================================= */}
+      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/IITK-hero.avif')" }} 
+        >
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <div className="relative z-10 text-center p-8">
+          <h1 className="text-6xl md:text-8xl font-bold mb-4 tracking-wider drop-shadow-2xl text-white">
+            IIT KANPUR
           </h1>
-          <p className="text-2xl font-light tracking-wide">
+          <div className="h-1 w-80 mx-auto bg-[#cd7f32] mb-6"></div>
+          <p className="text-2xl md:text-3xl tracking-widest uppercase text-gray-200">
             Legacy of Excellence
           </p>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="bg-[#fefaf4] py-16 px-8 md:px-20">
-        <h2
-          className="text-4xl font-bold text-center mb-6"
-          style={{ color: "rgb(89,126,130)" }}
-        >
-          About IIT Kanpur
-        </h2>
-        <p className="max-w-4xl mx-auto text-lg leading-relaxed text-center mb-12 text-gray-700">
-          The Indian Institute of Technology Kanpur (IIT Kanpur) is one of the
-          premier engineering institutions in India. Established in 1959, IIT
-          Kanpur has played a pivotal role in providing the technical manpower
-          and know-how to the country for over six decades.
-          <br />
-          <br />
-          With a strong emphasis on academic excellence, research, and
-          innovation, IIT Kanpur continues to shape the future of technology and
-          engineering education in India and beyond.
-        </p>
+      {/* =========================================
+          2. MAIN CONTENT
+         ========================================= */}
+      <div 
+        className="relative w-full pt-20"
+        style={{ backgroundColor: theme.bg }}
+      >
+        <div
+            className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay"
+            style={{ backgroundImage: "url('/images/top.png')" }}
+        ></div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {[
-            {
-              title: "Excellence",
-              desc: "Ranked among India's top technical institutions",
-            },
-            {
-              title: "Research",
-              desc: "Leading innovation and groundbreaking discoveries",
-            },
-            {
-              title: "Community",
-              desc: "Diverse and talented student body",
-            },
-            {
-              title: "Global Impact",
-              desc: "Alumni making difference worldwide",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition border-t-4"
-              style={{ borderTopColor: "rgb(211,113,59)" }}
-            >
-              <h3
-                className="text-xl font-semibold mb-2"
-                style={{ color: "rgb(89,126,130)" }}
-              >
-                {item.title}
-              </h3>
-              <p className="text-gray-600">{item.desc}</p>
+        <div className="relative z-10">
+            
+            {/* Intro Text */}
+            <div className="max-w-4xl mx-auto text-center px-6 mb-20">
+                <h2 className="text-5xl font-bold mb-8 text-[#fefae0] inline-block pb-2 border-b border-[#fefae0]/30">
+                Where Academia Thrives
+                </h2>
+                <p className="text-xl leading-loose text-[#fefae0]/90">
+                Established in 1959, the Indian Institute of Technology Kanpur (IIT Kanpur) 
+                is a premier engineering institution. For over six decades, we have been the 
+                cradle of innovation.
+                </p>
             </div>
-          ))}
-        </div>
 
-        <blockquote
-          className="max-w-2xl mx-auto mt-10 italic text-lg text-center border-l-4 pl-4"
-          style={{
-            color: "rgb(211,113,59)",
-            borderColor: "rgb(223,165,83)",
-          }}
-        >
-            &quot;Freedom of thought and action is the cornerstone of our academic
-            philosophy&quot;
-        </blockquote>
-      </section>
+            {/* --- CAROUSEL STATS STRIP --- */}
+            <div className="w-full border-y border-[#fefae0]/30 bg-[#000000]/20 backdrop-blur-sm py-12 mb-24 relative group">
+                <div className="max-w-7xl mx-auto px-12 relative overflow-hidden">
+                    <div 
+                      className="flex transition-transform duration-700 ease-in-out"
+                      style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
+                    >
+                        {stats.map((item, index) => (
+                            <div 
+                                key={index} 
+                                className="flex-shrink-0 px-6 border-r border-[#fefae0]/20"
+                                style={{ width: `${100 / itemsPerView}%` }}
+                            >
+                                <div className="flex flex-col justify-center h-full">
+                                  <h3 className="text-3xl font-bold mb-2 leading-tight whitespace-nowrap">{item.title}</h3>
+                                  <p className="text-sm md:text-base opacity-80 font-light leading-snug">{item.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <button onClick={handlePrev} className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 hover:bg-white/10 rounded-full transition text-4xl">‹</button>
+                    <button onClick={handleNext} className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 hover:bg-white/10 rounded-full transition text-4xl">›</button>
+                </div>
+            </div>
 
-      {/* Leadership Section */}
-      <section className="py-16 px-8 md:px-20 bg-[#fffdf8]">
-        <h2
-          className="text-4xl font-bold text-center mb-10"
-          style={{ color: "rgb(89,126,130)" }}
-        >
-          Leadership Messages
-        </h2>
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Director */}
-          <div
-            className="bg-white rounded-xl shadow-lg p-8 border-t-4"
-            style={{ borderTopColor: "rgb(89,126,130)" }}
-          >
-              <h3
-                className="text-2xl font-semibold mb-2"
-                style={{ color: "rgb(89,126,130)" }}
-              >
-                Director&apos;s Message
-              </h3>
-            <p className="font-semibold">Prof. [Director Name]</p>
-            <p className="text-gray-600 mb-4">Director, IIT Kanpur</p>
-            <p className="text-gray-700 leading-relaxed">
-              Welcome to IIT Kanpur, where excellence meets innovation. Our
-              commitment remains steadfast — to nurture brilliant minds, foster
-              groundbreaking research, and create leaders who will shape the
-              future of our nation and the world.
-              <br />
-              <br />
-              <span
-                className="font-semibold"
-                style={{ color: "rgb(211,113,59)" }}
-              >
-                Together, we strive for excellence in every endeavor.
-              </span>
-            </p>
-          </div>
 
-          {/* Dean */}
-          <div
-            className="bg-white rounded-xl shadow-lg p-8 border-t-4"
-            style={{ borderTopColor: "rgb(223,165,83)" }}
-          >
-              <h3
-                className="text-2xl font-semibold mb-2"
-                style={{ color: "rgb(89,126,130)" }}
-              >
-                Dean&apos;s Message
-              </h3>
-            <p className="font-semibold">Prof. [Dean Name]</p>
-            <p className="text-gray-600 mb-4">
-              Dean of Academic Affairs, IIT Kanpur
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              At IIT Kanpur, we believe in holistic development that goes beyond
-              textbooks and classrooms. We empower students to become critical
-              thinkers, innovators, and problem solvers.
-              <br />
-              <br />
-              <span
-                className="font-semibold"
-                style={{ color: "rgb(211,113,59)" }}
-              >
-                Join us in this exciting journey of learning and growth.
-              </span>
-            </p>
-          </div>
-        </div>
-      </section>
+            {/* --- LEADERSHIP SECTION --- */}
+            <div className="max-w-7xl mx-auto px-6 mb-32">
+                <h2 className="text-4xl font-bold text-center mb-16 tracking-widest uppercase opacity-90">
+                     From The Desk Of Leadership
+                </h2>
+                <div className="grid md:grid-cols-2 gap-12 lg:gap-24 relative">
+                    <div className="hidden md:block absolute left-1/2 top-10 bottom-10 w-px bg-[#fefae0]/30"></div>
+                    {/* Director */}
+                    <div className="relative group">
+                        <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-[#fefae0]/50"></div>
+                        <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-[#fefae0]/50"></div>
+                        <div className="p-8 text-center">
+                            <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Director's Message</h3>
+                            <p className="font-bold italic mb-6 text-[#fefae0]/60">Prof. Manindra Agrawal</p>
+                            <blockquote className="text-xl leading-relaxed font-light italic relative">
+                                <span className="text-6xl absolute -top-8 -left-2 opacity-20 font-serif">“</span>
+                                Welcome to IIT Kanpur. Our commitment remains steadfast — to nurture brilliant minds, foster groundbreaking research, and create leaders who will shape the future.
+                                <span className="text-6xl absolute -bottom-10 right-0 opacity-20 font-serif">”</span>
+                            </blockquote>
+                        </div>
+                    </div>
+                    {/* Dean */}
+                    <div className="relative group mt-12 md:mt-0">
+                        <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-[#fefae0]/50"></div>
+                        <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-[#fefae0]/50"></div>
+                        <div className="p-8 text-center">
+                            <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Dean's Message</h3>
+                            <p className="font-bold italic mb-6 text-[#fefae0]/60">Prof. Ashoke De</p>
+                            <blockquote className="text-xl leading-relaxed font-light italic relative">
+                                <span className="text-6xl absolute -top-8 -left-2 opacity-20 font-serif">“</span>
+                                We believe in holistic development that goes beyond textbooks. We empower students to become critical thinkers, innovators, and problem solvers.
+                                <span className="text-6xl absolute -bottom-10 right-0 opacity-20 font-serif">”</span>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      {/* Legacy Section */}
-      <section className="py-16 px-8 md:px-20" style={{ background: "rgb(89,126,130,0.1)" }}>
-        <h2
-          className="text-4xl font-bold text-center mb-4"
-          style={{ color: "rgb(89,126,130)" }}
-        >
-          Legacy of IIT Kanpur
-        </h2>
-        <p className="text-center text-gray-700 mb-10">
-          Six decades of pioneering education, research, and innovation that
-          shaped modern India
-        </p>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-6xl mx-auto">
-          <img
-            src="/images/old_image.png"
-            alt="Historic Campus"
-            className="rounded-xl w-full md:w-1/2 shadow-md"
-          />
-          <div className="bg-white rounded-xl shadow p-6 md:w-1/2">
-            <h3
-              className="text-xl font-semibold mb-3"
-              style={{ color: "rgb(211,113,59)" }}
+            {/* --- TIMELINE --- */}
+            <div className="max-w-4xl mx-auto pb-32 px-6">
+                <h2 className="text-4xl font-bold text-center mb-16 text-[#fefae0]">
+                    Historic Milestones
+                </h2>
+                <div className="relative">
+                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#fefae0]/30 -translate-x-1/2"></div>
+                    <div className="md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-[#fefae0]/30"></div>
+                    <div className="space-y-12">
+                        {[
+                            { year: "1959", text: "Established with US Collaboration" },
+                            { year: "1963", text: "First Batch Graduates" },
+                            { year: "1972", text: "First Computer Centre in India" },
+                            { year: "2020", text: "Global Research Expansion" },
+                        ].map((item, index) => (
+                            <div key={index} className="relative flex flex-col md:flex-row items-center justify-between group">
+                                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-[#fefae0] rounded-full -translate-x-1/2 shadow-[0_0_10px_rgba(255,255,255,0.8)] z-10 group-hover:scale-125 transition-transform"></div>
+                                <div className="w-full flex md:justify-between pl-12 md:pl-0">
+                                    <div className={`md:w-[45%] ${index % 2 === 0 ? 'md:text-right' : 'hidden md:block md:invisible'}`}>
+                                        <h3 className="text-3xl font-bold text-[#fefae0]">{item.year}</h3>
+                                        <p className="text-[#fefae0]/80 text-lg">{item.text}</p>
+                                    </div>
+                                    <div className={`md:w-[45%] ${index % 2 !== 0 ? 'md:text-left' : 'hidden md:block md:invisible'}`}>
+                                        <h3 className="text-3xl font-bold text-[#fefae0]">{item.year}</h3>
+                                        <p className="text-[#fefae0]/80 text-lg">{item.text}</p>
+                                    </div>
+                                    <div className="md:hidden">
+                                         <h3 className="text-2xl font-bold text-[#fefae0]">{item.year}</h3>
+                                         <p className="text-[#fefae0]/80">{item.text}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* =========================================
+                3. NEW FOOTER SECTION
+               ========================================= */}
+            <footer 
+                className="relative py-16 overflow-hidden text-center border-t-4 border-double border-[#fefae0]/30"
+                style={{ backgroundColor: theme.accent }}
             >
-              A Historic Journey
-            </h3>
-            <p className="text-gray-700">
-              Established in 1959, IIT Kanpur was one of the first IITs to be
-              set up with international collaboration under the Kanpur
-              Indo-American Programme (KIAP). It has since become a cradle of
-              innovation and a symbol of excellence in engineering education.
-            </p>
-          </div>
-        </div>
+                 {/* Texture overlay for continuity */}
+                <div 
+                    className="absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay" 
+                    style={{ backgroundImage: "url('/images/top.png')" }}
+                ></div>
+                   {/* Retro Style Button */}
+                    <a
+                      href="https://www.iitk.ac.in/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block group relative"
+                    >
+                      
+                       {/* Button Shadow Offset */}
+                       <div className="absolute inset-0 bg-[#cd7f32]/50 translate-y-2 translate-x-2 group-hover:translate-y-1 group-hover:translate-x-1 transition-transform duration-300 rounded-sm"></div>
+                       
+                       {/* Main Button styled as a retro ticket/stamp */}
+                       <div 
+                        className="relative border-2 border-[#fefae0]/80 px-10 py-4 text-xl font-bold text-[#fefae0] transition-all duration-300 z-10 tracking-wider uppercase rounded-sm group-hover:-translate-y-1 group-hover:-translate-x-1"
+                        style={{ backgroundColor: theme.bg }}
+                       >
+                          Visit Official IITK Website
+                       </div>
+                    </a>
+                
+            </footer>
 
-        {/* Timeline */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <h3
-            className="text-3xl font-bold text-center mb-8"
-            style={{ color: "rgb(89,126,130)" }}
-          >
-            Historic Milestones
-          </h3>
-          <div
-            className="border-l-4 pl-6 space-y-6"
-            style={{ borderColor: "rgb(223,165,83)" }}
-          >
-            {[
-              {
-                year: 1959,
-                text: "IIT Kanpur established with support from USA",
-              },
-              { year: 1963, text: "First batch of students graduated" },
-              {
-                year: 1972,
-                text: "Computer Centre established – first in India",
-              },
-              { year: 1994, text: "Launched distance education initiatives" },
-              { year: 2020, text: "Expanded global research collaborations" },
-            ].map((item, i) => (
-              <div key={i}>
-                <h4
-                  className="font-bold text-xl"
-                  style={{ color: "rgb(211,113,59)" }}
-                >
-                  {item.year}
-                </h4>
-                <p className="text-gray-600">{item.text}</p>
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
-
-      {/* Vision Section */}
-      <section className="py-16 px-8 md:px-20 bg-[#fffdf8] text-center">
-        <h2
-          className="text-3xl font-bold mb-4"
-          style={{ color: "rgb(89,126,130)" }}
-        >
-          Our Vision
-        </h2>
-        <p className="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed">
-          To be a premier institution of global standing that creates and
-          disseminates knowledge, and provides leadership in technical
-          education, basic and applied research, innovation, entrepreneurship,
-          and related activities of relevance to India and the world.
-        </p>
-      </section>
+      </div>
     </div>
   );
 }
