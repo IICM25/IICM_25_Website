@@ -6,7 +6,7 @@ const EventsHubPage = () => {
   return (
     <section
       className="relative min-h-screen pt-32 pb-20 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/top.png')" }} // 🔹 change this path to your actual image
+      style={{ backgroundImage: "url('/Elements/top2.png')" }} // 🔹 change this path to your actual image
     >
       {/* Overlay for better text visibility */}
       {/* <div className="absolute inset-0 bg-black/10"></div> */}
