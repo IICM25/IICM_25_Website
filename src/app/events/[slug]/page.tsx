@@ -28,7 +28,7 @@ const IndividualEventPage = () => {
   return (
     <section
       className="min-h-screen pt-32 pb-20 bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/top.png')" }}
+      style={{ backgroundImage: "url('/Elements/top2.png')" }}
     >
       <div className="container mx-auto px-6 text-center">
         {/* <p className="text-lg font-semibold uppercase tracking-widest text-secondary">
