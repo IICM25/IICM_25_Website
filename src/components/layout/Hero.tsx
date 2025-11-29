@@ -75,7 +75,7 @@ export default function Home() {
             <div className="flex items-center flex-col justify-center gap-4">
               <div className="flex flex-col items-center justify-center gap-12">
                 {/* <div className="text-lg font-semibold">Loading background</div> */}
-                <Image src="/Elements/logo.png" alt="Loading" width={240} height={240} />
+                <Image src="/Elements/logo.png" alt="Loading" width={360} height={360} />
                 <div className="relative w-full flex items-center justify-center py-3 ">
                   {/* wrapper controlling size */}
                   <div className="relative text-center">
@@ -111,7 +111,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="relative z-20 max-w-6xl mx-auto px-6 md:px-8 lg:px-12 py-6 md:py-16 lg:py-20">
+            <div className="relative z-20 max-w-6xl mx-auto px-6 md:px-8 lg:px-12 py-6 md:py-16 lg:pt-30">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-10 justify-items-center">
                 {PHOTOS1.map((src, idx) => (
                   <div key={idx} className={`relative w-[220px] sm:w-[240px] md:w-[260px] lg:w-[280px] ${ROTATIONS[idx % ROTATIONS.length]}`}>
@@ -262,7 +262,7 @@ export default function Home() {
                 Events
               </h1>
 
-              <div className="vintage-body text-lg md:text-lg lg:text-lg leading-relaxed space-y-6 max-w-7xl">
+              <div className="vintage-body text-xl md:text-xl lg:text-[2.1vh] leading-relaxed space-y-6 max-w-7xl">
                 <p>
                   The Inter IIT Cultural Meet is the annual celebration of creativity and artistic brilliance across all Indian Institutes of Technology. It brings together some of the most talented students from premier institutes across the nation, offering a vibrant platform to express themselves through art, dance, drama, music, design, literature, and a wide array of other cultural forms.
                 </p>
@@ -337,7 +337,7 @@ export default function Home() {
       </div> */}
 
         {/* breathing space so next section doesn't overlap stripe */}
-        <div className="h-28 md:h-32 lg:h-64" />
+        <div className="h-28 md:h-32 lg:h-32" />
       </section>
       <section className="relative w-full overflow-visible bg-[#F3E1A0]">
         {/* background image */}

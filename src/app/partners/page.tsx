@@ -253,7 +253,7 @@ const Partners: React.FC = () => {
     <div className="font-sans overflow-x-hidden min-h-screen relative text-white">
       {/* === Background === */}
       <div className="fixed inset-0 -z-20">
-        <Image src="/images/background_image/top.png" alt="Background" fill priority className="object-cover brightness-[0.65]" />
+        <Image src="/Elements/top2.png" alt="Background" fill priority className="object-cover brightness-[0.65]" />
       </div>
 
       {/* === Hero === */}
