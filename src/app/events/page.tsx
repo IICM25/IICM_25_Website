@@ -13,7 +13,7 @@ const EventsHubPage = () => {
 
       {/* Main content */}
       <div className="relative container mx-auto px-6 text-center text-white">
-        <h1 className="font-title retro-font retro-outline select-none text-[3.6rem] md:text-[6rem] lg:text-[5rem] leading-none tracking-wider text-primary drop-shadow-lg">
+        <h1 className="font-['Playfair_Display',serif] text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#EEDCA5] drop-shadow-[0_3px_6px_rgba(0,0,0,0.4)]">
           Events & Competitions
         </h1>
 

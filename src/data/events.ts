@@ -36,37 +36,37 @@ export const eventsData: EventData[] = [
     slug: "comedic",
     title: "Comedic Arts Cup",
     category: "Cup Event",
-    imageUrl: "/events/comedy.jpg"
+    imageUrl: "/events/comedy.png"
   },
   {
     slug: "dance",
     title: "Dance Arts Cup",
     category: "Cup Event",
-    imageUrl: "/events/dance.jpeg"
+    imageUrl: "/events/dance.png"
   },
   {
     slug: "theatre",
     title: "Theatre Arts Cup",
     category: "Cup Event",
-    imageUrl: "/events/dramatics.jpg"
+    imageUrl: "/events/theatre.png"
   },
   {
     slug: "musicalarts",
     title: "Musical Arts Cup",
     category: "Cup Event",
-    imageUrl: "/events/music.jpeg"
+    imageUrl: "/events/music.png"
   },
   {
     slug: "finearts",
     title: "Fine Arts Cup",
     category: "Cup Event",
-    imageUrl: "/events/fineArts.jpg"
+    imageUrl: "/events/fineArts.png"
   },
   {
     slug: "filmmaking",
     title: "Film Making Cup",
     category: "Cup Event",
-    imageUrl: "/events/Photography.png"
+    imageUrl: "/events/film.png"
   },
   {
     slug: "digitalarts",
@@ -84,7 +84,7 @@ export const eventsData: EventData[] = [
     slug: "fashion",
     title: "Fashion Arts Cup",
     category: "Cup Event",
-    imageUrl: "/events/mnm.jpg"
+    imageUrl: "/events/fashion.jpg"
   },
   {
     slug: "culinary",
