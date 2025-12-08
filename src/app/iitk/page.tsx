@@ -414,6 +414,8 @@ function AboutIITK() {
                         <div className="p-8 text-center">
                             <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">{"Dean's Message"}</h3>
                             <p className="font-bold italic mb-6 text-[#fefae0]/60">Prof. Ashoke De</p>
+                            <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Dean's Message</h3>
+                            <p className="font-bold italic mb-6 text-[#fefae0]/60">Prof. Pratik Sen</p>
                             <blockquote className="text-xl leading-relaxed font-light italic relative">
                                 <span className="text-6xl absolute -top-8 -left-2 opacity-20 font-serif">“</span>
                                 We believe in holistic development that goes beyond textbooks. We empower students to become critical thinkers, innovators, and problem solvers.

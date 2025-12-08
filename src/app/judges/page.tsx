@@ -262,10 +262,10 @@ const Judges: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-base sm:text-lg md:text-xl mt-5 max-w-2xl mx-auto text-gray-300"
+          className="text-base vintage-title sm:text-lg md:text-xl mt-5 max-w-2xl mx-auto text-gray-300"
         >
           The masters who bring{" "}
-          <span className="font-semibold text-[#FFD37F]">wisdom and artistry</span>{" "}
+          <span className="font-semibold text-[#f1cc87]">wisdom and artistry</span>{" "}
           to every performance.
         </motion.p>
       </section>
@@ -281,7 +281,7 @@ const Judges: React.FC = () => {
             variants={sectionVariants}
             className="py-12 sm:py-16 text-center"
           >
-            <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">
+            <h2 className="font-['Playfair_Display',serif] text-3xl sm:text-4xl font-extrabold mb-8 text-[#f1c68a]">
               Our Esteemed Panel
             </h2>
 

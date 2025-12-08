@@ -266,8 +266,8 @@ const Partners: React.FC = () => {
         >
           Our Partners
         </motion.h1>
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-base sm:text-lg md:text-xl mt-5 max-w-2xl mx-auto text-gray-300">
-          The visionaries who make <span className="font-semibold text-[#FFD37F]">Inter IIT Cultural Meet 8.0</span> possible.
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="vintage-title text-base sm:text-lg md:text-xl mt-5 max-w-2xl mx-auto text-gray-300">
+          <span className=" text-amber-50"> The visionaries who make </span> <span className="font-semibold text-[#FFD37F]">Inter IIT Cultural Meet 8.0</span> <span className=" text-amber-50"> possible.</span>
         </motion.p>
       </section>
 
@@ -297,7 +297,7 @@ const Partners: React.FC = () => {
           <motion.div key={activeTab} initial="hidden" animate="visible" exit={{ opacity: 0, y: 10 }} variants={sectionVariants}>
             {/* Title Sponsor */}
             <motion.section className="py-12 sm:py-16 text-center" variants={sectionVariants}>
-              <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">Title Sponsor</h2>
+              <h2 className="font-['Playfair_Display',serif] text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">Title Sponsor</h2>
 
               {loading ? (
                 <div className="max-w-6xl mx-auto">
@@ -318,8 +318,7 @@ const Partners: React.FC = () => {
 
             {/* Remaining sponsors / MNP */}
             <motion.section className="py-12 sm:py-16 text-center" variants={sectionVariants}>
-              <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-teal-300">{activeTab === "sponsors" ? "Sponsors" : "MNP"}</h2>
-              <p className="text-gray-300 mb-12">Together we create magic</p>
+              <h2 className="font-['Playfair_Display',serif] text-3xl sm:text-4xl font-extrabold mb-4 text-teal-300">{activeTab === "sponsors" ? "Sponsors" : "MNP"}</h2>
 
               {loading ? (
                 <div className="text-gray-300">Loading...</div>

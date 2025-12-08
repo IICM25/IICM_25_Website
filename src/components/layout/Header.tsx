@@ -133,6 +133,8 @@ const Header = () => {
           <Link
             href="https://drive.google.com/file/d/1VUxhRSf0R2xDKwhzhKKDB2_uktCDeV6M/view?usp=drive_open"
             className="hover:text-[var(--secondary-color)]"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             RuleBook
           </Link>
@@ -144,7 +146,8 @@ const Header = () => {
         {/* <a href="https://whatsapp.com/channel/0029Vak8LmD9mrGWHTsPIR3r">
           <FontAwesomeIcon icon={faWhatsapp} className="hover:text-[var(--secondary-color)]" />
         </a> */}
-        <a href="https://www.instagram.com/interiit_culturals/">
+        <a href="https://www.instagram.com/interiit_culturals/" target="_blank"
+            rel="noopener noreferrer">
           <FontAwesomeIcon icon={faInstagram} className="hover:text-[var(--secondary-color)]" />
         </a>
         {/* <a href="https://twitter.com/antaragni">
@@ -153,7 +156,8 @@ const Header = () => {
         <a href="https://www.youtube.com/user/antaragniiitkanpur">
           <FontAwesomeIcon icon={faYoutube} className="hover:text-[var(--secondary-color)]" />
         </a> */}
-        <a href="https://www.linkedin.com/company/inter-iit-cultural-meet1/posts/?feedView=all">
+        <a href="https://www.linkedin.com/company/inter-iit-culturals/posts/?feedView=all" target="_blank"
+            rel="noopener noreferrer">
           <FontAwesomeIcon icon={faLinkedin} className="hover:text-[var(--secondary-color)]" />
         </a>
         {/* <a href="https://www.facebook.com/antaragni.iitk/">

@@ -167,10 +167,10 @@ const Contact = () => {
         <div className="flex-1 p-6 md:p-10 w-full md:ml-[25%] lg:ml-[20%] relative z-10">
           <h1
             className={`vintage-title text-center text-6xl sm:text-7xl font-extrabold
-                        text-white mb-12
+                        mb-12
                         [text-shadow:0_0_20px_rgba(255,192,203,0.9),0_0_40px_rgba(255,192,203,0.5)]`}
           >
-            OUR CORE TEAM
+            Core Team
           </h1>
 
           {/* single-year mode: no toggle */}
