@@ -1,5 +1,5 @@
 // "use client"
-// import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect, useCallback } from "react";
 
 // function AboutIITK() {
 //   // Theme Colors
@@ -35,24 +35,26 @@
 //     return () => window.removeEventListener("resize", handleResize);
 //   }, []);
 
+//   // make handleNext/handlePrev stable with useCallback so effects can depend on them safely
+//   const handleNext = useCallback(() => {
+//     setCurrentIndex((prev) =>
+//       prev >= stats.length - itemsPerView ? 0 : prev + 1
+//     );
+//   }, [itemsPerView, stats.length]);
+
+//   const handlePrev = useCallback(() => {
+//     setCurrentIndex((prev) =>
+//       prev === 0 ? Math.max(0, stats.length - itemsPerView) : prev - 1
+//     );
+//   }, [itemsPerView, stats.length]);
+
 //   useEffect(() => {
 //     const interval = setInterval(() => {
 //       handleNext();
 //     }, 3000);
 //     return () => clearInterval(interval);
-//   }, [currentIndex, itemsPerView]);
+//   }, [handleNext]); // now the linter is satisfied
 
-//   const handleNext = () => {
-//     setCurrentIndex((prev) => 
-//       prev >= stats.length - itemsPerView ? 0 : prev + 1
-//     );
-//   };
-
-//   const handlePrev = () => {
-//     setCurrentIndex((prev) => 
-//       prev === 0 ? stats.length - itemsPerView : prev - 1
-//     );
-//   };
 //   // -----------------------
 
 //   return (
@@ -144,7 +146,7 @@
 //                         <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-[#fefae0]/50"></div>
 //                         <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-[#fefae0]/50"></div>
 //                         <div className="p-8 text-center">
-//                             <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Director's Message</h3>
+//                             <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">{"Director's Message"}</h3>
 //                             <p className="font-bold italic mb-6 text-[#fefae0]/60">Prof. Manindra Agrawal</p>
 //                             <blockquote className="text-xl leading-relaxed font-light italic relative">
 //                                 <span className="text-6xl absolute -top-8 -left-2 opacity-20 font-serif">“</span>
@@ -158,8 +160,10 @@
 //                         <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-[#fefae0]/50"></div>
 //                         <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-[#fefae0]/50"></div>
 //                         <div className="p-8 text-center">
-//                             <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Dean's Message</h3>
+//                             <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Dean&#39;s Message</h3>
 //                             <p className="font-bold italic mb-6 text-[#fefae0]/60">Prof. Ashoke De</p>
+//                             <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Dean&#39;s Message</h3>
+//                             <p className="font-bold italic mb-6 text-[#fefae0]/60">Prof. Pratik Sen</p>
 //                             <blockquote className="text-xl leading-relaxed font-light italic relative">
 //                                 <span className="text-6xl absolute -top-8 -left-2 opacity-20 font-serif">“</span>
 //                                 We believe in holistic development that goes beyond textbooks. We empower students to become critical thinkers, innovators, and problem solvers.
@@ -186,7 +190,7 @@
 //                             { year: "1972", text: "First Computer Centre in India" },
 //                             { year: "2020", text: "Global Research Expansion" },
 //                         ].map((item, index) => (
-//                             <div key={index} className="relative flex flex-col md:flex-row items-center justify-between group">
+//                             <div key={index} className="relative flex flex-col md:flex-row itemscenter justify-between group">
 //                                 <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-[#fefae0] rounded-full -translate-x-1/2 shadow-[0_0_10px_rgba(255,255,255,0.8)] z-10 group-hover:scale-125 transition-transform"></div>
 //                                 <div className="w-full flex md:justify-between pl-12 md:pl-0">
 //                                     <div className={`md:w-[45%] ${index % 2 === 0 ? 'md:text-right' : 'hidden md:block md:invisible'}`}>
@@ -249,7 +253,6 @@
 // }
 
 // export default AboutIITK;
-
 "use client"
 import React, { useState, useEffect, useCallback } from "react";
 
@@ -307,6 +310,14 @@ function AboutIITK() {
     return () => clearInterval(interval);
   }, [handleNext]); // now the linter is satisfied
 
+  // Clamp currentIndex so it never becomes out-of-range when itemsPerView changes
+  useEffect(() => {
+    setCurrentIndex((ci) => {
+      const maxIndex = Math.max(0, stats.length - itemsPerView);
+      return Math.min(ci, maxIndex);
+    });
+  }, [itemsPerView, stats.length]);
+
   // -----------------------
 
   return (
@@ -361,7 +372,7 @@ function AboutIITK() {
             </div>
 
             {/* --- CAROUSEL STATS STRIP --- */}
-            <div className="w-full border-y border-[#fefae0]/30 bg-[#000000]/20 backdrop-blur-sm py-12 mb-24 relative group">
+            <div className="w-full border-y border-[#fefae0]/30 bg-[#000000]/20 backdrop-blur-sm py-12 mb-24 relative group" role="region" aria-label="IITK highlights carousel">
                 <div className="max-w-7xl mx-auto px-12 relative overflow-hidden">
                     <div 
                       className="flex transition-transform duration-700 ease-in-out"
@@ -380,8 +391,8 @@ function AboutIITK() {
                             </div>
                         ))}
                     </div>
-                    <button onClick={handlePrev} className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 hover:bg-white/10 rounded-full transition text-4xl">‹</button>
-                    <button onClick={handleNext} className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 hover:bg-white/10 rounded-full transition text-4xl">›</button>
+                    <button aria-label="Previous" onClick={handlePrev} className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 hover:bg-white/10 rounded-full transition text-4xl">‹</button>
+                    <button aria-label="Next" onClick={handleNext} className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 hover:bg-white/10 rounded-full transition text-4xl">›</button>
                 </div>
             </div>
 
@@ -398,7 +409,7 @@ function AboutIITK() {
                         <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-[#fefae0]/50"></div>
                         <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-[#fefae0]/50"></div>
                         <div className="p-8 text-center">
-                            <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">{"Director's Message"}</h3>
+                            <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Director&apos;s Message</h3>
                             <p className="font-bold italic mb-6 text-[#fefae0]/60">Prof. Manindra Agrawal</p>
                             <blockquote className="text-xl leading-relaxed font-light italic relative">
                                 <span className="text-6xl absolute -top-8 -left-2 opacity-20 font-serif">“</span>
@@ -407,15 +418,18 @@ function AboutIITK() {
                             </blockquote>
                         </div>
                     </div>
-                    {/* Dean */}
+                    {/* Dean(s) */}
                     <div className="relative group mt-12 md:mt-0">
                         <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-[#fefae0]/50"></div>
                         <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-[#fefae0]/50"></div>
                         <div className="p-8 text-center">
-                            <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">{"Dean's Message"}</h3>
-                            <p className="font-bold italic mb-6 text-[#fefae0]/60">Prof. Ashoke De</p>
-                            <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Dean's Message</h3>
+                            <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Dean&apos;s Message</h3>
+                            <p className="font-bold italic mb-2 text-[#fefae0]/60">Prof. Ashoke De</p>
+
+                            {/* If you intended two deans, label them separately — otherwise remove duplicate */}
+                            <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Associate Dean&apos;s Message</h3>
                             <p className="font-bold italic mb-6 text-[#fefae0]/60">Prof. Pratik Sen</p>
+
                             <blockquote className="text-xl leading-relaxed font-light italic relative">
                                 <span className="text-6xl absolute -top-8 -left-2 opacity-20 font-serif">“</span>
                                 We believe in holistic development that goes beyond textbooks. We empower students to become critical thinkers, innovators, and problem solvers.
@@ -442,17 +456,22 @@ function AboutIITK() {
                             { year: "1972", text: "First Computer Centre in India" },
                             { year: "2020", text: "Global Research Expansion" },
                         ].map((item, index) => (
-                            <div key={index} className="relative flex flex-col md:flex-row itemscenter justify-between group">
+                            <div key={index} className="relative flex flex-col md:flex-row items-center justify-between group">
                                 <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-[#fefae0] rounded-full -translate-x-1/2 shadow-[0_0_10px_rgba(255,255,255,0.8)] z-10 group-hover:scale-125 transition-transform"></div>
                                 <div className="w-full flex md:justify-between pl-12 md:pl-0">
-                                    <div className={`md:w-[45%] ${index % 2 === 0 ? 'md:text-right' : 'hidden md:block md:invisible'}`}>
+                                    {/* left block (shows on md+ for even indexes) */}
+                                    <div className={`md:w-[45%] ${index % 2 === 0 ? 'md:text-right md:block' : 'md:hidden'}`}>
                                         <h3 className="text-3xl font-bold text-[#fefae0]">{item.year}</h3>
                                         <p className="text-[#fefae0]/80 text-lg">{item.text}</p>
                                     </div>
-                                    <div className={`md:w-[45%] ${index % 2 !== 0 ? 'md:text-left' : 'hidden md:block md:invisible'}`}>
+
+                                    {/* right block (shows on md+ for odd indexes) */}
+                                    <div className={`md:w-[45%] ${index % 2 !== 0 ? 'md:text-left md:block' : 'md:hidden'}`}>
                                         <h3 className="text-3xl font-bold text-[#fefae0]">{item.year}</h3>
                                         <p className="text-[#fefae0]/80 text-lg">{item.text}</p>
                                     </div>
+
+                                    {/* mobile fallback */}
                                     <div className="md:hidden">
                                          <h3 className="text-2xl font-bold text-[#fefae0]">{item.year}</h3>
                                          <p className="text-[#fefae0]/80">{item.text}</p>
