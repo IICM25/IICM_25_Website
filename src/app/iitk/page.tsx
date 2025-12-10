@@ -165,10 +165,6 @@ function AboutIITK() {
                 <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-[#fefae0]/50"></div>
                 <div className="p-8 text-center">
                   <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Dean&apos;s Message</h3>
-                  <p className="font-bold italic mb-2 text-[#fefae0]/60">Prof. Ashoke De</p>
-
-                  {/* If you intended two deans, label them separately — otherwise remove duplicate */}
-                  <h3 className="text-2xl font-bold mb-1 text-[#fefae0]">Associate Dean&apos;s Message</h3>
                   <p className="font-bold italic mb-6 text-[#fefae0]/60">Prof. Pratik Sen</p>
 
                   <blockquote className="text-xl leading-relaxed font-light italic relative">

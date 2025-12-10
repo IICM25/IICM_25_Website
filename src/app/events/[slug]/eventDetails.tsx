@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import eventsData from "./events.json" assert { type: "json" }; // ✅ Import local JSON
+import eventsData from "./events.json" assert { type: "json" };
 import { StaggeredFadeIn } from "../../../components/FadeIn";
-import { Guidelines } from "../../../components/Guidelines";
 import { Overview } from "../../../components/Overview";
 import { Competitions } from "../../../components/Competitions";
-import { Contacts } from "../../../components/Contacts";
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
@@ -31,15 +29,12 @@ interface EventData {
   title: Inter;
 }
 
-const TABS = ["Overview", "Guidelines", "Competitions", "Contacts"];
-
 export function EventDetails({ slug }: { slug: string }) {
-  // 🔹 Get event data from local JSON
+  // get event data
   const data = eventsData as Record<string, { data: EventData[] }>;
   const event = data[slug];
   const details = Array.isArray(event?.data) ? event.data : [];
 
-  const [activeTab, setActiveTab] = useState(TABS[0]);
   const [openCompetition, setOpenCompetition] = useState<string | null>(null);
 
   const overview = details
@@ -59,91 +54,45 @@ export function EventDetails({ slug }: { slug: string }) {
       desc: d.desc.content,
     }));
 
-  const contacts = details
-    .filter((d) => d.flag.content === "contacts")
-    .map((d) => d.desc.content)
-    .join("\n");
-
-  const guidelines = details
-    .filter((d) => d.flag.content === "guidelines")
-    .map((d) => d.desc.content)
-    .join("\n");
-
   const handleCompetitionClick = (competitionName: string) => {
-    setActiveTab(TABS[2]);
     setOpenCompetition(competitionName);
+    // optional: scroll to competitions section
+    if (typeof window !== "undefined") {
+      document
+        .getElementById("competitions-section")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
   };
-
-  const visibleTabs =
-    slug === "MnM" ? TABS.filter((tab) => tab !== "Competitions") : TABS;
 
   return (
     <div className={`max-w-5xl mx-auto ${poppins.className}`}>
-      {/* Tabs */}
-     <div className="border-b border-black/20 flex justify-center flex-wrap gap-x-6 gap-y-3 mb-8">
-  {visibleTabs.map((tab) => (
-    <button
-      key={tab}
-      onClick={() => setActiveTab(tab)}
-      className={`
-        font-title whitespace-nowrap rounded-md
-        px-3 py-1 sm:px-4 sm:py-2
-        transition-colors duration-200
-        ${poppins.className}
-        ${activeTab === tab
-          ? "text-white border-b-2 border-yellow-500 pb-2"
-          : "text-gray-300 hover:text-red-400"}
-        text-sm sm:text-base md:text-lg lg:text-2xl
-        md:lg:text-3xl
-        mx-1`}
-      >
-      {tab}
-    </button>
-  ))}
-</div>
+      <div className="prose prose-invert prose-lg max-w-none text-white/80 bg-white/5">
+        {/* Overview section */}
+        <StaggeredFadeIn>
+          <div className={poppins.className}>
+            <Overview
+              content={overview}
+              title={title}
+              handleCompetitionClick={handleCompetitionClick}
+              competitions={competitions}
+              slug={slug}
+            />
+          </div>
+        </StaggeredFadeIn>
 
-
-      {/* Tab Content */}
-      <div className={`prose prose-invert prose-lg max-w-none text-white/80 text-2xl bg-white/5 ${poppins.className}`}>
-        {activeTab === "Overview" && (
+        {/* Competitions section below */}
+        {competitions.length > 0 && (
           <StaggeredFadeIn>
-            <div className={'${poppins.className}'}>
-              <Overview
-                content={overview}
-                title={title}
-                handleCompetitionClick={handleCompetitionClick}
-                competitions={competitions}
-                slug={slug}
-              />
-            </div>
-          </StaggeredFadeIn>
-        )}
-
-        {activeTab === "Guidelines" && (
-          <StaggeredFadeIn>
-            <div className={poppins.className}>
-              <Guidelines guidelines={guidelines} />
-            </div>
-          </StaggeredFadeIn>
-        )}
-
-        {activeTab === "Competitions" && (
-          <StaggeredFadeIn>
-            <div className={poppins.className}>
+            <section
+              id="competitions-section"
+              className={`${poppins.className} mt-5`}
+            >
               <Competitions
                 competitions={competitions}
                 openCompetition={openCompetition}
                 setOpenCompetition={setOpenCompetition}
               />
-            </div>
-          </StaggeredFadeIn>
-        )}
-
-        {activeTab === "Contacts" && (
-          <StaggeredFadeIn>
-            <div className={poppins.className}>
-              <Contacts contacts={contacts} />
-            </div>
+            </section>
           </StaggeredFadeIn>
         )}
       </div>

@@ -257,7 +257,7 @@ const Partners: React.FC = () => {
       </div>
 
       {/* === Hero === */}
-      <section className="relative text-center pt-28 sm:pt-48 pb-16 sm:pb-28 px-4 z-10">
+      <section className="relative text-center pt-28 sm:pt-32 pb-16 sm:pb-15 px-4 z-10">
         <motion.h1
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -296,7 +296,7 @@ const Partners: React.FC = () => {
         <AnimatePresence mode="wait">
           <motion.div key={activeTab} initial="hidden" animate="visible" exit={{ opacity: 0, y: 10 }} variants={sectionVariants}>
             {/* Title Sponsor */}
-            <motion.section className="py-12 sm:py-16 text-center" variants={sectionVariants}>
+            <motion.section className="py-12 sm:py-8 text-center" variants={sectionVariants}>
               <h2 className="font-['Playfair_Display',serif] text-3xl sm:text-4xl font-extrabold mb-8 text-[#FFB347]">Title Sponsor</h2>
 
               {loading ? (
