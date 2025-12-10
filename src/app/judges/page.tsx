@@ -301,7 +301,8 @@
 //   );
 // };
 
-// export default Judges;"use client";
+// export default Judges;
+"use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, easeOut, type Variants } from "framer-motion";
