@@ -192,9 +192,9 @@ export default function Schedule() {
         <div className="container mx-auto py-16">
           <div className="text-center pt-12 flex flex-col items-center">
             <h1 className="font-['Playfair_Display'] text-4xl sm:text-6xl md:text-7xl font-bold text-[#EEDCA5] p-5">
-              SCHEDULE
+              Schedule
             </h1>
-            <p className="font-['Playfair_Display'] text-xl max-w-[40vw] text-[#f1c68a] mb-8 text-center">
+            <p className="vintage-title text-xl max-w-[40vw] text-[#f1c68a] mb-8 text-center">
               Check the day wise schedule of events happening at Inter IIT Cultural Meet 8.0.
             </p>
           </div>
@@ -207,7 +207,7 @@ export default function Schedule() {
                 onClick={() => setActiveDay(d.day)}
                 className={`px-6 py-2 rounded-[5px] shadow-md transition-all duration-300 ${
                   activeDay === d.day
-                    ? "bg-blue-500/90 text-white hover:bg-blue-600"
+                    ? "bg-[#6b131f] text-white hover:bg-[#7a1a22]"
                     : "bg-white/20 text-white border border-white/20 hover:bg-white/30"
                 }`}
               >

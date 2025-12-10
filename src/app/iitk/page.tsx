@@ -183,38 +183,62 @@ function AboutIITK() {
               Historic Milestones
             </h2>
             <div className="relative">
+              {/* center line */}
               <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#fefae0]/30 -translate-x-1/2"></div>
               <div className="md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-[#fefae0]/30"></div>
+
               <div className="space-y-12">
                 {[
                   { year: "1959", text: "Established with US Collaboration" },
                   { year: "1963", text: "First Batch Graduates" },
                   { year: "1972", text: "First Computer Centre in India" },
                   { year: "2020", text: "Global Research Expansion" },
-                ].map((item, index) => (
-                  <div key={index} className="relative flex flex-col md:flex-row items-center justify-between group">
-                    <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-[#fefae0] rounded-full -translate-x-1/2 shadow-[0_0_10px_rgba(255,255,255,0.8)] z-10 group-hover:scale-125 transition-transform"></div>
-                    <div className="w-full flex md:justify-between pl-12 md:pl-0">
-                      {/* left block (shows on md+ for even indexes) */}
-                      <div className={`md:w-[45%] ${index % 2 === 0 ? 'md:text-right md:block' : 'md:hidden'}`}>
-                        <h3 className="text-3xl font-bold text-[#fefae0]">{item.year}</h3>
-                        <p className="text-[#fefae0]/80 text-lg">{item.text}</p>
-                      </div>
+                ].map((item, index) => {
+                  const isEven = index % 2 === 0; // 0,2,... will go on the RIGHT on desktop
 
-                      {/* right block (shows on md+ for odd indexes) */}
-                      <div className={`md:w-[45%] ${index % 2 !== 0 ? 'md:text-left md:block' : 'md:hidden'}`}>
-                        <h3 className="text-3xl font-bold text-[#fefae0]">{item.year}</h3>
-                        <p className="text-[#fefae0]/80 text-lg">{item.text}</p>
-                      </div>
+                  return (
+                    <div
+                      key={index}
+                      className="relative flex flex-col md:flex-row items-center justify-between group"
+                    >
+                      {/* timeline dot */}
+                      <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-[#fefae0] rounded-full -translate-x-1/2 shadow-[0_0_10px_rgba(255,255,255,0.8)] z-10 group-hover:scale-125 transition-transform"></div>
 
-                      {/* mobile fallback */}
-                      <div className="md:hidden">
-                        <h3 className="text-2xl font-bold text-[#fefae0]">{item.year}</h3>
+                      {/* DESKTOP layout */}
+                      {isEven ? (
+                        // even index: right side (like 1959, 1972)
+                        <div className="w-full hidden md:flex justify-between pl-12 md:pl-0">
+                          <div className="md:w-[45%]"></div>
+                          <div className="md:w-[45%] text-left">
+                            <h3 className="text-3xl font-bold text-[#fefae0]">
+                              {item.year}
+                            </h3>
+                            <p className="text-[#fefae0]/80 text-lg">{item.text}</p>
+                          </div>
+                        </div>
+                      ) : (
+                        // odd index: left side (like 1963, 2020)
+                        <div className="w-full hidden md:flex justify-between pl-12 md:pl-0">
+                          <div className="md:w-[45%] text-right">
+                            <h3 className="text-3xl font-bold text-[#fefae0]">
+                              {item.year}
+                            </h3>
+                            <p className="text-[#fefae0]/80 text-lg">{item.text}</p>
+                          </div>
+                          <div className="md:w-[45%]"></div>
+                        </div>
+                      )}
+
+                      {/* MOBILE fallback */}
+                      <div className="w-full md:hidden pl-12">
+                        <h3 className="text-2xl font-bold text-[#fefae0]">
+                          {item.year}
+                        </h3>
                         <p className="text-[#fefae0]/80">{item.text}</p>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
