@@ -68,7 +68,15 @@ const Header = () => {
             About IITK
           </Link>
         </li>
-
+        <li>
+          <Link
+            href="/schedule"
+            className={`hover:text-[var(--secondary-color)] ${pathname === "/schedule" ? "text-[var(--secondary-color)]" : ""
+              }`}
+          >
+            Schedule
+          </Link>
+        </li>
         <li>
           <Link
             href="/gallery"

@@ -50,6 +50,10 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
               Events 
             </Link>
           </li><li className="my-2">
+            <Link href="/schedule" onClick={onClose} className="text-white text-[22px] hover:text-white">
+              Schedule 
+            </Link>
+          </li><li className="my-2">
             <Link href="/places" onClick={onClose} className="text-white text-[22px] hover:text-white">
               Places 
             </Link>
