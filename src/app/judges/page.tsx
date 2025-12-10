@@ -301,33 +301,11 @@
 //   );
 // };
 
-// export default Judges;
-"use client";
+// export default Judges;"use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
+import { motion, easeOut, type Variants } from "framer-motion";
 import { getSingleDoc } from "@/lib/firebaseFirestore";
-
-// === Icons ===
-const TrophyIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-    <path d="M4 22h16" />
-    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21A3.98 3.98 0 0 1 8 19.95V22" />
-    <path d="M14 14.66V17c0 .55.47.98.97 1.21A3.98 3.98 0 0 0 16 19.95V22" />
-    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
-  </svg>
-);
 
 // === JudgeCard ===
 interface JudgeCardProps {
@@ -409,7 +387,10 @@ const Judges: React.FC = () => {
     let mounted = true;
 
     const hasDataArray = (x: unknown): x is { data: unknown[] } =>
-      typeof x === "object" && x !== null && "data" in (x as any) && Array.isArray((x as any).data);
+      typeof x === "object" &&
+      x !== null &&
+      "data" in (x as Record<string, unknown>) &&
+      Array.isArray((x as Record<string, unknown>).data);
 
     const normalizeString = (s: unknown): string | undefined =>
       typeof s === "string" && s.trim().length > 0 ? s.trim() : undefined;
