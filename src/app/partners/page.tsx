@@ -599,7 +599,7 @@ const Partners: React.FC = () => {
       </div>
 
       {/* === Hero === */}
-      <section className="relative text-center pt-28 sm:pt-48 pb-16 sm:pb-28 px-4 z-10">
+      <section className="relative text-center pt-28 sm:pt-32 pb-16 sm:pb-15 px-4 z-10">
         <motion.h1
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}

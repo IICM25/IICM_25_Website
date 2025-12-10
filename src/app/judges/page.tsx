@@ -480,8 +480,8 @@ const Judges: React.FC = () => {
         />
       </div>
 
-      {/* Hero */}
-      <section className="text-center pt-12 px-4 z-10 relative">
+      {/* === Hero === */}
+      <section className="relative text-center pt-26   sm:pt-32  px-4 z-10">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}

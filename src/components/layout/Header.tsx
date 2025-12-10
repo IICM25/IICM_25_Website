@@ -100,11 +100,12 @@ const Header = () => {
         {/* Other Links */}
         <li>
           <Link
-            href="/contact"
-            className={`hover:text-[var(--secondary-color)] ${pathname === "/contact" ? "text-[var(--secondary-color)]" : ""
-              }`}
+            href="https://drive.google.com/file/d/1VUxhRSf0R2xDKwhzhKKDB2_uktCDeV6M/view?usp=drive_open"
+            className="hover:text-[var(--secondary-color)]"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Core Team
+            RuleBook
           </Link>
         </li>
         <li>
@@ -117,16 +118,7 @@ const Header = () => {
             Venues 
           </Link>
         </li>
-         <li>
-          <Link
-            href="/partners"
-            className={`hover:text-[var(--secondary-color)] ${
-              pathname === "/partners" ? "text-[var(--secondary-color)]" : ""
-            }`}
-          >
-            Partners
-          </Link>
-        </li> <li>
+        <li>
           <Link
             href="/judges"
             className={`hover:text-[var(--secondary-color)] ${
@@ -136,15 +128,34 @@ const Header = () => {
             Judges
           </Link>
         </li>
-
         <li>
           <Link
-            href="https://drive.google.com/file/d/1VUxhRSf0R2xDKwhzhKKDB2_uktCDeV6M/view?usp=drive_open"
-            className="hover:text-[var(--secondary-color)]"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/gallery"
+            className={`relative hover:text-[var(--secondary-color)] ${
+              pathname === "/gallery" ? "text-[var(--secondary-color)]" : ""
+            } ${isRootPage ? "hover:text-[var(--secondary-color)]" : ""}`}
           >
-            RuleBook
+            Gallery
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/contact"
+            className={`hover:text-[var(--secondary-color)] ${pathname === "/contact" ? "text-[var(--secondary-color)]" : ""
+              }`}
+          >
+            Core Team
+          </Link>
+        </li>
+        
+        <li>
+          <Link
+            href="/partners"
+            className={`hover:text-[var(--secondary-color)] ${
+              pathname === "/partners" ? "text-[var(--secondary-color)]" : ""
+            }`}
+          >
+            Partners
           </Link>
         </li>
       </ul>
