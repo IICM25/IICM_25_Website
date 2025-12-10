@@ -31,7 +31,7 @@ interface EventData {
   title: Inter;
 }
 
-const TABS = ["Overview", "Guidelines", "Competitions", "Contacts"];
+const TABS = ["Overview", "Competitions"];
 
 export function EventDetails({ slug }: { slug: string }) {
   // 🔹 Get event data from local JSON
@@ -119,13 +119,13 @@ export function EventDetails({ slug }: { slug: string }) {
           </StaggeredFadeIn>
         )}
 
-        {activeTab === "Guidelines" && (
+        {/* {activeTab === "Guidelines" && (
           <StaggeredFadeIn>
             <div className={poppins.className}>
               <Guidelines guidelines={guidelines} />
             </div>
           </StaggeredFadeIn>
-        )}
+        )} */}
 
         {activeTab === "Competitions" && (
           <StaggeredFadeIn>
@@ -139,13 +139,13 @@ export function EventDetails({ slug }: { slug: string }) {
           </StaggeredFadeIn>
         )}
 
-        {activeTab === "Contacts" && (
+        {/* {activeTab === "Contacts" && (
           <StaggeredFadeIn>
             <div className={poppins.className}>
               <Contacts contacts={contacts} />
             </div>
           </StaggeredFadeIn>
-        )}
+        )} */}
       </div>
     </div>
   );
