@@ -420,29 +420,29 @@ const Judges: React.FC = () => {
           ? raw.data
           : [];
 
-        const parsed: Judge[] = arr
-          .map((it, idx) => {
-            if (typeof it !== "object" || it === null) return null;
+        const parsed = arr
+  .map((it, idx) => {
+    if (typeof it !== "object" || it === null) return null;
 
-            const rec = it as Record<string, unknown>;
+    const rec = it as Record<string, unknown>;
 
-            const name =
-              normalizeString(rec.name) ?? normalizeString(rec.Name);
-            const title =
-              normalizeString(rec.title) ?? normalizeString(rec.designation);
+    const name =
+      normalizeString(rec.name) ?? normalizeString(rec.Name);
+    const title =
+      normalizeString(rec.title) ?? normalizeString(rec.designation);
 
-            if (!name || !title) return null;
+    if (!name || !title) return null;
 
-            const image = pickImageUrl(rec.image ?? rec.img ?? rec.url);
+    const image = pickImageUrl(rec.image ?? rec.img ?? rec.url);
 
-            return {
-              id: idx + 1,
-              name,
-              title,
-              image,
-            };
-          })
-          .filter((x): x is Judge => x !== null);
+    return {
+      id: idx + 1,
+      name,
+      title,
+      image,
+    } as Judge;
+  })
+  .filter((x): x is Judge => x !== null);
 
         if (mounted) setJudges(parsed);
       } catch (error) {
