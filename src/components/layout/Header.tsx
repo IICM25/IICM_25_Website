@@ -70,6 +70,25 @@ const Header = () => {
         </li>
         <li>
           <Link
+            href="/schedule"
+            className={`hover:text-[var(--secondary-color)] ${pathname === "/schedule" ? "text-[var(--secondary-color)]" : ""
+              }`}
+          >
+            Schedule
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/gallery"
+            className={`relative hover:text-[var(--secondary-color)] ${
+              pathname === "/gallery" ? "text-[var(--secondary-color)]" : ""
+            } ${isRootPage ? "hover:text-[var(--secondary-color)]" : ""}`}
+          >
+            Gallery
+          </Link>
+        </li>
+        <li>
+          <Link
             href="/events"
             className={`hover:text-[var(--secondary-color)] ${
               pathname === "/events" ? "text-[var(--secondary-color)]" : ""
