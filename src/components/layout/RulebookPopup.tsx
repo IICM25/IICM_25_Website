@@ -42,7 +42,7 @@ export default function RulebookPopup() {
         </h2>
 
         <p className="text-center text-[#3f361a] mb-6 leading-relaxed">
-          Please read the guidelines carefully before participating in
+          Please read the guidelines carefully for
           <br />
           <span className="font-semibold">
             Inter IIT Cultural Meet 8.0
@@ -62,7 +62,7 @@ export default function RulebookPopup() {
               transition-all shadow-md
             "
           >
-            🎭 Cultural Events Rulebook
+            Inter IIT Cultural Meet 8.0 Rulebook
           </a>
         </div>
       </div>

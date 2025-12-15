@@ -721,7 +721,7 @@ const Judges: React.FC = () => {
       </div>
 
       {/* Hero */}
-      <section className="text-center pt-12 px-4 z-10 relative">
+      <section className="text-center pt-20 px-4 z-10 relative">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}

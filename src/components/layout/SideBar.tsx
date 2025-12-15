@@ -53,7 +53,7 @@ const SideBar: React.FC = () => {
   return (
     <>
       {/* Mobile Top Bar */}
-      <div className="md:hidden flex justify-between items-center p-4 bg-[#0c0b26] text-white shadow-lg">
+      <div className="md:hidden flex justify-center items-center p-4 bg-[#0c0b26] text-white shadow-lg">
         <button
           onClick={() => setIsOpen(true)}
           className="p-2 rounded-md hover:bg-white/10 text-2xl"
@@ -64,7 +64,7 @@ const SideBar: React.FC = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-transparent transform transition-transform duration-300 z-50 
+        className={`fixed top-10 left-0 h-full w-64 bg-transparent transform transition-transform duration-300 z-50 
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:w-1/4 lg:w-1/5`}
       >
         <div className="flex justify-between items-center p-6 md:hidden">
