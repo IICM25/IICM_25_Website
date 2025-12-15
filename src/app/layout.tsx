@@ -3,8 +3,11 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-
+import { Analytics } from '@vercel/analytics/next';
+ 
 import "leaflet/dist/leaflet.css";
+import ChatbotButton from "@/components/layout/ChatbotButton";
+import RulebookPopup from "@/components/layout/RulebookPopup";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,6 +36,9 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow overflow-x-hidden">
           {children}
+          <Analytics />
+          <RulebookPopup />
+          <ChatbotButton />
         </main>
         {/* <Footer /> */}
       </body>
