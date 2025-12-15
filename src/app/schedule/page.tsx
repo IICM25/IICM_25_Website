@@ -191,7 +191,7 @@ export default function Schedule() {
       <div className="min-h-screen">
         <div className="container mx-auto py-16">
           <div className="text-center pt-12 flex flex-col items-center">
-            <h1 className="font-['Playfair_Display'] text-4xl sm:text-6xl md:text-7xl font-bold text-[#EEDCA5] p-5">
+            <h1 className="drop-shadow-[0_3px_6px_rgba(0,0,0,0.4)] font-['Playfair_Display'] text-4xl sm:text-6xl md:text-7xl font-bold text-[#EEDCA5] p-5">
               Schedule
             </h1>
             <p className="vintage-title text-xl max-w-[40vw] text-[#f1c68a] mb-8 text-center">

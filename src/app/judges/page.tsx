@@ -726,7 +726,7 @@ const Judges: React.FC = () => {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, type: "spring", stiffness: 120 }}
-          className="font-['Playfair_Display'] text-4xl sm:text-6xl md:text-7xl font-bold text-[#EEDCA5]"
+          className="drop-shadow-[0_3px_6px_rgba(0,0,0,0.4)] font-['Playfair_Display'] text-4xl sm:text-6xl md:text-7xl font-bold text-[#EEDCA5]"
         >
           Meet the Judges
         </motion.h1>

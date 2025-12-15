@@ -828,7 +828,7 @@ export default function MapClient() {
 
       <div className="w-full md:w-1/2 md:pl-4 overflow-hidden mt-16">
         <div className="bg-white/15  border-3 border-yellow-600 rounded-2xl shadow-2xl p-6 min-h-[45vh] md:h-full flex flex-col overflow-hidden">
-          <div className="flex mb-6 space-x-2">
+          <div className="flex mb-6 space-x-2 font-[playfair_display]">
             <button
               onClick={() => handleTabChange("eatery")}
               className={`py-3 px-6 text-base md:text-lg font-extrabold transition-all duration-300 focus:outline-none flex-1 rounded-lg border-2
@@ -851,11 +851,11 @@ export default function MapClient() {
             </button>
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-gray-900 border-b pb-2">
+          <h2 className="text-2xl md:text-3xl font-[Playfair_Display] drop-shadow-[0_3px_6px_rgba(0,0,0,0.4)] mb-4 text-gray-900 border-b pb-2">
             {currentTabTitle}
           </h2>
 
-          <div className="overflow-y-auto flex-grow pr-2 space-y-3 md:space-y-4 mt-4">
+          <div className="overflow-y-auto font-[Playfair_Display] flex-grow pr-2 space-y-3 md:space-y-4 mt-4">
             {isLoadingPlaces ? (
               <div className="text-center p-6">Loading locations…</div>
             ) : (
