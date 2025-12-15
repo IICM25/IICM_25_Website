@@ -23,6 +23,7 @@ interface TeamMember {
   Id: string;
   Name: string;
   Vertical: string;
+  Designation: string;
   Email?: string;
   Phone?: string;
   LinkedIn?: string;
@@ -47,7 +48,7 @@ const normalizeMember = (raw: unknown): TeamMember => {
   const linkedIn = get(["LinkedIn", "linkedin"]) as string | undefined;
   const instagram = get(["Instagram", "instagram"]) as string | undefined;
   const facebook = get(["Facebook", "facebook"]) as string | undefined;
-
+  const designation = String(get(["Designation", "designation"]) ?? "");
   // Pic can be object {url,..} or string path
   let picObj: Pic | undefined;
   const picRaw = get(["Pic", "pic", "imageUrl", "localImage"]);
@@ -61,11 +62,11 @@ const normalizeMember = (raw: unknown): TeamMember => {
       if (url) picObj = { ref: String(ref), url: String(url) };
     }
   }
-
   return {
     Id: id,
     Name: name,
     Vertical: vertical,
+    Designation: designation,
     Email: email,
     Phone: phone,
     LinkedIn: linkedIn,
@@ -74,7 +75,7 @@ const normalizeMember = (raw: unknown): TeamMember => {
     // prefer returning a simple string URL for Pic to keep usage simple in UI
     Pic: picObj ? picObj.url : undefined,
   };
-};
+  };
 
 const Contact = () => {
   const [coreTeam, setCoreTeam] = useState<TeamMember[]>([]);
@@ -114,17 +115,18 @@ const Contact = () => {
   }, []);
 
   const sections = [
-    { id: "t1", title: "Overall Coordinators" },
-    { id: "t2", title: "Hospitality" },
-    { id: "t3", title: "Events" },
-    { id: "t4", title: "Finance" },
-    { id: "t5", title: "Show Management" },
-    { id: "t6", title: "Marketing" },
-    { id: "t7", title: "Public Relations" },
-    { id: "t8", title: "Media and Publicity" },
-    { id: "t9", title: "Security" },
-    { id: "t10", title: "Design" },
-    { id: "t11", title: "Web and App" },
+    {id: "t1", title: "Faculty Advisors" },
+    { id: "t2", title: "Overall Coordinators" },
+    { id: "t3", title: "Hospitality" },
+    { id: "t4", title: "Events" },
+    { id: "t5", title: "Finance" },
+    { id: "t6", title: "Show Management" },
+    { id: "t7", title: "Marketing" },
+    { id: "t8", title: "Public Relations" },
+    { id: "t9", title: "Media and Publicity" },
+    { id: "t10", title: "Security" },
+    { id: "t11", title: "Design" },
+    { id: "t12", title: "Web and App" },
   ];
 
   // Helper: flexible matching between member.Vertical and section title/match

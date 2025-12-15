@@ -4,17 +4,18 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const sections = [
-  { id: "t1", label: "Overall Coordinators" },
-  { id: "t2", label: "Hospitality" },
-  { id: "t3", label: "Events" },
-  { id: "t4", label: "Finance" },
-  { id: "t5", label: "Show Management" },
-  { id: "t6", label: "Marketing" },
-  { id: "t7", label: "Public Relations" },
-  { id: "t8", label: "Media and Publicity" },
-  { id: "t9", label: "Security" },
-  { id: "t10", label: "Design" },
-  { id: "t11", label: "Web and App" },
+  { id: "t1", label: "Faculty Advisors" },
+  { id: "t2", label: "Overall Coordinators" },
+  { id: "t3", label: "Hospitality" },
+  { id: "t4", label: "Events" },
+  { id: "t5", label: "Finance" },
+  { id: "t6", label: "Show Management" },
+  { id: "t7", label: "Marketing" },
+  { id: "t8", label: "Public Relations" },
+  { id: "t9", label: "Media and Publicity" },
+  { id: "t10", label: "Security" },
+  { id: "t11", label: "Design" },
+  { id: "t12", label: "Web and App" },
 ];
 
 const SideBar: React.FC = () => {

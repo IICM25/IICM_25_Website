@@ -1,6 +1,40 @@
 {
   "current": [
     {
+    "Id": "1",
+    "Name": "Prof. Pratik Sen",
+    "Vertical": "Faculty Advisors",
+    "Designation": "Chairman, Inter IIT Cultural Board",
+    "Pic": "/coreteam/pratiksen.jpg"
+  },
+  {
+    "Id": "2",
+    "Name": "Prof. Arunabh Meshram",
+    "Vertical": "Faculty Advisors",
+    "Designation": "Convenor, Inter IIT Cultural Board",
+    "Pic": "/coreteam/arunabh.jpg"
+  },
+  {
+    "Id": "3",
+    "Name": "Prof. Sagar Chakraborty",
+    "Vertical": "Faculty Advisors",
+    "Designation": "Chairman, Cultural Meet Advisory Committee",
+    "Pic": "/coreteam/sagar.jpeg"
+  },
+  {
+    "Id": "4",
+    "Name": "Prof. Dipin S. Pillai",
+    "Vertical": "Faculty Advisors",
+    "Designation": "Deputy Chair (Finance), Cultural Meet Advisory Committee",
+    "Pic": "/coreteam/dipin.jpeg"
+  },
+  {
+    "Id": "5",
+    "Name": "Prof. Namrata Singh",
+    "Vertical": "Faculty Advisors",
+    "Designation": "Deputy Chair (Events), Cultural Meet Advisory Committee",
+    "Pic": "/coreteam/Namrata.jpg"
+  },{
       "Id": "1",
       "Name": "Anish Sahu",
       "Vertical": "Overall Coordinators",

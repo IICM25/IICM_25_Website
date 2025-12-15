@@ -23,6 +23,7 @@ interface TeamMember {
   Instagram?: string;
   Facebook?: string;
   Twitter?: string;
+  Designation: string;
   Pic?: Pic | string;
 }
 
@@ -100,30 +101,30 @@ const ContactCard: React.FC<ContactCardProps> = ({ member }) => {
 
       {/* info overlay */}
       <div
-        className={`absolute left-[6px] right-[6px] bottom-2 flex flex-col bg-gradient-to-r from-white/20 via-white/100 to-white/20
- items-center z-30 transition-all duration-500
+        className={`absolute bottom-4 flex flex-col items-center z-30 transition-all duration-500
           ${
             showInfo
               ? "opacity-100 scale-100"
               : "opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100"
           }`}
       >
-        <p className="text-[#6b131f] font-semibold text-sm tracking-wide uppercase text-center drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]">
+        <p className="text-white font-semibold text-sm tracking-wide uppercase text-center drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]">
           {member.Name}
           <br />
-          <span className="font-light text-xs opacity-80">
-            {member.Vertical}
-          </span>
+          <span className="font-light text-xs px-6 opacity-80">
+  {member.Designation ? member.Designation : member.Vertical}
+</span>
+
         </p>
 
         {/* social icons */}
         <ul className="flex gap-2 mt-2">
-          <li className="bg-[#6b131f] rounded">{renderIcon(<FaPhone size={14} />, member.Phone ? `tel:${member.Phone}` : undefined)}</li>
-          <li className="bg-[#6b131f] rounded">{renderIcon(<FaEnvelope size={14} />, member.Email ? `mailto:${member.Email}` : undefined)}</li>
-          {member.LinkedIn && <li className="bg-[#6b131f] rounded">{renderIcon(<FaLinkedin size={14} />, member.LinkedIn)}</li>}
-          {member.Instagram && <li className="bg-[#6b131f] rounded">{renderIcon(<FaInstagram size={14} />, member.Instagram)}</li>}
-          {member.Facebook && <li className="bg-[#6b131f] rounded">{renderIcon(<FaFacebook size={14} />, member.Facebook)}</li>}
-          {member.Twitter && <li className="bg-[#6b131f] rounded">{renderIcon(<FaTwitter size={14} />, member.Twitter)}</li>}
+          <li>{renderIcon(<FaPhone size={14} />, member.Phone ? `tel:${member.Phone}` : undefined)}</li>
+          <li>{renderIcon(<FaEnvelope size={14} />, member.Email ? `mailto:${member.Email}` : undefined)}</li>
+          {member.LinkedIn && <li>{renderIcon(<FaLinkedin size={14} />, member.LinkedIn)}</li>}
+          {member.Instagram && <li>{renderIcon(<FaInstagram size={14} />, member.Instagram)}</li>}
+          {member.Facebook && <li>{renderIcon(<FaFacebook size={14} />, member.Facebook)}</li>}
+          {member.Twitter && <li>{renderIcon(<FaTwitter size={14} />, member.Twitter)}</li>}
         </ul>
       </div>
     </div>
