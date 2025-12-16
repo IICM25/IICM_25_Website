@@ -83,11 +83,11 @@
       "Id": "5",
       "Name": "Mausam Kumawat",
       "Vertical": "Hospitality",
-      "Email": null,
+      "Email": "mausamk22@iitk.ac.in",
       "Phone": "8209781453",
       "Instagram": "https://www.instagram.com/mausamkumawat",
       "LinkedIn": "https://www.linkedin.com/in/mausam-kumawat-41b5bb267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      "Pic": null
+      "Pic": "/coreteam/Mausam.jpg"
     },
     {
       "Id": "6",
@@ -137,7 +137,7 @@
       "Phone": "9771060504",
       "Instagram": "https://www.instagram.com/aanand_me/",
       "LinkedIn": "https://www.linkedin.com/in/ashutoshanandmehta/",
-      "Pic": "/coreteam/10_Ashutosh_Anand.jpg"
+      "Pic": "/coreteam/Ashutosh.jpg"
     },
     {
       "Id": "11",
@@ -167,7 +167,7 @@
       "Phone": "9044435399",
       "Instagram": "https://www.instagram.com/its_vinayak_gt",
       "LinkedIn": "https://www.linkedin.com/in/vinayak-gupta-aa72b316b/",
-      "Pic": null
+      "Pic": "/coreteam/Vinayak.jpg"
     },
     {
       "Id": "14",
@@ -196,8 +196,8 @@
       "Email": "shreyanshksp@gmail.com",
       "Phone": "8989489574",
       "Instagram": "https://www.instagram.com/shreyansh.2004_",
-      "LinkedIn": null,
-      "Pic": null
+      "LinkedIn": "https://www.linkedin.com/in/shreyansh-singh-364143388/",
+      "Pic": "/coreteam/Shreyans.jpg"
     },
     {
       "Id": "17",
@@ -217,7 +217,7 @@
       "Phone": "8640086587",
       "Instagram": "https://www.instagram.com/ayux.ydv",
       "LinkedIn": "https://www.linkedin.com/in/ayush-yadav-21b445257/",
-      "Pic": null
+      "Pic": "/coreteam/Ayush.jpg"
     },
     {
       "Id": "20",
@@ -235,9 +235,9 @@
       "Vertical": "Marketing",
       "Email": "aujjawal726@gmail.com",
       "Phone": "6392223772",
-      "Instagram": null,
-      "LinkedIn": null,
-      "Pic": null
+      "Instagram": "https://www.instagram.com/ujjawalagarwal_its_me/",
+      "LinkedIn": "https://www.linkedin.com/in/ujjawal-agarwal-a27907284/",
+      "Pic": "/coreteam/Ujjawal.jpg"
     },
     {
       "Id": "22",
@@ -277,7 +277,7 @@
       "Phone": "8569811596",
       "Instagram": "https://www.instagram.com/arryyaaannnn",
       "LinkedIn": "https://www.linkedin.com/in/aryan-jadon-6a5217212/",
-      "Pic": "/coreteam/28_Aryan_Jadon.jpg"
+      "Pic": "/coreteam/Aryan_Jadon.jpg"
     },
     {
       "Id": "26",
@@ -303,21 +303,21 @@
       "Id": "28",
       "Name": "Udaybhanu",
       "Vertical": "Design",
-      "Email": null,
-      "Phone": null,
-      "Instagram": null,
-      "LinkedIn": null,
-      "Pic": null
+      "Email": "udayabhanunath2005@gmail.com",
+      "Phone": "9777422646",
+      "Instagram": "https://www.instagram.com/udayabhanu.nath?igsh=MWFsOGJqNDBhOWh0Yg%3D%3D&utm_source=qr",
+      "LinkedIn": "https://www.linkedin.com/in/udayabhanu-nath-3a5544312?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      "Pic": "/coreteam/28_Udaybhanu.jpg"
     },
     {
       "Id": "29",
       "Name": "Siddhant Singh",
       "Vertical": "Web and App",
-      "Email": null,
+      "Email": "siddhant23@iitk.ac.in",
       "Phone": "95554 09072",
-      "Instagram": null,
-      "LinkedIn": null,
-      "Pic": null
+      "Instagram": "https://www.instagram.com/siddhant.singh.21/",
+      "LinkedIn": "https://www.linkedin.com/in/siddhant-singh-a90913307/",
+      "Pic": "/coreteam/Siddhant.jpeg"
     },
     {
       "Id": "30",
