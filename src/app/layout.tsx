@@ -21,6 +21,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Inter IIT Cultural Meet 8.0",
   description: "Inter IIT Cultural Meet 8.0 - Celebrating Art, Creativity, and Culture Across IITs",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
