@@ -258,18 +258,21 @@ const Judges: React.FC = () => {
         />
       </div>
 
-      <section className="pt-52 text-center px-4">
+      <section className="relative text-center pt-28 sm:pt-32 pb-16 sm:pb-15 px-4 z-10">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, type: "spring", stiffness: 120 }}
-          className="text-4xl sm:text-6xl md:text-7xl font-bold text-[#EEDCA5]"
+          className="font-['Playfair_Display',serif] text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#FDE6A3] drop-shadow-[0_3px_6px_rgba(0,0,0,0.4)]"
         >
           Meet the Judges
         </motion.h1>
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="vintage-title text-base sm:text-lg md:text-xl mt-5 max-w-2xl mx-auto text-gray-300">
+          <span className=" text-amber-50"> Celebrating artistic excellence, guided by voices that understand <span className="font-semibold text-[#FFD37F]">culture</span> and <span className="font-semibold text-[#FFD37F]">craft</span> </span>
+        </motion.p>
       </section>
 
-      <main className="px-6 py-16 text-center">
+      <main className="px-6 pt-7 pb-15 text-center">
         <input
           className="mb-14 px-5 py-3 rounded-full bg-white/10 border border-white/20"
           placeholder="Search judges…"
@@ -288,7 +291,7 @@ const Judges: React.FC = () => {
           >
             {filteredCups.map((cup) => (
               <div key={cup.cup}>
-                <h2 className="mb-10 text-3xl font-bold text-[#f1c68a]">
+                <h2 className="mb-10 font-['Playfair_Display',serif] text-3xl font-bold text-[#f1c68a]">
                   {cup.cup}
                 </h2>
 
