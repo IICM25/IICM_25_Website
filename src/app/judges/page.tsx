@@ -23,15 +23,39 @@ interface Judge {
   id: number;
   name: string;
   title: string;
-  image?: string; // optional
+  image?: string;
   cup: string;
 }
-
 
 interface CupSection {
   cup: string;
   judges: Judge[];
 }
+
+/** Firestore document shape */
+interface JudgesDoc {
+  data: RawJudge[];
+}
+
+/* =======================
+   Helpers (NO any)
+======================= */
+const extractJudges = (raw: unknown): RawJudge[] => {
+  if (Array.isArray(raw)) {
+    return raw;
+  }
+
+  if (
+    raw &&
+    typeof raw === "object" &&
+    "data" in raw &&
+    Array.isArray((raw as JudgesDoc).data)
+  ) {
+    return (raw as JudgesDoc).data;
+  }
+
+  return [];
+};
 
 /* =======================
    Image Card
@@ -64,8 +88,10 @@ const JudgeCardWithImage: React.FC<{
       <div className="absolute inset-0 transition-all duration-700 group-hover:backdrop-blur-3xl group-hover:brightness-75" />
     </div>
 
-    <div className="absolute inset-0 flex flex-col items-center justify-center text-center
-      opacity-0 group-hover:opacity-100 transition-all duration-700">
+    <div
+      className="absolute inset-0 flex flex-col items-center justify-center text-center
+      opacity-0 group-hover:opacity-100 transition-all duration-700"
+    >
       <h3 className="text-white text-2xl sm:text-3xl font-bold">{name}</h3>
       <p className="text-gray-200 text-sm mt-2">{title}</p>
     </div>
@@ -75,29 +101,6 @@ const JudgeCardWithImage: React.FC<{
 /* =======================
    Text-Only Card
 ======================= */
-// const JudgeCardTextOnly: React.FC<{
-//   name: string;
-//   title: string;
-// }> = ({ name, title }) => (
-//   <motion.div
-//     className="relative w-full max-w-[280px] h-[280px] rounded-2xl
-//       bg-white/10 backdrop-blur-md
-//       border border-white/20
-//       shadow-[0_8px_40px_rgba(255,255,255,0.1)]
-//       flex flex-col items-center justify-center text-center
-//       transition-all duration-500"
-//     whileHover={{
-//       scale: 1.04,
-//       boxShadow: "0 0 40px rgba(255,255,255,0.25)",
-//     }}
-//     initial={{ opacity: 0, y: 25 }}
-//     whileInView={{ opacity: 1, y: 0 }}
-//     viewport={{ once: true, amount: 0.2 }}
-//   >
-//     <h3 className="text-white text-2xl font-bold px-4">{name}</h3>
-//     <p className="text-gray-300 text-sm mt-3 px-6">{title}</p>
-//   </motion.div>
-// );
 interface JudgeCardTextOnlyProps {
   name: string;
   title: string;
@@ -108,99 +111,93 @@ const JudgeCardTextOnly: React.FC<JudgeCardTextOnlyProps> = ({
   name,
   title,
   cup,
-}) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.06 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 24 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    whileHover={{ scale: 1.06 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.4, ease: "easeOut" }}
+    className="
+      relative w-[280px] h-[150px]
+      bg-[#243137]
+      rounded-xl
+      overflow-hidden
+      grid place-content-center
+      transition-all duration-500
+      group
+    "
+  >
+    {/* Animated Border */}
+    <div
       className="
-        relative w-[280px] h-[150px]
-        bg-[#243137]
-        rounded-xl
-        overflow-hidden
-        grid place-content-center
+        absolute inset-0
+        border-2 border-[#bd9f67]
+        opacity-0
+        rotate-[10deg]
         transition-all duration-500
-        group
+        group-hover:opacity-100
+        group-hover:rotate-0
+        group-hover:inset-3
       "
-    >
-      {/* Animated Border */}
-      <div
+    />
+
+    {/* Content */}
+    <div className="relative z-10 text-center transition-all duration-500">
+      <h3
         className="
-          absolute inset-0
-          border-2 border-[#bd9f67]
-          opacity-0
-          rotate-[10deg]
-          transition-all duration-500
-          group-hover:opacity-100
-          group-hover:rotate-0
-          group-hover:inset-3
-        "
-      />
-
-      {/* Content */}
-      <div className="relative z-10 text-center transition-all duration-500">
-        {/* Judge Name (always visible) */}
-        <h3
-          className="
-            text-[#bd9f67]
-            text-xl
-            font-bold
-            tracking-wide
-            transition-all duration-300
-            group-hover:-translate-y-1
-          "
-        >
-          {name}
-        </h3>
-
-        {/* Judge Title (reveals on hover) */}
-        <p
-          className="
-            mt-2
-            text-sm
-            text-[#e6d6ad]
-            opacity-0
-            translate-y-2
-            transition-all duration-300
-            group-hover:opacity-100
-            group-hover:translate-y-0
-          "
-        >
-          {title}
-        </p>
-      </div>
-
-      {/* Bottom Cup Text */}
-      <span
-        className="
-          absolute bottom-3 left-1/2 -translate-x-1/2
-          text-[10px]
-          uppercase
-          tracking-[0.4em]
           text-[#bd9f67]
-          opacity-0
-          transition-all duration-500
-          group-hover:opacity-100
-          group-hover:tracking-[0.25em]
+          text-xl
+          font-bold
+          tracking-wide
+          transition-all duration-300
+          group-hover:-translate-y-1
         "
       >
-        {cup}
-      </span>
-    </motion.div>
-  );
-};
+        {name}
+      </h3>
 
+      <p
+        className="
+          mt-2
+          text-sm
+          text-[#e6d6ad]
+          opacity-0
+          translate-y-2
+          transition-all duration-300
+          group-hover:opacity-100
+          group-hover:translate-y-0
+        "
+      >
+        {title}
+      </p>
+    </div>
+
+    <span
+      className="
+        absolute bottom-3 left-1/2 -translate-x-1/2
+        text-[10px]
+        uppercase
+        tracking-[0.4em]
+        text-[#bd9f67]
+        opacity-0
+        transition-all duration-500
+        group-hover:opacity-100
+        group-hover:tracking-[0.25em]
+      "
+    >
+      {cup}
+    </span>
+  </motion.div>
+);
 
 /* =======================
    Judges Page
 ======================= */
 const Judges: React.FC = () => {
   const [cups, setCups] = useState<CupSection[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     let mounted = true;
@@ -210,17 +207,7 @@ const Judges: React.FC = () => {
         const raw = await getSingleDoc("WebContents", "judges_final");
         if (!mounted) return;
 
-        let list: RawJudge[] = [];
-
-        if (Array.isArray(raw)) {
-          list = raw;
-        } else if (
-          raw &&
-          typeof raw === "object" &&
-          Array.isArray((raw as any).data)
-        ) {
-          list = (raw as any).data;
-        }
+        const list = extractJudges(raw);
 
         const normalized: Judge[] = list
           .map((r, idx) => {
@@ -229,14 +216,14 @@ const Judges: React.FC = () => {
             const title =
               typeof r.title === "string" ? r.title.trim() : "";
             const cup =
-              typeof r.Cup === "string" && r.Cup.trim().length > 0
+              typeof r.Cup === "string" && r.Cup.trim()
                 ? r.Cup.trim()
                 : "Other";
 
             if (!name || !title) return null;
 
             const image =
-              r.image?.url && r.image.url.trim().length > 0
+              r.image?.url && r.image.url.trim()
                 ? r.image.url.trim()
                 : undefined;
 
@@ -248,7 +235,7 @@ const Judges: React.FC = () => {
               image,
             };
           })
-          .filter(Boolean) as Judge[];
+          .filter((j): j is Judge => j !== null);
 
         const cupMap: Record<string, Judge[]> = {};
         normalized.forEach((j) => {
@@ -372,11 +359,11 @@ const Judges: React.FC = () => {
                       />
                     ) : (
                       <JudgeCardTextOnly
-        key={j.id}
-        name={j.name}
-        title={j.title}
-        cup={cup.cup}
-      />
+                        key={j.id}
+                        name={j.name}
+                        title={j.title}
+                        cup={cup.cup}
+                      />
                     )
                   )}
                 </div>
