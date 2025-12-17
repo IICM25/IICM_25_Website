@@ -32,18 +32,15 @@ interface CupSection {
   judges: Judge[];
 }
 
-/** Firestore document shape */
 interface JudgesDoc {
   data: RawJudge[];
 }
 
 /* =======================
-   Helpers (NO any)
+   Helpers
 ======================= */
 const extractJudges = (raw: unknown): RawJudge[] => {
-  if (Array.isArray(raw)) {
-    return raw;
-  }
+  if (Array.isArray(raw)) return raw;
 
   if (
     raw &&
@@ -56,6 +53,8 @@ const extractJudges = (raw: unknown): RawJudge[] => {
 
   return [];
 };
+
+const isJudge = (j: Judge | null): j is Judge => j !== null;
 
 /* =======================
    Image Card
@@ -128,7 +127,6 @@ const JudgeCardTextOnly: React.FC<JudgeCardTextOnlyProps> = ({
       group
     "
   >
-    {/* Animated Border */}
     <div
       className="
         absolute inset-0
@@ -142,7 +140,6 @@ const JudgeCardTextOnly: React.FC<JudgeCardTextOnlyProps> = ({
       "
     />
 
-    {/* Content */}
     <div className="relative z-10 text-center transition-all duration-500">
       <h3
         className="
@@ -196,8 +193,8 @@ const JudgeCardTextOnly: React.FC<JudgeCardTextOnlyProps> = ({
 ======================= */
 const Judges: React.FC = () => {
   const [cups, setCups] = useState<CupSection[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [search, setSearch] = useState<string>("");
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     let mounted = true;
@@ -209,33 +206,33 @@ const Judges: React.FC = () => {
 
         const list = extractJudges(raw);
 
-        const normalized: Judge[] = list
-          .map((r, idx) => {
-            const name =
-              typeof r.name === "string" ? r.name.trim() : "";
-            const title =
-              typeof r.title === "string" ? r.title.trim() : "";
-            const cup =
-              typeof r.Cup === "string" && r.Cup.trim()
-                ? r.Cup.trim()
-                : "Other";
+        const mapped = list.map((r, idx) => {
+          const name =
+            typeof r.name === "string" ? r.name.trim() : "";
+          const title =
+            typeof r.title === "string" ? r.title.trim() : "";
+          const cup =
+            typeof r.Cup === "string" && r.Cup.trim()
+              ? r.Cup.trim()
+              : "Other";
 
-            if (!name || !title) return null;
+          if (!name || !title) return null;
 
-            const image =
-              r.image?.url && r.image.url.trim()
-                ? r.image.url.trim()
-                : undefined;
+          const image =
+            r.image?.url && r.image.url.trim()
+              ? r.image.url.trim()
+              : undefined;
 
-            return {
-              id: idx + 1,
-              name,
-              title,
-              cup,
-              image,
-            };
-          })
-          .filter((j): j is Judge => j !== null);
+          return {
+            id: idx + 1,
+            name,
+            title,
+            cup,
+            image,
+          };
+        });
+
+        const normalized: Judge[] = mapped.filter(isJudge);
 
         const cupMap: Record<string, Judge[]> = {};
         normalized.forEach((j) => {
@@ -261,16 +258,13 @@ const Judges: React.FC = () => {
     };
   }, []);
 
-  /* =======================
-     Search filter
-  ======================= */
   const filteredCups = cups
     .map((cup) => ({
       ...cup,
       judges: cup.judges.filter((j) => {
         const q = search.toLowerCase().trim();
-        if (!q) return true;
         return (
+          !q ||
           j.name.toLowerCase().includes(q) ||
           j.title.toLowerCase().includes(q)
         );
@@ -289,7 +283,6 @@ const Judges: React.FC = () => {
 
   return (
     <div className="min-h-screen text-white relative overflow-x-hidden">
-      {/* Background */}
       <div className="fixed inset-0 -z-20">
         <Image
           src="/Elements/top2.png"
@@ -300,7 +293,6 @@ const Judges: React.FC = () => {
         />
       </div>
 
-      {/* Hero */}
       <section className="pt-52 text-center px-4">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
@@ -312,9 +304,7 @@ const Judges: React.FC = () => {
         </motion.h1>
       </section>
 
-      {/* Content */}
       <main className="px-6 sm:px-10 md:px-16 py-16 text-center">
-        {/* Search */}
         <div className="max-w-md mx-auto mb-14">
           <input
             type="text"
