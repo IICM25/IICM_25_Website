@@ -91,7 +91,7 @@ const Header = () => {
   {/* Parent */}
   <span
     className={`cursor-pointer hover:text-[var(--secondary-color)] ${
-      pathname === "/schedule" || pathname === "/submissions"
+      pathname === "/schedule" || pathname === "/submission"
         ? "text-[var(--secondary-color)]"
         : ""
     }`}
