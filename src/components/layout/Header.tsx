@@ -78,7 +78,7 @@ const Header = () => {
             Events 
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             href="/schedule"
             className={`hover:text-[var(--secondary-color)] ${pathname === "/schedule" ? "text-[var(--secondary-color)]" : ""
@@ -86,7 +86,48 @@ const Header = () => {
           >
             Schedule
           </Link>
-        </li>
+        </li> */}
+        <li className="relative group">
+  {/* Parent */}
+  <span
+    className={`cursor-pointer hover:text-[var(--secondary-color)] ${
+      pathname === "/schedule" || pathname === "/submissions"
+        ? "text-[var(--secondary-color)]"
+        : ""
+    }`}
+  >
+    Schedule
+  </span>
+
+  {/* Dropdown */}
+  <ul className="absolute left-0 mt-2 w-44 rounded-md bg-black/90 backdrop-blur-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+    <li>
+      <Link
+        href="/schedule"
+        className={`block px-4 py-2 hover:bg-white/10 hover:text-[var(--secondary-color)] ${
+          pathname === "/schedule"
+            ? "text-[var(--secondary-color)]"
+            : "text-white"
+        }`}
+      >
+        Schedule
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/submissions"
+        className={`block px-4 py-2 hover:bg-white/10 hover:text-[var(--secondary-color)] ${
+          pathname === "/submissions"
+            ? "text-[var(--secondary-color)]"
+            : "text-white"
+        }`}
+      >
+        Submissions
+      </Link>
+    </li>
+  </ul>
+</li>
+
         {/* Other Links */}
         <li>
           <Link

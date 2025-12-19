@@ -49,11 +49,38 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
             <Link href="/events" onClick={onClose} className="text-white text-[22px] hover:text-white">
               Events 
             </Link>
-          </li><li className="my-2">
-            <Link href="/schedule" onClick={onClose} className="text-white text-[22px] hover:text-white">
-              Schedule 
-            </Link>
-          </li><li className="my-2">
+          </li>
+          <li className="my-2">
+  <details className="group">
+    <summary className="list-none cursor-pointer text-white text-[22px] hover:text-white flex items-center justify-between">
+      <span>Schedule</span>
+      <span className="transition-transform group-open:rotate-180">▾</span>
+    </summary>
+
+    <ul className="mt-2 ml-4 space-y-2">
+      <li>
+        <Link
+          href="/schedule"
+          onClick={onClose}
+          className="text-white/90 text-[20px] hover:text-white"
+        >
+          Schedule
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="/submissions"
+          onClick={onClose}
+          className="text-white/90 text-[20px] hover:text-white"
+        >
+          Submissions
+        </Link>
+      </li>
+    </ul>
+  </details>
+</li>
+
+          <li className="my-2">
             <Link href="/places" onClick={onClose} className="text-white text-[22px] hover:text-white">
               Places 
             </Link>
