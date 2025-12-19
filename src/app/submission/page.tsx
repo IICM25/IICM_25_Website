@@ -132,10 +132,10 @@ export default function SubmissionsPage() {
       <div className="container mx-auto py-16">
         <div className="text-center pt-12 flex flex-col items-center">
           <h1 className="font-['Playfair_Display'] text-5xl md:text-7xl font-bold text-[#EEDCA5]">
-            Submissions
+            Submissions and Releases
           </h1>
           <p className="text-xl max-w-[40vw] text-[#f1c68a] mt-4">
-            Important submission deadlines and instructions
+            Important submission deadlines and Releases
           </p>
         </div>
 
