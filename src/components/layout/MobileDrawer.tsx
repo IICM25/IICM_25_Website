@@ -69,7 +69,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
       </li>
       <li>
         <Link
-          href="/submissions"
+          href="/submission"
           onClick={onClose}
           className="text-white/90 text-[20px] hover:text-white"
         >

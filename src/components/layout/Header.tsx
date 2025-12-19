@@ -117,7 +117,7 @@ const Header = () => {
       <Link
         href="/submissions"
         className={`block px-4 py-2 hover:bg-white/10 hover:text-[var(--secondary-color)] ${
-          pathname === "/submissions"
+          pathname === "/submission"
             ? "text-[var(--secondary-color)]"
             : "text-white"
         }`}
