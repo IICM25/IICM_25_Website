@@ -78,6 +78,15 @@ const Header = () => {
             Events 
           </Link>
         </li>
+        {/* <li>
+          <Link
+            href="/schedule"
+            className={`hover:text-[var(--secondary-color)] ${pathname === "/schedule" ? "text-[var(--secondary-color)]" : ""
+              }`}
+          >
+            Schedule
+          </Link>
+        </li> */}
         <li>
           <Link
             href="/schedule"
@@ -87,6 +96,7 @@ const Header = () => {
             Schedule
           </Link>
         </li>
+
         {/* Other Links */}
         <li>
           <Link
