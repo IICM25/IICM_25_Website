@@ -17,7 +17,7 @@ const EventsHubPage = () => {
           Events & Competitions
         </h1>
 
-        <p className="text-xl vintage-title  text-secondary mt-2 max-w-2xl mx-auto drop-shadow-md">
+        <p className="sm:text-lg md:text-xl vintage-title  text-secondary pt-6 max-w-2xl mx-auto drop-shadow-md">
           The stage is set. The challenges await. Find your fire and compete with the best across a spectrum of cultural showcases.
         </p>
 

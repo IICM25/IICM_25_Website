@@ -267,15 +267,15 @@ const Judges: React.FC = () => {
         >
           Meet the Judges
         </motion.h1>
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="vintage-title text-base sm:text-lg md:text-xl mt-5 max-w-2xl mx-auto text-gray-300">
-          <span className=" text-amber-50"> Celebrating artistic excellence, guided by voices that understand <span className="font-semibold text-[#FFD37F]">culture</span> and <span className="font-semibold text-[#FFD37F]">craft</span> </span>
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="sm:text-lg md:text-xl vintage-title  text-secondary pt-6 max-w-2xl mx-auto drop-shadow-md">
+          <span className="vintage-title  text-secondary max-w-2xl mx-auto drop-shadow-md"> Celebrating artistic excellence, guided by voices that understand culture and craft </span>
         </motion.p>
       </section>
 
       <main className="px-6 pt-7 pb-15 text-center">
         <input
           className="mb-14 px-5 py-3 rounded-full bg-white/10 border border-white/20"
-          placeholder="Search judges…"
+          placeholder="Search judges or events…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />

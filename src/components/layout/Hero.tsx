@@ -140,7 +140,7 @@ export default function Home() {
                         />
 
                         {/* transparent overlay */}
-                        <div className="absolute inset-0 bg-black/50"></div>
+                        <div className="absolute inset-0"></div>
                       </div>
 
                       {/* small caption / white strip (polaroid) */}
@@ -390,7 +390,7 @@ export default function Home() {
                     />
 
                     {/* transparent overlay */}
-                    <div className="absolute inset-0 bg-black/50"></div>
+                    <div className="absolute inset-0"></div>
                   </div>
 
                   {/* small caption / white strip (polaroid) */}

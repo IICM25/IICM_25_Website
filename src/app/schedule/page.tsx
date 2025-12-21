@@ -226,12 +226,12 @@ export default function Schedule() {
       }}
     >
       <div className="container mx-auto py-16">
-        <div className="text-center pt-12 flex flex-col items-center">
-          <h1 className="font-['Playfair_Display'] text-5xl md:text-7xl font-bold text-[#EEDCA5]">
+        <div className="text-center pt-16 pb-10 flex flex-col items-center">
+          <h1 className="font-['Playfair_Display'] text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#FDE6A3] drop-shadow-[0_3px_6px_rgba(0,0,0,0.4)]">
             Schedule
           </h1>
-          <p className="text-xl max-w-[40vw] text-[#f1c68a] mt-4">
-            Check the day-wise schedule of events at Inter IIT Cultural Meet 8.0
+          <p className="sm:text-lg md:text-xl vintage-title  text-secondary pt-6 max-w-2xl mx-auto drop-shadow-md">
+            <span className="vintage-title  text-secondary max-w-2xl mx-auto drop-shadow-md">Check the day-wise schedule of events at </span> <span className="font-semibold text-[#FFD37F]">Inter IIT Cultural Meet 8.0</span> 
           </p>
         </div>
 
@@ -241,7 +241,7 @@ export default function Schedule() {
             <button
               key={d.day}
               onClick={() => setActiveDay(d.day)}
-              className={`px-6 py-2 rounded shadow-md transition-all ${
+              className={`px-6 py-2 font-['Playfair_Display'] font-bold text-xl rounded shadow-md transition-all ${
                 activeDay === d.day
                   ? "bg-[#6b131f] text-white"
                   : "bg-white/20 text-white hover:bg-white/30"

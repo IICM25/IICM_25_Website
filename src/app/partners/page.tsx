@@ -416,12 +416,9 @@ interface SponsorCardProps {
 }
 
 // SponsorCard: uses logoUrl if provided, otherwise shows name.
-const SponsorCard: React.FC<SponsorCardProps> = ({ id, name, sponsor, logoUrl, url }) => {
+const SponsorCard: React.FC<SponsorCardProps> = ({ id, name, sponsor, logoUrl }) => {
   return (
-    <motion.a
-      href={url ?? "#"}
-      target={url ? "_blank" : "_self"}
-      rel={url ? "noopener noreferrer" : undefined}
+    <motion.div
       className={`relative aspect-square rounded-2xl overflow-hidden 
         bg-white/10 backdrop-blur-md
         border border-white/20 
@@ -444,7 +441,13 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ id, name, sponsor, logoUrl, u
       <div className="absolute inset-0 flex items-center justify-center p-6 transition-all duration-700 ease-in-out group-hover:opacity-0 pointer-events-none">
         {logoUrl ? (
           <Image
-            src={logoUrl.startsWith("http") ? logoUrl : logoUrl.startsWith("/") ? logoUrl : `/images/logos/${logoUrl}`}
+            src={
+              logoUrl.startsWith("http")
+                ? logoUrl
+                : logoUrl.startsWith("/")
+                ? logoUrl
+                : `/images/logos/${logoUrl}`
+            }
             alt={`${name} logo`}
             fill
             className="object-contain"
@@ -462,7 +465,7 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ id, name, sponsor, logoUrl, u
           {name}
         </span>
       </div>
-    </motion.a>
+    </motion.div>
   );
 };
 
@@ -608,8 +611,8 @@ const Partners: React.FC = () => {
         >
           Our Partners
         </motion.h1>
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="vintage-title text-base sm:text-lg md:text-xl mt-5 max-w-2xl mx-auto text-gray-300">
-          <span className=" text-amber-50"> The visionaries who make </span> <span className="font-semibold text-[#FFD37F]">Inter IIT Cultural Meet 8.0</span> <span className=" text-amber-50"> possible.</span>
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="sm:text-lg md:text-xl vintage-title  text-secondary pt-6 max-w-2xl mx-auto drop-shadow-md">
+          <span className="vintage-title  text-secondary max-w-2xl mx-auto drop-shadow-md"> The visionaries who make </span> <span className="font-semibold text-[#FFD37F]">Inter IIT Cultural Meet 8.0</span> <span className="vintage-title  text-secondary max-w-2xl mx-auto drop-shadow-md"> possible.</span>
         </motion.p>
       </section>
 
@@ -638,7 +641,7 @@ const Partners: React.FC = () => {
         <AnimatePresence mode="wait">
           <motion.div key={activeTab} initial="hidden" animate="visible" exit={{ opacity: 0, y: 10 }} variants={sectionVariants}>
             {/* Title Sponsor */}
-            <motion.section className="py-12 sm:py-16 text-center" variants={sectionVariants}>
+            {/* <motion.section className="py-12 sm:py-16 text-center" variants={sectionVariants}>
               <h2 className="font-['Playfair_Display',serif] text-3xl sm:text-4xl font-extrabold mb-8 text-[#FDE6A3]">Title Sponsor</h2>
 
               {loading ? (
@@ -658,7 +661,7 @@ const Partners: React.FC = () => {
                   Title sponsor not yet added — will be added soon.
                 </div>
               )}
-            </motion.section>
+            </motion.section> */}
 
             {/* Remaining sponsors / MNP */}
             <motion.section className="py-12 sm:py-16 text-center" variants={sectionVariants}>
