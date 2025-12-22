@@ -39,42 +39,16 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
               About IITK
             </Link>
           </li>
-
-          <li className="my-2">
-            <Link href="/gallery" onClick={onClose} className="text-white text-[22px] hover:text-white">
-              Gallery
-            </Link>
-          </li>
           <li className="my-2">
             <Link href="/events" onClick={onClose} className="text-white text-[22px] hover:text-white">
               Events 
             </Link>
           </li>
-         <li className="my-2">
+          <li className="my-2">
             <Link href="/schedule" onClick={onClose} className="text-white text-[22px] hover:text-white">
               Schedule 
             </Link>
           </li>
-          <li className="my-2">
-            <Link href="/places" onClick={onClose} className="text-white text-[22px] hover:text-white">
-              Places 
-            </Link>
-          </li><li className="my-2">
-            <Link href="/partners" onClick={onClose} className="text-white text-[22px] hover:text-white">
-              Partners
-            </Link>
-          </li><li className="my-2">
-            <Link href="/judges" onClick={onClose} className="text-white text-[22px] hover:text-white">
-              Judges
-            </Link>
-          </li>
-
-          <li className="my-2">
-            <Link href="/contact" onClick={onClose} className="text-white text-[22px] hover:text-white">
-              Core Team
-            </Link>
-          </li>
-
           <li className="my-2">
             <a
               href="https://drive.google.com/file/d/1VUxhRSf0R2xDKwhzhKKDB2_uktCDeV6M/view?usp=drive_open"
@@ -86,6 +60,31 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
               RuleBook
             </a>
           </li>
+          <li className="my-2">
+            <Link href="/places" onClick={onClose} className="text-white text-[22px] hover:text-white">
+              Places 
+            </Link>
+          </li>
+          <li className="my-2">
+            <Link href="/judges" onClick={onClose} className="text-white text-[22px] hover:text-white">
+              Judges
+            </Link>
+          </li>
+          <li className="my-2">
+            <Link href="/gallery" onClick={onClose} className="text-white text-[22px] hover:text-white">
+              Gallery
+            </Link>
+          </li>
+          <li className="my-2">
+            <Link href="/contact" onClick={onClose} className="text-white text-[22px] hover:text-white">
+              Core Team
+            </Link>
+          </li>
+          {/* <li className="my-2">
+            <Link href="/partners" onClick={onClose} className="text-white text-[22px] hover:text-white">
+              Partners
+            </Link>
+          </li> */}
         </ul>
       </div>
     </>
