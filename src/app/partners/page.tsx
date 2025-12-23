@@ -421,6 +421,7 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ id, name, sponsor, logoUrl })
     <motion.div
       className={`relative aspect-square rounded-2xl overflow-hidden 
         backdrop-blur-md
+        bg-transparent
         border border-white/20 
         shadow-[0_8px_40px_rgba(255,255,255,0.1)]
         hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]
@@ -460,7 +461,7 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ id, name, sponsor, logoUrl })
         )}
       </div>
 
-      <div className="absolute inset-0 flex items-center justify-center text-center transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100 pointer-events-none px-4">
+      <div className="absolute bg-yellow/20 inset-0 flex items-center justify-center text-center transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100 pointer-events-none px-4">
         <span className="text-white text-3xl font-bold tracking-wide drop-shadow-[0_0_20px_rgba(255,255,255,0.7)] select-none">
           {name}
         </span>
@@ -679,7 +680,7 @@ const Partners: React.FC = () => {
               ) : (
                 <>
                 {firstSponsor && (
-                  <div className="grid grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto gap-8 mb-12">
+                  <div className="grid grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto gap-8 mb-14">
                     <div />
                     <SponsorCard
                       id={firstSponsor.Id}
@@ -694,7 +695,7 @@ const Partners: React.FC = () => {
 
                 {/* Remaining sponsors */}
                 {remainingSponsors.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-4xl mx-auto">
                     {remainingSponsors.map((s) => (
                       <SponsorCard
                         key={s.Id ?? s.name}
