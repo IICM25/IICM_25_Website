@@ -80,11 +80,11 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
               Core Team
             </Link>
           </li>
-          {/* <li className="my-2">
+          <li className="my-2">
             <Link href="/partners" onClick={onClose} className="text-white text-[22px] hover:text-white">
               Partners
             </Link>
-          </li> */}
+          </li>
         </ul>
       </div>
     </>

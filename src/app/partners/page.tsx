@@ -420,7 +420,7 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ id, name, sponsor, logoUrl })
   return (
     <motion.div
       className={`relative aspect-square rounded-2xl overflow-hidden 
-        bg-white/10 backdrop-blur-md
+        backdrop-blur-md
         border border-white/20 
         shadow-[0_8px_40px_rgba(255,255,255,0.1)]
         hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]
@@ -668,7 +668,7 @@ const Partners: React.FC = () => {
 
             {/* Remaining sponsors / MNP */}
             <motion.section className="py-12 sm:py-16 text-center" variants={sectionVariants}>
-              <h2 className="font-['Playfair_Display',serif] text-3xl sm:text-4xl font-extrabold mb-4 text-[#FDE6A3]">{activeTab === "sponsors" ? "Sponsors" : "MNP"}</h2>
+              <h2 className="font-['Playfair_Display'] text-3xl sm:text-4xl font-extrabold mb-4 text-[#FDE6A3]">{activeTab === "sponsors" ? "Sponsors" : "MNP"}</h2>
 
               {loading ? (
                 <div className="text-gray-300">Loading...</div>
@@ -679,7 +679,7 @@ const Partners: React.FC = () => {
               ) : (
                 <>
                 {firstSponsor && (
-                  <div className="grid grid-cols-1 md:grid-cols-3 max-w-4xl mx-auto gap-8 mb-12">
+                  <div className="grid grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto gap-8 mb-12">
                     <div />
                     <SponsorCard
                       id={firstSponsor.Id}
@@ -694,7 +694,7 @@ const Partners: React.FC = () => {
 
                 {/* Remaining sponsors */}
                 {remainingSponsors.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
                     {remainingSponsors.map((s) => (
                       <SponsorCard
                         key={s.Id ?? s.name}
