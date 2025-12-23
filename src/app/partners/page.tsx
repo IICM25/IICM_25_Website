@@ -594,6 +594,9 @@ const Partners: React.FC = () => {
   // title sponsor logoUrl extraction for render
   const titleSponsorLogoUrl = titleSponsor ? getLogoUrl(titleSponsor.logo) : null;
 
+  const firstSponsor = visibleSponsors[0] ?? null;
+  const remainingSponsors = visibleSponsors.slice(1);
+
   return (
     <div className="font-sans overflow-x-hidden min-h-screen relative text-white">
       {/* === Background === */}
@@ -674,11 +677,37 @@ const Partners: React.FC = () => {
                   {activeTab === "sponsors" ? "Sponsors not yet added — will be added soon." : "MNP not yet added — will be added soon."}
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                  {visibleSponsors.map((s) => (
-                    <SponsorCard key={s.Id ?? s.name} id={s.Id} name={s.name} sponsor={s.sponsor} logoUrl={s.logoUrl ?? null} url={s.url} />
-                  ))}
-                </div>
+                <>
+                {firstSponsor && (
+                  <div className="grid grid-cols-1 md:grid-cols-3 max-w-4xl mx-auto gap-8 mb-12">
+                    <div />
+                    <SponsorCard
+                      id={firstSponsor.Id}
+                      name={firstSponsor.name}
+                      sponsor={firstSponsor.sponsor}
+                      logoUrl={firstSponsor.logoUrl ?? null}
+                      url={firstSponsor.url}
+                    />
+                    <div />
+                  </div>
+                )}
+
+                {/* Remaining sponsors */}
+                {remainingSponsors.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    {remainingSponsors.map((s) => (
+                      <SponsorCard
+                        key={s.Id ?? s.name}
+                        id={s.Id}
+                        name={s.name}
+                        sponsor={s.sponsor}
+                        logoUrl={s.logoUrl ?? null}
+                        url={s.url}
+                      />
+                    ))}
+                  </div>
+                )}
+                </>
               )}
             </motion.section>
           </motion.div>

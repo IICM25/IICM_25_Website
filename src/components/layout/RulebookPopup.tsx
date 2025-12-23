@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function RulebookPopup() {
@@ -42,11 +43,13 @@ export default function RulebookPopup() {
         </h2>
 
         <p className="text-center text-[#3f361a] mb-6 leading-relaxed">
-          Please read the guidelines carefully for
+          Quick links for guidelines of
           <br />
           <span className="font-semibold">
             Inter IIT Cultural Meet 8.0
           </span>
+          <br/>
+          and places in IIT Kanpur!
         </p>
 
         {/* Rulebook link */}
@@ -64,6 +67,12 @@ export default function RulebookPopup() {
           >
             Inter IIT Cultural Meet 8.0 Rulebook
           </a>
+          <Link href="/places" className="px-6 py-3 rounded-lg text-center font-medium
+              bg-[#7a5c12] text-[#F3E1A0]
+              hover:bg-[#5c450d]
+              transition-all shadow-md">
+            Explore Places to Visit in IITK
+          </Link>
         </div>
       </div>
     </div>

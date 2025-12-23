@@ -148,7 +148,7 @@ const Header = () => {
           </Link>
         </li>
         
-        {/* <li>
+        <li>
           <Link
             href="/partners"
             className={`hover:text-[var(--secondary-color)] ${
@@ -157,7 +157,7 @@ const Header = () => {
           >
             Partners
           </Link>
-        </li> */}
+        </li>
       </ul>
 
       {/* Social Icons */}
