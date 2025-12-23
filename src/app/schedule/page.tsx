@@ -100,11 +100,11 @@ export default function Schedule() {
      DAY CONFIG (0-based)
   ========================= */
   const dates = [
-    { day: 0, label: "Day 0", date: "2025-12-22" },
-    { day: 1, label: "Day 1", date: "2025-12-23" },
-    { day: 2, label: "Day 2", date: "2025-12-24" },
-    { day: 3, label: "Day 3", date: "2025-12-25" },
-    { day: 4, label: "Day 4", date: "2025-12-26" },
+    { day: 0, label: "Day 0", date: "2025-12-23" },
+    { day: 1, label: "Day 1", date: "2025-12-24" },
+    { day: 2, label: "Day 2", date: "2025-12-25" },
+    { day: 3, label: "Day 3", date: "2025-12-26" },
+    { day: 4, label: "Day 4", date: "2025-12-27" },
   ];
 
   const getActiveDayByDate = (): number => {
